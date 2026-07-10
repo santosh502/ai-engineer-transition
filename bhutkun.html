@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>For My Bhutkun ❤️</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Poppins, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ff9a9e, #fad0c4);
+            background-size: 400% 400%;
+            animation: bg 12s ease infinite;
+        }
+
+        @keyframes bg {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        .card {
+            width: 90%;
+            max-width: 760px;
+            padding: 50px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: "Dancing Script", cursive;
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        #typing {
+            min-height: 220px;
+            font-size: 18px;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 16px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 40px;
+            background: white;
+            color: #ff4d6d;
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        #surprise {
+            display: none;
+            margin-top: 30px;
+            animation: fade 1s ease;
+        }
+
+        #surprise h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        #surprise p {
+            font-size: 22px;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 30px;
+            animation: float linear forwards;
+            opacity: .8;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(.5);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        .counter {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>❤️ My Bhutkun ❤️</h1>
+
+        <div class="subtitle">
+            Congratulations on your MBA Journey 🎓
+        </div>
+
+        <div id="typing"></div>
+
+        <div class="counter">
+            🌸 A new journey begins... and I'll always be cheering for you.
+        </div>
+
+        <button onclick="showLove()">
+            Click Here ❤️
+        </button>
+
+        <div id="surprise">
+            <h2>💖 I LOVE YOU, BHUTKUN 💖</h2>
+
+            <p>
+                No matter where life takes you...<br>
+                No matter how busy your MBA gets...<br><br>
+
+                I will always be your biggest supporter,
+                your safest place,
+                and the one who believes in you the most.
+
+                <br><br>
+
+                ❤️ I'm so proud of you.
+                <br>
+                ❤️ I'm lucky to have you.
+                <br>
+                ❤️ I'll love you forever.
+            </p>
+
+            <h2 style="margin-top:25px;">
+                Forever Yours,<br>
+                Santosh ❤️
+            </h2>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const message = `My Dearest Bhutkun,
+
+Congratulations on starting your MBA! 🎓
+
+I know this journey won't always be easy.
+
+There will be assignments...
+late-night studies...
+presentations...
+and stressful exams.
+
+But I know one thing...
+
+You are incredibly talented, strong, and capable.
+
+Whenever you feel tired,
+remember there is someone who believes in you with all his heart.
+
+I'm proud of every step you take.
+
+Thank you for making my life happier.
+
+I promise to celebrate every success,
+support you through every challenge,
+and always remind you how amazing you are.
+
+Because...
+
+You are my favorite person.
+
+❤️`;
+
+        let i = 0;
+
+        function typeWriter() {
+
+            if (i < message.length) {
+
+                document.getElementById("typing").innerHTML += message.charAt(i);
+
+                i++;
+
+                setTimeout(typeWriter, 35);
+
+            }
+
+        }
+
+        typeWriter();
+
+        function showLove() {
+
+            document.getElementById("surprise").style.display = "block";
+
+            for (let i = 0; i < 80; i++) {
+
+                setTimeout(createHeart, i * 120);
+
+            }
+
+        }
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+            heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+
+        }
+
+        setInterval(createHeart, 400);
+
+    </script>
+
+</body>
+
+</html>
