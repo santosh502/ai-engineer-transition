@@ -4,33 +4,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Engineer Tracker - 6 Month Accelerated Plan</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>18-Week AI Engineer Build Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     :root {
-      --primary: #245f9d;
-      --success: #24764f;
-      --warning: #a96416;
-      --danger: #b13b3b;
-      --accent: #7047a5;
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --border: #d9e0e8;
-      --text: #172033;
-      --muted: #637083;
+      --bg-void: #10131a;
+      --bg-panel: #171b24;
+      --bg-panel-raised: #1e232f;
+      --bg-inset: #0c0e13;
+      --border: #2a3040;
+      --border-bright: #3b4356;
+      --text-primary: #e7eaf1;
+      --text-secondary: #9aa3b5;
+      --text-dim: #656e80;
+      --accent: #5eead4;
+      --accent-soft: rgba(94, 234, 212, 0.12);
+      --accent-strong: #99f6e8;
+      --amber: #f0a955;
+      --amber-soft: rgba(240, 169, 85, 0.14);
+      --danger: #f0806e;
+      --danger-soft: rgba(240, 128, 110, 0.14);
+      --phase-0: #c4b5fd;
+      --phase-1: #5eead4;
+      --phase-2: #7dd3fc;
+      --phase-3: #fda4af;
+      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius: 8px;
     }
 
-    body.dark-mode {
-      --bg: #1a1a2e;
-      --card: #16213e;
-      --border: #3a4056;
-      --text: #e0e0e0;
-      --muted: #a0a0a0;
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
     }
 
     html {
@@ -38,228 +54,742 @@
     }
 
     body {
-      margin: 0;
-      padding: 20px;
-      background: var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--text);
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse 900px 500px at 15% -10%, rgba(94, 234, 212, 0.06), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 100% 0%, rgba(196, 181, 253, 0.05), transparent 60%),
+        var(--bg-void);
+      background-attachment: fixed;
+      color: var(--text-primary);
       line-height: 1.6;
-      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    /* faint blueprint grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 0;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
+      padding: 32px 24px 80px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Confetti animation */
-    @keyframes confetti-fall {
-      to {
-        transform: translateY(100vh) rotate(720deg);
+    /* ---------- Header ---------- */
+    .header {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-eyebrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-eyebrow .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--accent);
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      49% {
+        opacity: 1;
+      }
+
+      50%,
+      100% {
         opacity: 0;
       }
     }
 
-    .confetti {
-      position: fixed;
-      pointer-events: none;
-      font-size: 24px;
-      animation: confetti-fall 3s ease-in forwards;
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    .header-controls {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .theme-toggle {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.2s;
-    }
-
-    .theme-toggle:hover {
-      background: var(--bg);
-    }
-
-    /* Status banner */
-    .status-banner {
-      padding: 16px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .header h1 {
+      font-family: var(--mono);
+      font-size: 30px;
       font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .header h1 .arrow {
+      color: var(--text-dim);
+      margin: 0 10px;
+    }
+
+    .header h1 .to {
+      color: var(--accent);
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
       font-size: 14px;
-    }
-
-    .status-banner.on-track {
-      background: #c8e6c9;
-      border: 2px solid var(--success);
-      color: #1b5e20;
-    }
-
-    .status-banner.behind {
-      background: #ffcdd2;
-      border: 2px solid var(--danger);
-      color: #b71c1c;
-    }
-
-    .status-banner.warning {
-      background: #ffe0b2;
-      border: 2px solid var(--warning);
-      color: #e65100;
-    }
-
-    .status-icon {
-      font-size: 24px;
-      margin-right: 8px;
-    }
-
-    /* Streak badge */
-    .streak-badge {
-      background: var(--card);
-      border: 2px solid #ff6b6b;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-weight: 700;
       display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .save-indicator {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 20px;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 13px;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    /* Gamification */
-    .gamification {
+    .save-indicator .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .save-indicator.saved {
+      color: var(--accent);
+      border-color: rgba(94, 234, 212, 0.3);
+    }
+
+    .save-indicator.saved .dot {
+      background: var(--accent);
+      box-shadow: 0 0 6px rgba(94, 234, 212, 0.7);
+    }
+
+    /* ---------- Dashboard ---------- */
+    .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 32px;
     }
 
-    .gamification-card {
-      background: var(--card);
+    .stat-card {
+      background: var(--bg-panel);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .gamification-card .label {
+    .stat-label {
+      font-family: var(--mono);
       font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-label::before {
+      content: '';
+    }
+
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 26px;
       font-weight: 600;
-      margin-bottom: 8px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
     }
 
-    .gamification-card .value {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 4px;
-    }
-
-    .gamification-card .subtitle {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    /* Achievement badges */
-    .achievements {
-      background: var(--card);
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+      background: var(--bg-inset);
+      border-radius: 3px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
-    .achievements h3 {
-      margin: 0 0 12px;
-      font-size: 14px;
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      border-radius: 3px;
+      transition: width 0.4s ease;
     }
 
-    .achievement-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    .stat-foot {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 8px;
+      font-family: var(--mono);
+    }
+
+    .date-row {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
       gap: 8px;
     }
 
-    .achievement-badge {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      background: #f0f0f0;
-      border: 2px solid var(--border);
+    .date-row label {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      white-space: nowrap;
+    }
+
+    .date-row input[type="date"] {
+      flex: 1;
+      padding: 6px 8px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text-primary);
+      font-size: 12px;
+      font-family: var(--mono);
+      color-scheme: dark;
+      min-width: 0;
+    }
+
+    .date-row input[type="date"]:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      border-radius: 5px;
+      width: 26px;
+      height: 26px;
+      min-width: 26px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      cursor: help;
-      opacity: 0.3;
-      transition: opacity 0.2s, transform 0.2s;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.15s;
+    }
+
+    .icon-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ---------- Controls ---------- */
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 9px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 12px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.15s;
+      white-space: nowrap;
+      background: var(--bg-panel);
+      color: var(--text-secondary);
+    }
+
+    .btn:hover {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      border-color: rgba(94, 234, 212, 0.35);
+      color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .btn-danger {
+      color: var(--danger);
+      border-color: rgba(240, 128, 110, 0.3);
+    }
+
+    .btn-danger:hover {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+    }
+
+    /* ---------- Phases (release branches) ---------- */
+    .phases-container {
+      display: grid;
+      gap: 20px;
+    }
+
+    .phase {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .phase-header {
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background-color 0.15s;
+    }
+
+    .phase-header:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+
+    .phase-titles {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .phase-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .phase-subtitle {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 3px;
+      font-family: var(--mono);
+    }
+
+    .phase-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .phase-progress {
+      text-align: right;
+    }
+
+    .phase-progress-text {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 5px;
+    }
+
+    .phase-progress-bar {
+      width: 84px;
+      height: 4px;
+      background: var(--bg-inset);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .phase-progress-bar .progress-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .toggle-icon {
+      color: var(--text-dim);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    .phase.collapsed .toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    .phase-content {
+      border-top: 1px solid var(--border);
+      max-height: 6000px;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .phase.collapsed .phase-content {
+      max-height: 0;
+      border-top-color: transparent;
+    }
+
+    /* ---------- Weeks (commits on a rail) ---------- */
+    .weeks-container {
+      padding: 18px 20px 4px;
+    }
+
+    .week {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 14px;
+    }
+
+    .week-rail {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .week-rail::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      bottom: -18px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .week:last-child .week-rail::before {
+      display: none;
+    }
+
+    .commit-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg-inset);
+      border: 2px solid var(--text-dim);
+      margin-top: 15px;
+      z-index: 1;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .week.complete .commit-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(94, 234, 212, 0.5);
+    }
+
+    .week-body {
+      background: var(--bg-panel-raised);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      overflow: visible;
+      border: 1px solid transparent;
+    }
+
+    .week-header {
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
       position: relative;
     }
 
-    .achievement-badge.unlocked {
-      opacity: 1;
-      background: #fffacd;
-      border-color: #ffd700;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      animation: pulse 0.5s ease;
+    .week-header:hover {
+      background: rgba(255, 255, 255, 0.02);
     }
 
-    @keyframes pulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.1);
-      }
+    .week-title-block {
+      flex: 1;
+      min-width: 180px;
     }
 
-    .achievement-badge:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--text);
-      color: var(--bg);
-      padding: 4px 8px;
+    .week-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+
+    .week-progress {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
       border-radius: 4px;
-      font-size: 10px;
       white-space: nowrap;
-      z-index: 10;
     }
 
-    /* Standup modal */
+    .week.collapsed .week-content {
+      max-height: 0;
+      overflow: hidden;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .week-content {
+      padding: 0 16px 14px;
+      max-height: 2000px;
+      transition: max-height 0.3s ease;
+    }
+
+    /* Resources */
+    .resources-wrap {
+      position: relative;
+    }
+
+    .resources-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 11px;
+      background: var(--amber-soft);
+      border: 1px solid rgba(240, 169, 85, 0.35);
+      border-radius: 5px;
+      color: var(--amber);
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+      gap: 6px;
+    }
+
+    .resources-btn:hover {
+      background: rgba(240, 169, 85, 0.22);
+      border-color: var(--amber);
+    }
+
+    .resources-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--bg-panel-raised);
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
+      min-width: 320px;
+      max-width: 380px;
+      z-index: 100;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .resources-dropdown.show {
+      display: block;
+    }
+
+    .resources-dropdown-content {
+      padding: 8px 14px;
+    }
+
+    .resource-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: padding-left 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+
+    .resource-link:last-child {
+      border-bottom: none;
+    }
+
+    .resource-link:hover {
+      padding-left: 4px;
+    }
+
+    .resource-link:hover .resource-link-title {
+      color: var(--accent);
+    }
+
+    .resource-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 9px;
+      font-family: var(--mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .resource-link-title {
+      font-weight: 600;
+      font-size: 12.5px;
+      color: var(--text-primary);
+      transition: color 0.15s;
+    }
+
+    .resource-link-desc {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* Tasks - rendered as diff lines */
+    .task {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 5px;
+      font-family: var(--mono);
+      transition: background 0.15s;
+    }
+
+    .task:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .task-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 3px;
+      border: 1.5px solid var(--border-bright);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      background: var(--bg-inset);
+      transition: all 0.15s;
+    }
+
+    .task-checkbox:checked {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .task-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--bg-void);
+      font-weight: 700;
+    }
+
+    .task-content {
+      flex: 1;
+    }
+
+    .task-title {
+      font-size: 13px;
+      font-family: var(--sans);
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .task-title::before {
+      content: '  ';
+    }
+
+    .task.completed .task-title {
+      color: var(--text-dim);
+    }
+
+    .task.completed .task-title::before {
+      content: '+ ';
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    .task:not(.completed) .task-title::before {
+      content: '○ ';
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    .task-description {
+      font-size: 11.5px;
+      font-family: var(--sans);
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
+
+    /* ---------- Reference Sections ---------- */
+    .reference-section {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      margin-top: 36px;
+    }
+
+    .reference-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      font-family: var(--mono);
+      letter-spacing: 0.03em;
+    }
+
+    .reference-title::before {
+      content: '';
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 10px;
+    }
+
+    .reference-item {
+      background: var(--bg-panel-raised);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+
+    .reference-item-label {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 10.5px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 5px;
+    }
+
+    .reference-item-value {
+      color: var(--text-secondary);
+      font-size: 12.5px;
+    }
+
+    /* ---------- Modal ---------- */
     .modal {
       display: none;
       position: fixed;
@@ -268,7 +798,8 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(8, 10, 14, 0.75);
+      backdrop-filter: blur(4px);
     }
 
     .modal.show {
@@ -278,2044 +809,1060 @@
     }
 
     .modal-content {
-      background: var(--card);
-      padding: 24px;
-      border-radius: 8px;
-      max-width: 500px;
+      background: var(--bg-panel-raised);
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      padding: 22px;
+      max-width: 520px;
       width: 90%;
       max-height: 80vh;
       overflow-y: auto;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
 
-    .modal-content h2 {
-      margin-top: 0;
-      color: var(--primary);
-    }
-
-    .modal-close {
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--muted);
-    }
-
-    .modal-close:hover {
-      color: var(--text);
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      font-size: 13px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 13px;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .standup-history {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
-      margin-top: 12px;
-      max-height: 200px;
-      overflow-y: auto;
-      font-size: 12px;
-    }
-
-    .standup-entry {
-      padding: 8px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 8px;
-    }
-
-    .standup-entry:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-    }
-
-    .standup-date {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 11px;
-    }
-
-    /* Burndown chart */
-    .chart-container {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      position: relative;
-      height: 300px;
-    }
-
-    .chart-container h3 {
-      margin: 0 0 12px;
-      font-size: 14px;
-    }
-
-    /* Timeline */
-    .timeline-info {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .timeline-item {
-      text-align: center;
-      padding: 8px;
-    }
-
-    .timeline-label {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .timeline-value {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-top: 4px;
-    }
-
-    /* Dashboard */
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .stat-card h3 {
-      margin: 0 0 4px;
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    .stat-card .value {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .progress-ring {
-      width: 90px;
-      height: 90px;
-      margin: 6px auto;
-      border-radius: 50%;
-      background: conic-gradient(var(--success) calc(var(--progress) * 1%), var(--border) 0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .section-header {
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 8px;
-      flex-wrap: wrap;
-      gap: 8px;
+      margin-bottom: 18px;
     }
 
-    .section h2 {
+    .modal-header h2 {
       margin: 0;
-      font-size: 18px;
-    }
-
-    .phase-status {
-      display: flex;
-      gap: 8px;
-      font-size: 11px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .status-badge {
-      padding: 4px 8px;
-      border-radius: 4px;
+      font-size: 16px;
+      font-family: var(--mono);
       font-weight: 600;
-      white-space: nowrap;
+      color: var(--text-primary);
     }
 
-    .status-badge.on-time {
-      background: #c8e6c9;
-      color: #1b5e20;
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
     }
 
-    .status-badge.late {
-      background: #ffcdd2;
-      color: #b71c1c;
+    .modal-close:hover {
+      color: var(--text-primary);
     }
 
-    .status-badge.upcoming {
-      background: #e3f2fd;
-      color: #0d47a1;
+    .modal-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .deadline-info {
-      font-size: 11px;
-      color: var(--muted);
-      background: #fbfcfe;
-      padding: 6px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
+    .modal-hint {
+      color: var(--text-dim);
+      font-size: 12.5px;
     }
 
-    body.dark-mode .deadline-info {
-      background: var(--bg);
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    /* Topics */
-    .topic {
-      margin-bottom: 10px;
+    .form-group textarea {
+      padding: 12px;
+      background: var(--bg-inset);
       border: 1px solid var(--border);
       border-radius: 6px;
-      background: #fbfcfe;
-      overflow: hidden;
-    }
-
-    body.dark-mode .topic {
-      background: var(--bg);
-    }
-
-    .topic-header {
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-    }
-
-    .topic-header:hover {
-      background: #f0f0f0;
-    }
-
-    body.dark-mode .topic-header:hover {
-      background: #2a2a3e;
-    }
-
-    .topic-toggle {
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-weight: bold;
-      flex-shrink: 0;
+      color: var(--text-primary);
+      font-family: var(--mono);
       font-size: 12px;
+      resize: vertical;
+      min-height: 200px;
     }
 
-    .topic-title {
-      flex: 1;
-      font-weight: 600;
-      font-size: 13px;
+    .form-group textarea:focus,
+    .task-checkbox:focus-visible,
+    .btn:focus-visible,
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
-    .topic-time {
-      font-size: 10px;
-      color: var(--muted);
-      background: white;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin: 0 6px;
-    }
-
-    body.dark-mode .topic-time {
-      background: var(--bg);
-    }
-
-    .topic-meta {
-      font-size: 11px;
-      color: var(--muted);
-      background: white;
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    body.dark-mode .topic-meta {
-      background: var(--bg);
-    }
-
-    .topic-content {
+    .import-error {
+      font-size: 12px;
+      color: var(--danger);
+      font-family: var(--mono);
       display: none;
-      padding: 10px;
-      border-top: 1px solid var(--border);
-      background: white;
     }
 
-    body.dark-mode .topic-content {
-      background: var(--card);
-    }
-
-    .topic.expanded .topic-content {
+    .import-error.show {
       display: block;
     }
 
-    .topic.expanded .topic-toggle {
-      transform: rotate(90deg);
-    }
-
-    .subtopic-list {
-      display: grid;
-      gap: 6px;
-    }
-
-    .subtopic-item {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 12px;
-      padding: 6px;
-      background: #fbfcfe;
-      border-radius: 3px;
-    }
-
-    body.dark-mode .subtopic-item {
-      background: var(--bg);
-    }
-
-    .subtopic-item input[type="checkbox"] {
-      width: 14px;
-      height: 14px;
-      margin-top: 2px;
-      cursor: pointer;
-      accent-color: var(--success);
-      flex-shrink: 0;
-    }
-
-    .subtopic-item label {
-      cursor: pointer;
-      flex: 1;
-    }
-
-    .subtopic-item input[type="checkbox"]:checked+label {
-      color: var(--muted);
-      text-decoration: line-through;
-    }
-
-    /* Controls */
-    .controls {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    button:hover {
-      background: #1a4a7a;
-    }
-
-    button.secondary {
-      background: var(--card);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    button.secondary:hover {
-      background: var(--bg);
-    }
-
-    button.success {
-      background: var(--success);
-    }
-
-    button.success:hover {
-      background: #1a5a3f;
-    }
-
-    .toc {
-      background: #fbfcfe;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
-      margin-bottom: 20px;
-    }
-
-    body.dark-mode .toc {
-      background: var(--bg);
-    }
-
-    .toc a {
-      display: inline-block;
-      margin-right: 12px;
-      margin-bottom: 6px;
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .toc a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Motivational message */
-    .motivation-box {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      background: var(--bg-panel-raised);
+      border: 1px solid var(--accent);
+      color: var(--accent-strong);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      padding: 10px 18px;
       border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-style: italic;
-      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 2000;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
-    @media print {
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
 
-      .controls,
-      .toc,
-      header,
-      .status-banner,
-      .timeline-info,
-      .gamification,
-      .achievements,
-      .chart-container {
-        display: none;
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 14px 60px;
       }
-    }
 
-    /* Sound toggle */
-    .sound-toggle {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.2s;
-    }
+      .header h1 {
+        font-size: 22px;
+      }
 
-    .sound-toggle:hover {
-      background: var(--bg);
-    }
+      .header h1 .arrow {
+        display: block;
+        margin: 4px 0;
+      }
 
-    .sound-toggle.muted {
-      opacity: 0.5;
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-header {
+        flex-wrap: wrap;
+      }
+
+      .phase-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .reference-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .week {
+        grid-template-columns: 14px 1fr;
+        gap: 10px;
+      }
+
+      .resources-dropdown {
+        min-width: 260px;
+        right: -40px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <header>
-      <div>
-        <h1>AI Engineer Transition</h1>
-        <p style="color: var(--muted); font-size: 13px; margin: 4px 0 0;">6-Month Intensive • Jul 11, 2026 → Jan 11,
-          2027</p>
-      </div>
-      <div class="header-controls">
-        <button class="sound-toggle" id="soundToggle" title="Toggle sound effects"><i
-            class="fas fa-volume-up"></i></button>
-        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
-      </div>
-    </header>
-
-    <!-- Motivation -->
-    <div class="motivation-box" id="motivationBox">
-      <i class="fas fa-lightbulb"></i> Every task you complete brings you closer to your dream AI engineer role. Keep
-      pushing!
-    </div>
-
-    <!-- Status Banner -->
-    <div class="status-banner on-track" id="statusBanner">
-      <div><span class="status-icon" id="statusIcon"><i class="fas fa-check-circle"></i></span><span id="statusText">On
-          Track</span></div>
-      <div class="streak-badge"><span id="streakIcon"><i class="fas fa-fire"></i></span> <span id="streakCount">0</span>
-        day streak</div>
-    </div>
-
-    <!-- Gamification Cards -->
-    <div class="gamification">
-      <div class="gamification-card">
-        <div class="label"><i class="fas fa-star"></i> Total XP</div>
-        <div class="value" id="totalXP">0</div>
-        <div class="subtitle">points earned</div>
-      </div>
-      <div class="gamification-card">
-        <div class="label"><i class="fas fa-crown"></i> Level</div>
-        <div class="value" id="level">1</div>
-        <div class="subtitle"><span id="nextLevel">100</span> XP to level up</div>
-      </div>
-      <div class="gamification-card">
-        <div class="label"><i class="fas fa-flag-checkered"></i> Phases Complete</div>
-        <div class="value" id="phasesComplete">0</div>
-        <div class="subtitle">of 6 phases</div>
-      </div>
-      <div class="gamification-card">
-        <div class="label"><i class="fas fa-calendar-check"></i> This Week</div>
-        <div class="value" id="weeklyTasks">0</div>
-        <div class="subtitle">tasks completed</div>
-      </div>
-    </div>
-
-    <!-- Achievements -->
-    <div class="achievements">
-      <h3><i class="fas fa-trophy"></i> Achievements</h3>
-      <div class="achievement-grid">
-        <div class="achievement-badge" data-tooltip="Complete Phase 1"><i class="fas fa-book"></i></div>
-        <div class="achievement-badge" data-tooltip="Reach Level 5"><i class="fas fa-star"></i></div>
-        <div class="achievement-badge" data-tooltip="7-day streak"><i class="fas fa-fire"></i></div>
-        <div class="achievement-badge" data-tooltip="Complete all 7 projects"><i class="fas fa-bullseye"></i></div>
-        <div class="achievement-badge" data-tooltip="100% progress"><i class="fas fa-flag-checkered"></i></div>
-        <div class="achievement-badge" data-tooltip="Perfect week"><i class="fas fa-check-double"></i></div>
-      </div>
-    </div>
-
-    <!-- Timeline Info -->
-    <div class="timeline-info">
-      <div class="timeline-item">
-        <div class="timeline-label">Start</div>
-        <div class="timeline-value">Jul 11</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Today</div>
-        <div class="timeline-value" id="todayDate">--</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">End</div>
-        <div class="timeline-value">Jan 11</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Days Left</div>
-        <div class="timeline-value" id="daysLeft">0</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Expected %</div>
-        <div class="timeline-value" id="expectedPercent">0%</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-label">Actual %</div>
-        <div class="timeline-value" id="actualPercent">0%</div>
-      </div>
-    </div>
-
-    <!-- Burndown Chart -->
-    <div class="chart-container">
-      <h3><i class="fas fa-chart-line"></i> Progress Burndown</h3>
-      <canvas id="burndownChart"></canvas>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-eyebrow">$ cat build-log.txt<span class="cursor"></span></div>
+      <h1>LEAD_SWE <span class="arrow">→</span><span class="to">AI_ENGINEER</span></h1>
+      <p class="header-subtitle">
+        18-week practical upskilling build log
+        <span class="save-indicator" id="saveIndicator"><span class="dot"></span>idle</span>
+      </p>
     </div>
 
     <!-- Dashboard -->
     <div class="dashboard">
       <div class="stat-card">
-        <h3>Overall</h3>
-        <div class="progress-ring" style="--progress: 0">
-          <span id="overall">0%</span>
+        <div class="stat-label">overall progress</div>
+        <div class="stat-value" id="overallPercent">0%</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+        </div>
+        <div class="stat-foot" id="overallCount">0 of 0 tasks</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">current week</div>
+        <div class="stat-value" id="currentWeek">-</div>
+        <div class="stat-foot" id="weekStatus">not started</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">time remaining</div>
+        <div class="stat-value" id="daysLeft">-</div>
+        <div class="date-row">
+          <label for="startDate">start:</label>
+          <input type="date" id="startDate">
+          <button class="icon-btn" id="editDateBtn" title="Edit start date" style="display:none;">✎</button>
         </div>
       </div>
+
       <div class="stat-card">
-        <h3>Tasks Done</h3>
-        <div class="value" id="tasksDone">0</div>
-        <p style="margin: 4px 0 0; font-size: 11px; color: var(--muted);" id="tasksTotal">of 0</p>
-      </div>
-      <div class="stat-card">
-        <h3>Current Phase</h3>
-        <div class="value" id="currentPhase">1/6</div>
-        <p style="margin: 4px 0 0; font-size: 11px; color: var(--muted);" id="currentPhaseName">--</p>
-      </div>
-      <div class="stat-card">
-        <h3>Projects</h3>
-        <div class="value" id="projectsDone">0/7</div>
+        <div class="stat-label">tasks completed</div>
+        <div class="stat-value" id="tasksCompleted">0</div>
+        <div class="stat-foot" id="tasksCompletedRate">0% complete</div>
       </div>
     </div>
 
     <!-- Controls -->
     <div class="controls">
-      <button onclick="expandAll()"><i class="fas fa-book-open"></i> Expand All</button>
-      <button onclick="collapseAll()"><i class="fas fa-book"></i> Collapse All</button>
-      <button class="success" onclick="openStandup()"><i class="fas fa-clipboard-list"></i> Daily Standup</button>
-      <button class="secondary" onclick="exportProgress()"><i class="fas fa-download"></i> Export</button>
-      <button class="secondary" onclick="resetProgress()" style="background: var(--danger); color: white;"><i
-          class="fas fa-redo"></i> Reset</button>
+      <button class="btn btn-primary" onclick="expandAll()">expand --all</button>
+      <button class="btn btn-primary" onclick="collapseAll()">collapse --all</button>
+      <button class="btn" onclick="openExportModal()">export --progress</button>
+      <button class="btn" onclick="openImportModal()">import --progress</button>
+      <button class="btn btn-danger" onclick="resetProgress()">reset --hard</button>
     </div>
 
-    <!-- Table of Contents -->
-    <div class="toc">
-      <strong style="font-size: 12px;"><i class="fas fa-compass"></i> Quick Jump:</strong><br>
-      <a href="#phase1"><i class="fas fa-circle-1"></i> Phase 1 (Jul-Aug)</a>
-      <a href="#phase2"><i class="fas fa-circle-2"></i> Phase 2 (Aug-Sep)</a>
-      <a href="#phase3"><i class="fas fa-circle-3"></i> Phase 3 (Sep-Oct)</a>
-      <a href="#phase4"><i class="fas fa-circle-4"></i> Phase 4 (Oct-Nov)</a>
-      <a href="#phase5"><i class="fas fa-circle-5"></i> Phase 5 (Nov-Dec)</a>
-      <a href="#phase6"><i class="fas fa-circle-6"></i> Phase 6 (Dec-Jan)</a>
+    <!-- Phases -->
+    <div class="phases-container" id="phasesContainer"></div>
+
+    <!-- Reference Sections -->
+    <div class="reference-section">
+      <div class="reference-title">tools by category</div>
+      <div class="reference-grid" id="toolsGrid"></div>
     </div>
-
-    <!-- ===== PHASE 1 ===== -->
-    <div class="section" id="phase1">
-      <div class="section-header">
-        <h2>Phase 1: Foundations & Basics</h2>
-        <div class="phase-status">
-          <span class="status-badge on-time" id="phase1-status">On Time</span>
-          <span class="deadline-info" id="phase1-deadline">Due: Jul 25</span>
-          <span class="section-progress">0/42</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">2 weeks: Linear algebra, probability, Python
-        essentials, ML fundamentals</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Linear Algebra + Probability</div>
-          <div class="topic-time">10-15 hrs</div>
-          <div class="topic-meta"><span id="t1-done">0</span>/10</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t1_1" onchange="save()"><label for="t1_1">3Blue1Brown
-                vectors (1-3): Geometric intuition</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_2" onchange="save()"><label for="t1_2">Dot
-                products, eigenvectors, eigenvalues</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_3" onchange="save()"><label for="t1_3">Probability
-                distributions (normal, binomial)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_4" onchange="save()"><label for="t1_4">Bayes
-                theorem + hypothesis testing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_5" onchange="save()"><label for="t1_5">NumPy:
-                arrays, indexing, operations</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_6" onchange="save()"><label for="t1_6">Pandas:
-                DataFrames, filtering, groupby</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_7" onchange="save()"><label for="t1_7">Matplotlib
-                basics: plotting, visualizations</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_8" onchange="save()"><label
-                for="t1_8">Scikit-learn: loading, train/test split</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_9" onchange="save()"><label for="t1_9">ML
-                fundamentals: supervised vs unsupervised</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t1_10" onchange="save()"><label
-                for="t1_10">Overfitting, regularization, bias-variance</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 1: Kaggle EDA + Baseline</div>
-          <div class="topic-time">20-25 hrs</div>
-          <div class="topic-meta"><span id="proj1-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj1_1" onchange="save()"><label for="proj1_1">Choose
-                classification/regression dataset</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj1_2" onchange="save()"><label for="proj1_2">EDA:
-                shape, dtypes, missing values, outliers</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj1_3" onchange="save()"><label for="proj1_3">5+
-                visualizations (distributions, correlations)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj1_4" onchange="save()"><label
-                for="proj1_4">Baseline model (logistic regression or decision tree)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj1_5" onchange="save()"><label
-                for="proj1_5">Document findings + README</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj1_6" onchange="save()"><label for="proj1_6">Push
-                to GitHub</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== PHASE 2 ===== -->
-    <div class="section" id="phase2">
-      <div class="section-header">
-        <h2>Phase 2: ML Models & Deployment</h2>
-        <div class="phase-status">
-          <span class="status-badge upcoming" id="phase2-status">Upcoming</span>
-          <span class="deadline-info" id="phase2-deadline">Due: Sep 8</span>
-          <span class="section-progress">0/36</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">3 weeks: Supervised learning, feature
-        engineering, model evaluation, FastAPI basics</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Supervised Learning Models</div>
-          <div class="topic-time">12-18 hrs</div>
-          <div class="topic-meta"><span id="t2-done">0</span>/8</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t2_1" onchange="save()"><label
-                for="t2_1">Linear/Logistic Regression: theory + implementation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_2" onchange="save()"><label for="t2_2">Decision
-                Trees + Random Forests</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_3" onchange="save()"><label for="t2_3">Gradient
-                Boosting (XGBoost) essentials</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_4" onchange="save()"><label for="t2_4">Feature
-                engineering: encoding, scaling, selection</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_5" onchange="save()"><label
-                for="t2_5">Cross-validation + hyperparameter tuning</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_6" onchange="save()"><label for="t2_6">Metrics:
-                precision, recall, F1, ROC-AUC</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_7" onchange="save()"><label for="t2_7">Scikit-learn
-                Pipeline building</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t2_8" onchange="save()"><label for="t2_8">FastAPI
-                basics: routes, models, validation</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Unsupervised Learning Essentials</div>
-          <div class="topic-time">8-10 hrs</div>
-          <div class="topic-meta"><span id="t3-done">0</span>/5</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t3_1" onchange="save()"><label for="t3_1">K-Means
-                clustering</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t3_2" onchange="save()"><label for="t3_2">PCA for
-                dimensionality reduction</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t3_3" onchange="save()"><label for="t3_3">Anomaly
-                detection basics</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t3_4" onchange="save()"><label for="t3_4">t-SNE / UMAP
-                visualization</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t3_5" onchange="save()"><label for="t3_5">Practice:
-                cluster dataset, interpret results</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 2: Classification API</div>
-          <div class="topic-time">25-30 hrs</div>
-          <div class="topic-meta"><span id="proj2-done">0</span>/7</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj2_1" onchange="save()"><label for="proj2_1">Choose
-                classification dataset</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_2" onchange="save()"><label for="proj2_2">EDA +
-                feature engineering + pipeline</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_3" onchange="save()"><label for="proj2_3">Train
-                XGBoost, tune hyperparameters</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_4" onchange="save()"><label
-                for="proj2_4">Evaluate: accuracy, F1, ROC-AUC</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_5" onchange="save()"><label for="proj2_5">Build
-                FastAPI /predict endpoint</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_6" onchange="save()"><label for="proj2_6">Write
-                tests for endpoints</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj2_7" onchange="save()"><label for="proj2_7">Push
-                to GitHub with documentation</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== PHASE 3 ===== -->
-    <div class="section" id="phase3">
-      <div class="section-header">
-        <h2>Phase 3: Deep Learning Fundamentals</h2>
-        <div class="phase-status">
-          <span class="status-badge upcoming" id="phase3-status">Upcoming</span>
-          <span class="deadline-info" id="phase3-deadline">Due: Oct 8</span>
-          <span class="section-progress">0/28</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">3 weeks: Neural networks, CNNs, Transformers
-        basics</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Neural Networks & PyTorch</div>
-          <div class="topic-time">15-20 hrs</div>
-          <div class="topic-meta"><span id="t4-done">0</span>/7</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t4_1" onchange="save()"><label for="t4_1">Perceptrons,
-                forward/backward pass</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_2" onchange="save()"><label for="t4_2">Activation
-                functions: ReLU, Sigmoid, Softmax</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_3" onchange="save()"><label
-                for="t4_3">Backpropagation: chain rule, gradients</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_4" onchange="save()"><label for="t4_4">PyTorch
-                setup: tensors, autograd</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_5" onchange="save()"><label for="t4_5">Training
-                loop: forward, loss, backward, step</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_6" onchange="save()"><label for="t4_6">Loss
-                functions: MSE, cross-entropy</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t4_7" onchange="save()"><label for="t4_7">Optimizers:
-                SGD, Adam</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">CNNs & Computer Vision</div>
-          <div class="topic-time">10-15 hrs</div>
-          <div class="topic-meta"><span id="t5-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t5_1" onchange="save()"><label
-                for="t5_1">Convolutions: filters, stride, padding</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t5_2" onchange="save()"><label for="t5_2">Pooling
-                layers</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t5_3" onchange="save()"><label for="t5_3">CNN
-                architecture: Conv → ReLU → Pool</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t5_4" onchange="save()"><label for="t5_4">Transfer
-                learning: ImageNet, fine-tuning</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t5_5" onchange="save()"><label for="t5_5">Build CNN
-                for CIFAR-10 / image classification</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t5_6" onchange="save()"><label for="t5_6">Practice:
-                train on small dataset</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Transformers Essentials</div>
-          <div class="topic-time">15-18 hrs</div>
-          <div class="topic-meta"><span id="t6-done">0</span>/8</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t6_1" onchange="save()"><label
-                for="t6_1">Self-attention mechanism: Q, K, V</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_2" onchange="save()"><label for="t6_2">Multi-head
-                attention</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_3" onchange="save()"><label for="t6_3">Positional
-                encoding</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_4" onchange="save()"><label
-                for="t6_4">Encoder-decoder architecture</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_5" onchange="save()"><label for="t6_5">BERT vs GPT:
-                bidirectional vs left-to-right</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_6" onchange="save()"><label
-                for="t6_6">Tokenization: BPE, subword</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_7" onchange="save()"><label for="t6_7">Implement
-                attention from scratch</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t6_8" onchange="save()"><label for="t6_8">Practice:
-                use HuggingFace models</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 3: Transformer Text Generation</div>
-          <div class="topic-time">20-25 hrs</div>
-          <div class="topic-meta"><span id="proj3-done">0</span>/5</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj3_1" onchange="save()"><label
-                for="proj3_1">Implement or use small transformer model</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj3_2" onchange="save()"><label for="proj3_2">Train
-                on Shakespeare or small dataset</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj3_3" onchange="save()"><label for="proj3_3">Build
-                text generation script</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj3_4" onchange="save()"><label
-                for="proj3_4">Document architecture + results</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj3_5" onchange="save()"><label for="proj3_5">Push
-                to GitHub</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== PHASE 4 ===== -->
-    <div class="section" id="phase4">
-      <div class="section-header">
-        <h2>Phase 4: Generative AI & LLMs</h2>
-        <div class="phase-status">
-          <span class="status-badge upcoming" id="phase4-status">Upcoming</span>
-          <span class="deadline-info" id="phase4-deadline">Due: Nov 8</span>
-          <span class="section-progress">0/38</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">4 weeks: LLM fundamentals, prompt engineering,
-        embeddings, RAG basics</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">LLM Fundamentals</div>
-          <div class="topic-time">10-12 hrs</div>
-          <div class="topic-meta"><span id="t7-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t7_1" onchange="save()"><label for="t7_1">LLM
-                lifecycle: pretraining, fine-tuning, RLHF</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t7_2" onchange="save()"><label for="t7_2">Context
-                windows, token limits</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t7_3" onchange="save()"><label for="t7_3">Sampling:
-                temperature, top-p, top-k</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t7_4" onchange="save()"><label for="t7_4">Model
-                selection trade-offs: latency, cost, quality</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t7_5" onchange="save()"><label for="t7_5">Popular
-                models: GPT-4, Claude, Llama 2</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t7_6" onchange="save()"><label for="t7_6">Token
-                economics: counting, pricing</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Prompt Engineering & Embeddings</div>
-          <div class="topic-time">12-15 hrs</div>
-          <div class="topic-meta"><span id="t8-done">0</span>/7</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t8_1" onchange="save()"><label for="t8_1">System
-                prompts, role-based prompting</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_2" onchange="save()"><label for="t8_2">Few-shot
-                examples, chain-of-thought</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_3" onchange="save()"><label for="t8_3">Structured
-                outputs: JSON, schema</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_4" onchange="save()"><label for="t8_4">Embedding
-                models: text → vectors</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_5" onchange="save()"><label for="t8_5">Vector
-                similarity: cosine, dot product</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_6" onchange="save()"><label for="t8_6">Chunking
-                strategies: fixed-size, semantic</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t8_7" onchange="save()"><label for="t8_7">Practice:
-                embed documents, search semantically</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Vector Databases & RAG Basics</div>
-          <div class="topic-time">12-15 hrs</div>
-          <div class="topic-meta"><span id="t9-done">0</span>/8</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t9_1" onchange="save()"><label for="t9_1">Vector DB
-                concepts: ANN, indexes</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_2" onchange="save()"><label for="t9_2">ChromaDB:
-                local vector store, simple API</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_3" onchange="save()"><label for="t9_3">Pinecone:
-                cloud-hosted vector DB</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_4" onchange="save()"><label for="t9_4">Basic RAG
-                pipeline: chunk → embed → store → retrieve</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_5" onchange="save()"><label for="t9_5">RAG + LLM:
-                retrieve → generate</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_6" onchange="save()"><label for="t9_6">Citations &
-                source attribution</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_7" onchange="save()"><label
-                for="t9_7">Hallucination handling</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t9_8" onchange="save()"><label for="t9_8">LangChain
-                basics: document loaders, retrievers</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Fine-Tuning & LoRA</div>
-          <div class="topic-time">10-12 hrs</div>
-          <div class="topic-meta"><span id="t10-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t10_1" onchange="save()"><label
-                for="t10_1">Fine-tuning vs RAG: when to use each</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t10_2" onchange="save()"><label for="t10_2">LoRA
-                (Low-Rank Adaptation) basics</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t10_3" onchange="save()"><label for="t10_3">Dataset
-                preparation: instruction-response pairs</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t10_4" onchange="save()"><label for="t10_4">Hugging
-                Face + Unsloth for fine-tuning</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t10_5" onchange="save()"><label for="t10_5">Small
-                experiment: fine-tune Llama 2 or Mistral</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t10_6" onchange="save()"><label for="t10_6">Evaluate
-                outputs, compare before/after</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 4: RAG Search Engine</div>
-          <div class="topic-time">25-30 hrs</div>
-          <div class="topic-meta"><span id="proj4-done">0</span>/7</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj4_1" onchange="save()"><label for="proj4_1">Choose
-                document corpus (Wikipedia, papers, custom)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_2" onchange="save()"><label
-                for="proj4_2">Chunking + metadata extraction</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_3" onchange="save()"><label for="proj4_3">Embed
-                documents + store in vector DB</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_4" onchange="save()"><label for="proj4_4">Build
-                FastAPI search + retrieval endpoint</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_5" onchange="save()"><label for="proj4_5">Add
-                LLM for generation with context</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_6" onchange="save()"><label for="proj4_6">Create
-                demo (HTML/JS or Streamlit)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj4_7" onchange="save()"><label for="proj4_7">Push
-                to GitHub + live demo</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 5: LLM Agent</div>
-          <div class="topic-time">20-25 hrs</div>
-          <div class="topic-meta"><span id="proj5-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj5_1" onchange="save()"><label for="proj5_1">Design
-                3+ tools (search, API calls, math, etc)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj5_2" onchange="save()"><label
-                for="proj5_2">Implement tool calling + parameter extraction</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj5_3" onchange="save()"><label for="proj5_3">ReAct
-                pattern: reason → act → observe loop</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj5_4" onchange="save()"><label for="proj5_4">Build
-                with LangChain or native API</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj5_5" onchange="save()"><label for="proj5_5">Test
-                end-to-end with diverse queries</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj5_6" onchange="save()"><label for="proj5_6">Push
-                to GitHub with API documentation</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== PHASE 5 ===== -->
-    <div class="section" id="phase5">
-      <div class="section-header">
-        <h2>Phase 5: Agentic AI & Production Systems</h2>
-        <div class="phase-status">
-          <span class="status-badge upcoming" id="phase5-status">Upcoming</span>
-          <span class="deadline-info" id="phase5-deadline">Due: Dec 20</span>
-          <span class="section-progress">0/69</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">6 weeks: Advanced RAG, agentic AI
-        architectures, multi-agent systems, evaluation, deployment</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Advanced RAG & Agent Fundamentals</div>
-          <div class="topic-time">15-18 hrs</div>
-          <div class="topic-meta"><span id="t11-done">0</span>/12</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t11_1" onchange="save()"><label for="t11_1">Hybrid
-                search: BM25 + vector search</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_2" onchange="save()"><label
-                for="t11_2">Re-ranking: improve top-k quality</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_3" onchange="save()"><label for="t11_3">Multi-hop
-                retrieval: iterate refinement</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_4" onchange="save()"><label for="t11_4">RAGAS
-                evaluation metrics for RAG</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_5" onchange="save()"><label for="t11_5">ReAct
-                pattern: Reasoning + Acting loops</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_6" onchange="save()"><label for="t11_6">Tool
-                calling: function definitions + extraction</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_7" onchange="save()"><label for="t11_7">Tool
-                design: clear contracts, error handling</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_8" onchange="save()"><label for="t11_8">Agent
-                memory: context window, long-term storage</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_9" onchange="save()"><label for="t11_9">Error
-                recovery: retry logic, fallbacks, graceful degradation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_10" onchange="save()"><label for="t11_10">Agent
-                state management: tracking execution state</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_11" onchange="save()"><label
-                for="t11_11">LangChain agents: AgentExecutor, agent types</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11_12" onchange="save()"><label
-                for="t11_12">LangGraph basics: defining nodes, edges, state</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Agentic AI Architectures</div>
-          <div class="topic-time">12-15 hrs</div>
-          <div class="topic-meta"><span id="t11b-done">0</span>/10</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t11b_1" onchange="save()"><label
-                for="t11b_1">Single-agent loops: simple action-observation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_2" onchange="save()"><label
-                for="t11b_2">Hierarchical agents: parent-child delegation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_3" onchange="save()"><label for="t11b_3">Agent
-                teams: specialist agents + coordinator</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_4" onchange="save()"><label for="t11b_4">Planning
-                agents: decompose goals into steps</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_5" onchange="save()"><label for="t11b_5">Routing
-                agents: dispatch to specialized agents</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_6" onchange="save()"><label for="t11b_6">CrewAI
-                framework: roles, tasks, crews</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_7" onchange="save()"><label for="t11b_7">AutoGen:
-                conversational multi-agent framework</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_8" onchange="save()"><label
-                for="t11b_8">LangGraph advanced: subgraphs, complex workflows</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_9" onchange="save()"><label for="t11b_9">Agent
-                communication patterns: message passing, broadcast</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11b_10" onchange="save()"><label
-                for="t11b_10">Practice: build hierarchical and team-based agents</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Agent Evaluation & Debugging</div>
-          <div class="topic-time">10-12 hrs</div>
-          <div class="topic-meta"><span id="t11c-done">0</span>/9</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t11c_1" onchange="save()"><label for="t11c_1">Agent
-                metrics: success rate, steps-to-goal, cost</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_2" onchange="save()"><label
-                for="t11c_2">Benchmarking: agent performance on standard tasks</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_3" onchange="save()"><label for="t11c_3">Failure
-                analysis: categorize agent mistakes</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_4" onchange="save()"><label
-                for="t11c_4">Observability: tracing agent decisions</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_5" onchange="save()"><label
-                for="t11c_5">Debugging tools: LangSmith, logging, breakpoints</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_6" onchange="save()"><label for="t11c_6">Agent
-                hallucinations: detection and mitigation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_7" onchange="save()"><label for="t11c_7">Tool
-                failure handling: when agents pick wrong tools</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_8" onchange="save()"><label for="t11c_8">User
-                simulation for testing: create agent test cases</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11c_9" onchange="save()"><label
-                for="t11c_9">Practice: evaluate agent performance, debug failures</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Agentic Workflows & Orchestration</div>
-          <div class="topic-time">8-10 hrs</div>
-          <div class="topic-meta"><span id="t11d-done">0</span>/8</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t11d_1" onchange="save()"><label for="t11d_1">Workflow
-                definition: DAGs, linear chains, complex graphs</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_2" onchange="save()"><label for="t11d_2">Agent
-                planning: task decomposition, goal refinement</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_3" onchange="save()"><label
-                for="t11d_3">Conditional branching: if-then-else in agent flows</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_4" onchange="save()"><label for="t11d_4">Parallel
-                execution: concurrent agent tasks</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_5" onchange="save()"><label for="t11d_5">Agent
-                handoffs: passing context between agents</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_6" onchange="save()"><label
-                for="t11d_6">Human-in-the-loop: approval gates, feedback loops</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_7" onchange="save()"><label
-                for="t11d_7">Orchestration platforms: temporal, prefect, airflow</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t11d_8" onchange="save()"><label
-                for="t11d_8">Practice: design and implement complex agent workflows</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Deployment & MLOps for Agents</div>
-          <div class="topic-time">12-15 hrs</div>
-          <div class="topic-meta"><span id="t12-done">0</span>/10</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t12_1" onchange="save()"><label for="t12_1">CI/CD:
-                GitHub Actions, auto-deploy agent services</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_2" onchange="save()"><label for="t12_2">Cloud
-                deployment: AWS Lambda, Railway, Vercel</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_3" onchange="save()"><label for="t12_3">Docker
-                containerization for agents</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_4" onchange="save()"><label for="t12_4">Monitoring
-                agent health: latency, success rates</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_5" onchange="save()"><label for="t12_5">Agent
-                logging + structured tracing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_6" onchange="save()"><label for="t12_6">LLM cost
-                tracking + agent-specific rate limiting</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_7" onchange="save()"><label for="t12_7">Agent
-                drift detection: performance degradation</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_8" onchange="save()"><label
-                for="t12_8">Versioning: agent behavior changes, rollback strategies</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_9" onchange="save()"><label for="t12_9">Alerts:
-                agent failures, tool errors, cost thresholds</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t12_10" onchange="save()"><label
-                for="t12_10">Practice: deploy and monitor agent in production</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">System Design Basics</div>
-          <div class="topic-time">12-15 hrs</div>
-          <div class="topic-meta"><span id="t13-done">0</span>/8</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t13_1" onchange="save()"><label
-                for="t13_1">Scalability: horizontal vs vertical</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_2" onchange="save()"><label for="t13_2">Load
-                balancing, async processing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_3" onchange="save()"><label for="t13_3">Caching
-                strategies (Redis, in-memory)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_4" onchange="save()"><label for="t13_4">Database
-                design: relational vs NoSQL</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_5" onchange="save()"><label for="t13_5">API
-                design: RESTful best practices</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_6" onchange="save()"><label for="t13_6">Data
-                pipeline architecture</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_7" onchange="save()"><label for="t13_7">Practice:
-                1-2 system design discussions</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t13_8" onchange="save()"><label for="t13_8">Document
-                your design (architecture diagrams)</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 6: Advanced Agentic System</div>
-          <div class="topic-time">50-60 hrs</div>
-          <div class="topic-meta"><span id="proj6-done">0</span>/12</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj6_1" onchange="save()"><label for="proj6_1">Choose
-                agentic domain (research, planning, automation, analysis)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_2" onchange="save()"><label for="proj6_2">Design
-                multi-agent architecture (specialist agents + coordinator)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_3" onchange="save()"><label
-                for="proj6_3">Implement using LangGraph or CrewAI</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_4" onchange="save()"><label for="proj6_4">Build
-                5-7 specialized tools with error handling</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_5" onchange="save()"><label for="proj6_5">Add
-                memory management (context + long-term)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_6" onchange="save()"><label
-                for="proj6_6">Evaluate agent performance on 20+ test cases</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_7" onchange="save()"><label for="proj6_7">Debug
-                and fix agent failures (use LangSmith)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_8" onchange="save()"><label
-                for="proj6_8">FastAPI backend with agent orchestration</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_9" onchange="save()"><label for="proj6_9">Deploy
-                with monitoring + cost tracking</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_10" onchange="save()"><label
-                for="proj6_10">CI/CD pipeline + GitHub Actions</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_11" onchange="save()"><label
-                for="proj6_11">Architecture documentation + design decisions</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj6_12" onchange="save()"><label for="proj6_12">Live
-                demo + production-ready GitHub repo</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== PHASE 6 ===== -->
-    <div class="section" id="phase6">
-      <div class="section-header">
-        <h2>Phase 6: Portfolio & Interview Prep</h2>
-        <div class="phase-status">
-          <span class="status-badge upcoming" id="phase6-status">Upcoming</span>
-          <span class="deadline-info" id="phase6-deadline">Due: Jan 11</span>
-          <span class="section-progress">0/35</span>
-        </div>
-      </div>
-      <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">3 weeks: Portfolio refinement, system design,
-        coding practice, job search</p>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Portfolio Refinement</div>
-          <div class="topic-time">20-25 hrs</div>
-          <div class="topic-meta"><span id="t14-done">0</span>/7</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t14_1" onchange="save()"><label for="t14_1">Add tests:
-                pytest on all projects (70%+ coverage)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_2" onchange="save()"><label for="t14_2">Type
-                hints: mypy clean, all functions annotated</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_3" onchange="save()"><label
-                for="t14_3">Documentation: docstrings, README, usage examples</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_4" onchange="save()"><label for="t14_4">CI/CD:
-                GitHub Actions for testing + deployment</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_5" onchange="save()"><label for="t14_5">Clean
-                code: remove dead code, PEP8</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_6" onchange="save()"><label for="t14_6">Portfolio
-                website: list all projects + capstone highlight</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t14_7" onchange="save()"><label for="t14_7">Live
-                demos: 3+ projects with working links</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">System Design & Deep Dives</div>
-          <div class="topic-time">20-25 hrs</div>
-          <div class="topic-meta"><span id="t15-done">0</span>/12</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t15_1" onchange="save()"><label for="t15_1">RAG for
-                100M+ documents: sharding, distributed retrieval</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_2" onchange="save()"><label
-                for="t15_2">Multi-tenant LLM SaaS: isolation, quotas, billing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_3" onchange="save()"><label for="t15_3">Agentic
-                system design: agent orchestration, routing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_4" onchange="save()"><label
-                for="t15_4">Multi-agent coordination: consensus, conflict resolution</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_5" onchange="save()"><label for="t15_5">Agent
-                infrastructure: scaling tools, execution engine</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_6" onchange="save()"><label for="t15_6">Attention
-                mechanism: math + intuition + code</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_7" onchange="save()"><label for="t15_7">LLM
-                evaluation metrics: BLEU, ROUGE, RAGAS</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_8" onchange="save()"><label for="t15_8">Inference
-                optimization: quantization, pruning, caching</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_9" onchange="save()"><label for="t15_9">Practice:
-                2-3 system design mocks per week</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_10" onchange="save()"><label for="t15_10">Blog
-                post: 1 deep technical write-up (agentic focus)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_11" onchange="save()"><label
-                for="t15_11">Whiteboarding: draw agentic architectures clearly</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t15_12" onchange="save()"><label
-                for="t15_12">Interview practice: explain agentic trade-offs</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Coding & Interviews</div>
-          <div class="topic-time">15-18 hrs</div>
-          <div class="topic-meta"><span id="t16-done">0</span>/6</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t16_1" onchange="save()"><label for="t16_1">LeetCode:
-                10-15 medium/hard problems</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t16_2" onchange="save()"><label for="t16_2">Explain
-                your projects: deep understanding</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t16_3" onchange="save()"><label for="t16_3">Mock
-                interviews: phone screen + system design</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t16_4" onchange="save()"><label for="t16_4">Behavioral
-                prep: STAR method, stories</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t16_5" onchange="save()"><label for="t16_5">Resume:
-                highlight projects, metrics, impact</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t16_6" onchange="save()"><label for="t16_6">Practice:
-                weekly mock interviews</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title"><i class="fas fa-box"></i> Project 7: CAPSTONE (Deployed AI Product)</div>
-          <div class="topic-time">60-80 hrs</div>
-          <div class="topic-meta"><span id="proj7-done">0</span>/10</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="proj7_1" onchange="save()"><label for="proj7_1">Choose
-                compelling product idea</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_2" onchange="save()"><label
-                for="proj7_2">Architecture: RAG / agents / fine-tuning hybrid</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_3" onchange="save()"><label
-                for="proj7_3">Backend: FastAPI + LangChain/LangGraph</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_4" onchange="save()"><label for="proj7_4">Deploy
-                to cloud: AWS Lambda / Railway / Vercel</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_5" onchange="save()"><label for="proj7_5">CI/CD:
-                GitHub Actions, auto-deploy on push</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_6" onchange="save()"><label
-                for="proj7_6">Monitoring: latency, cost, errors, LLM tracing</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_7" onchange="save()"><label for="proj7_7">Tests:
-                unit + integration (70%+ coverage)</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_8" onchange="save()"><label
-                for="proj7_8">Documentation: architecture, deployment, costs</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_9" onchange="save()"><label for="proj7_9">Live
-                demo: public or video walkthrough</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="proj7_10" onchange="save()"><label
-                for="proj7_10">GitHub: production-grade code + portfolio README</label></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="topic">
-        <div class="topic-header" onclick="toggleTopic(this)">
-          <div class="topic-toggle">▶</div>
-          <div class="topic-title">Job Search & Negotiations</div>
-          <div class="topic-time">8-10 hrs</div>
-          <div class="topic-meta"><span id="t17-done">0</span>/4</div>
-        </div>
-        <div class="topic-content">
-          <div class="subtopic-list">
-            <div class="subtopic-item"><input type="checkbox" id="t17_1" onchange="save()"><label for="t17_1">Target
-                companies: 30+ startups + Big Tech AI teams</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t17_2" onchange="save()"><label
-                for="t17_2">Applications: 3-5 per week, tailor cover letters</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t17_3" onchange="save()"><label for="t17_3">Interview
-                loops: phone → system design → coding → culture</label></div>
-            <div class="subtopic-item"><input type="checkbox" id="t17_4" onchange="save()"><label
-                for="t17_4">Negotiation: evaluate offers, negotiate comp + title</label></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Standup Modal -->
-    <div class="modal" id="standupModal">
-      <div class="modal-content">
-        <span class="modal-close" onclick="closeStandup()">&times;</span>
-        <h2><i class="fas fa-clipboard-list"></i> Daily Standup</h2>
-        <div class="form-group">
-          <label><i class="fas fa-calendar"></i> Date</label>
-          <input type="date" id="standupDate">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-check-circle"></i> What did you accomplish today?</label>
-          <textarea id="standupAccomplished"
-            placeholder="e.g., Completed 5 tasks in Phase 1, built first NN model..."></textarea>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-bullseye"></i> What's next?</label>
-          <textarea id="standupNext" placeholder="e.g., Move to CNN architectures, start Project 2..."></textarea>
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-exclamation-circle"></i> Challenges?</label>
-          <textarea id="standupChallenges" placeholder="Optional: Any blockers or questions..."></textarea>
-        </div>
-        <button class="success" onclick="saveStandup()" style="width: 100%; margin-bottom: 12px;"><i
-            class="fas fa-save"></i> Save Standup</button>
-
-        <h3 style="margin-top: 20px; font-size: 13px;"><i class="fas fa-history"></i> Recent Standups</h3>
-        <div class="standup-history" id="standupHistory"></div>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="section">
-      <h2><i class="fas fa-chart-bar"></i> Overall Summary</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px;">
-        <div style="background: #fbfcfe; padding: 12px; border-radius: 6px; text-align: center;">
-          <strong id="totalChecked" style="font-size: 20px;">0</strong><br>
-          <small style="color: var(--muted); font-size: 11px;">Tasks Done</small>
-        </div>
-        <div style="background: #fbfcfe; padding: 12px; border-radius: 6px; text-align: center;">
-          <strong id="totalTasks" style="font-size: 20px;">0</strong><br>
-          <small style="color: var(--muted); font-size: 11px;">Total Tasks</small>
-        </div>
-        <div style="background: #fbfcfe; padding: 12px; border-radius: 6px; text-align: center;">
-          <strong id="overallPercent" style="font-size: 20px;">0%</strong><br>
-          <small style="color: var(--muted); font-size: 11px;">Progress</small>
-        </div>
-        <div style="background: #fbfcfe; padding: 12px; border-radius: 6px; text-align: center;">
-          <strong style="font-size: 20px;">7</strong><br>
-          <small style="color: var(--muted); font-size: 11px;">Projects</small>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <p><i class="fas fa-fist-raised"></i> 6-Month Intensive Plan • Push hard, stay focused • You can do this!</p>
-      <p><i class="fas fa-clock"></i> Last updated: <span id="lastUpdate">Never</span></p>
-    </footer>
   </div>
 
+  <!-- Export Modal -->
+  <div class="modal" id="exportModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>export progress</h2>
+        <button class="modal-close" onclick="closeModal('exportModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-hint">Copy this JSON to save your progress. Paste it in the import dialog to restore.</p>
+        <div class="form-group">
+          <textarea id="exportContent" readonly></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="copyToClipboard()">copy --clipboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Modal -->
+  <div class="modal" id="importModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>import progress</h2>
+        <button class="modal-close" onclick="closeModal('importModal')">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-hint">Paste previously exported JSON below:</p>
+        <div class="form-group">
+          <textarea id="importContent" placeholder="Paste JSON here..."></textarea>
+        </div>
+        <div class="import-error" id="importError"></div>
+        <button class="btn btn-primary" onclick="importProgress()">import &amp; restore</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
   <script>
-    const STORAGE_KEY = 'ai-engineer-tracker-6month-enhanced';
-    const START_DATE = new Date(2026, 6, 11); // July 11, 2026
-    const END_DATE = new Date(2027, 0, 11);   // January 11, 2027
-    const TOTAL_DAYS = (END_DATE - START_DATE) / (1000 * 60 * 60 * 24);
-
-    // Motivational messages
-    const MOTIVATIONS = [
-      "<i class='fas fa-lightbulb'></i> Every task you complete brings you closer to your dream AI engineer role. Keep pushing!",
-      "<i class='fas fa-fire'></i> You're doing amazing! Stay consistent and the results will follow.",
-      "<i class='fas fa-bullseye'></i> Focus on what you can control. The rest will fall into place.",
-      "<i class='fas fa-fist-raised'></i> Consistency beats intensity. Show up every day!",
-      "<i class='fas fa-rocket'></i> Six months to change your career. That's powerful!",
-      "<i class='fas fa-chart-line'></i> Progress over perfection. Keep shipping!",
-      "<i class='fas fa-star'></i> You've got this! Every expert was once a beginner.",
-      "<i class='fas fa-trophy'></i> The best time to plant a tree was 20 years ago. The second best time is now."
-    ];
-
-    const ACHIEVEMENTS = [
-      { id: 'phase1', icon: '<i class="fas fa-book"></i>', name: 'Phase Master I', unlocked: false },
-      { id: 'level5', icon: '<i class="fas fa-star"></i>', name: 'Level 5 Reached', unlocked: false },
-      { id: 'streak7', icon: '<i class="fas fa-fire"></i>', name: 'Week on Fire', unlocked: false },
-      { id: 'allprojects', icon: '<i class="fas fa-bullseye"></i>', name: 'Project Champion', unlocked: false },
-      { id: 'complete', icon: '<i class="fas fa-flag-checkered"></i>', name: 'Finished the Journey', unlocked: false },
-      { id: 'perfectweek', icon: '<i class="fas fa-check-double"></i>', name: 'Perfect Week', unlocked: false }
-    ];
-
-    const PHASES = [
-      { id: 'phase1', name: 'Foundations', end: new Date(2026, 6, 25) },
-      { id: 'phase2', name: 'ML Models', end: new Date(2026, 8, 8) },
-      { id: 'phase3', name: 'Deep Learning', end: new Date(2026, 9, 8) },
-      { id: 'phase4', name: 'Gen AI', end: new Date(2026, 10, 8) },
-      { id: 'phase5', name: 'Production', end: new Date(2026, 11, 20) },
-      { id: 'phase6', name: 'Interview Prep', end: new Date(2027, 0, 11) }
-    ];
-
-    let soundEnabled = true;
-    let chart = null;
-    let lastStandupDate = null;
-
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme-mode', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
-
-    // Sound toggle
-    document.getElementById('soundToggle').addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      document.getElementById('soundToggle').classList.toggle('muted', !soundEnabled);
-      localStorage.setItem('sound-enabled', soundEnabled);
-    });
-
-    // Load saved theme
-    if (localStorage.getItem('theme-mode') === 'dark') {
-      document.body.classList.add('dark-mode');
-    }
-
-    // Load saved sound setting
-    soundEnabled = localStorage.getItem('sound-enabled') !== 'false';
-    if (!soundEnabled) {
-      document.getElementById('soundToggle').classList.add('muted');
-    }
-
-    function playSound() {
-      if (!soundEnabled) return;
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      oscillator.frequency.value = 800;
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.2);
-    }
-
-    function showConfetti() {
-      if (!soundEnabled) return;
-      const confetti = ['🎉', '✨', '🎊', '⭐', '🔥', '💪', '🚀'];
-      for (let i = 0; i < 30; i++) {
-        const el = document.createElement('div');
-        el.className = 'confetti';
-        el.textContent = confetti[Math.floor(Math.random() * confetti.length)];
-        el.style.left = Math.random() * 100 + '%';
-        el.style.top = '-10px';
-        el.style.animationDelay = Math.random() * 0.5 + 's';
-        document.body.appendChild(el);
-        setTimeout(() => el.remove(), 3500);
-      }
-    }
-
-    function toggleTopic(header) {
-      const topic = header.parentElement;
-      topic.classList.toggle('expanded');
-      save();
-    }
-
-    function expandAll() {
-      document.querySelectorAll('.topic').forEach(t => t.classList.add('expanded'));
-    }
-
-    function collapseAll() {
-      document.querySelectorAll('.topic').forEach(t => t.classList.remove('expanded'));
-    }
-
-    function getProgressForDate(date) {
-      const daysPassed = (date - START_DATE) / (1000 * 60 * 60 * 24);
-      return Math.max(0, Math.min(100, (daysPassed / TOTAL_DAYS) * 100));
-    }
-
-    function getPhaseExpectedProgress(phaseStart, phaseEnd, today) {
-      // Calculate expected progress for a specific phase
-      if (today < phaseStart) return 0;
-      if (today > phaseEnd) return 100;
-      const daysPassed = (today - phaseStart) / (1000 * 60 * 60 * 24);
-      const phaseDays = (phaseEnd - phaseStart) / (1000 * 60 * 60 * 24);
-      return Math.max(0, Math.min(100, (daysPassed / phaseDays) * 100));
-    }
-
-    function updateTimeline() {
-      const today = new Date();
-      const daysLeft = Math.ceil((END_DATE - today) / (1000 * 60 * 60 * 24));
-      const expectedPercent = getProgressForDate(today);
-
-      document.getElementById('todayDate').textContent = today.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      document.getElementById('daysLeft').textContent = Math.max(0, daysLeft);
-      document.getElementById('expectedPercent').textContent = Math.round(expectedPercent) + '%';
-    }
-
-    function updateBurndownChart() {
-      const today = new Date();
-      const total = document.querySelectorAll('input[type="checkbox"]').length;
-      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-
-      // Get data from localStorage
-      let chartData = JSON.parse(localStorage.getItem('chart-data') || '[]');
-
-      // Add today's progress if not already added
-      if (chartData.length === 0 || new Date(chartData[chartData.length - 1].date).toDateString() !== today.toDateString()) {
-        chartData.push({
-          date: today.toISOString().split('T')[0],
-          completed: checked,
-          total: total
-        });
-      }
-
-      localStorage.setItem('chart-data', JSON.stringify(chartData));
-
-      // Create chart
-      const ctx = document.getElementById('burndownChart');
-      if (!ctx) return;
-
-      const dates = chartData.map(d => d.date);
-      const completedTasks = chartData.map(d => d.completed);
-      const remainingTasks = chartData.map(d => d.total - d.completed);
-
-      // Ideal burndown line
-      const idealRemaining = Array.from({ length: dates.length }, (_, i) => {
-        const progress = getProgressForDate(new Date(dates[i]));
-        return total * (1 - progress / 100);
-      });
-
-      if (chart) {
-        chart.destroy();
-      }
-
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: dates,
-          datasets: [
-            {
-              label: 'Tasks Remaining (Actual)',
-              data: remainingTasks,
-              borderColor: '#b13b3b',
-              backgroundColor: 'rgba(177, 59, 59, 0.1)',
-              tension: 0.3,
-              fill: false,
-              borderWidth: 2
-            },
-            {
-              label: 'Tasks Remaining (Expected)',
-              data: idealRemaining,
-              borderColor: '#24764f',
-              backgroundColor: 'rgba(36, 118, 79, 0.1)',
-              tension: 0.3,
-              fill: false,
-              borderWidth: 2,
-              borderDash: [5, 5]
-            },
-            {
-              label: 'Completed Tasks',
-              data: completedTasks,
-              borderColor: '#245f9d',
-              backgroundColor: 'rgba(36, 95, 157, 0.2)',
-              tension: 0.3,
-              borderWidth: 2
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              labels: { font: { size: 11 } }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              max: total,
-              ticks: { font: { size: 10 } }
-            },
-            x: {
-              ticks: { font: { size: 9 } }
-            }
+    // ==================== DATA ====================
+    const phaseData = [
+      {
+        id: 'phase-0',
+        title: 'Phase 0 - Fast Context',
+        subtitle: 'Week 1',
+        weeks: [
+          {
+            id: 'week-1',
+            number: 1,
+            title: 'Vocabulary & Setup',
+            resources: [
+              { type: 'Video', title: 'Andrej Karpathy - Intro to Large Language Models', desc: '1hr overview of how LLMs work', url: 'https://www.youtube.com/watch?v=zjkBMFhNj_g' },
+              { type: 'Video', title: '3Blue1Brown - Attention in Transformers', desc: 'Visual explanation of attention mechanism', url: 'https://www.youtube.com/watch?v=eMlx5aFJsqM' },
+              { type: 'Docs', title: 'Anthropic Prompt Engineering Guide', desc: 'Official best practices', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Docs', title: 'OpenAI API Documentation', desc: 'Models, endpoints, best practices', url: 'https://platform.openai.com/docs/guides/prompt-engineering' }
+            ],
+            tasks: [
+              { id: 't1-1', title: 'Watch: Karpathy\'s "Intro to LLMs" or 3Blue1Brown transformers', description: 'Understand how transformers work conceptually' },
+              { id: 't1-2', title: 'Read: Anthropic & OpenAI prompt engineering docs', description: 'Cover to cover' },
+              { id: 't1-3', title: 'Get API access: Anthropic + OpenAI', description: 'Sign up and verify keys' },
+              { id: 't1-4', title: 'Write: Hello world tool-use script', description: 'Test function calling in both APIs' },
+              { id: 't1-5', title: 'Setup: Python env, uv/poetry, GitHub repo', description: 'ai-eng-journey repository scaffolded' }
+            ]
           }
+        ]
+      },
+      {
+        id: 'phase-1',
+        title: 'Phase 1 - Core Engineering Skills',
+        subtitle: 'Weeks 2-7: RAG from first principles',
+        weeks: [
+          {
+            id: 'week-2',
+            number: 2,
+            title: 'Prompting as Engineering',
+            resources: [
+              { type: 'Docs', title: 'Anthropic Prompt Caching & Long Context', desc: 'System prompts, structured output, JSON mode', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Article', title: 'Prompt Engineering Best Practices', desc: 'Zero-shot, few-shot, chain-of-thought', url: 'https://platform.openai.com/docs/guides/prompt-engineering' },
+              { type: 'Library', title: 'Instructor: Structured LLM Outputs', desc: 'Type-safe, validated outputs with Pydantic', url: 'https://github.com/jxnl/instructor' },
+              { type: 'Docs', title: 'Pydantic Documentation', desc: 'Data validation and serialization', url: 'https://docs.pydantic.dev/' }
+            ],
+            tasks: [
+              { id: 't2-1', title: 'Study: Zero-shot, few-shot, system prompts', description: 'Structured output, JSON mode, prompt patterns' },
+              { id: 't2-2', title: 'Study: Chain-of-thought, ReAct patterns', description: 'When to use each' },
+              { id: 't2-3', title: 'Build: Text → JSON extractor CLI', description: 'Retries, validation with Pydantic, handles edge cases' },
+              { id: 't2-4', title: 'Push to GitHub', description: 'Commit with clear README' }
+            ]
+          },
+          {
+            id: 'week-3',
+            number: 3,
+            title: 'Embeddings & Vector Search',
+            resources: [
+              { type: 'Video', title: 'Sentence Transformers Overview', desc: 'Understanding embeddings and similarity', url: 'https://www.sbert.net/' },
+              { type: 'Library', title: 'Sentence Transformers', desc: 'State-of-the-art embeddings', url: 'https://huggingface.co/sentence-transformers' },
+              { type: 'Library', title: 'NumPy Documentation', desc: 'Matrix operations and cosine similarity', url: 'https://numpy.org/doc/' },
+              { type: 'Article', title: 'Chunking Strategies for RAG', desc: 'Best practices for document chunking', url: 'https://github.com/FullyHused/text-splitter' }
+            ],
+            tasks: [
+              { id: 't3-1', title: 'Study: Dense vectors, cosine similarity, chunking', description: 'Why chunk size/overlap matters' },
+              { id: 't3-2', title: 'Build: Embed a book/docs folder from scratch', description: 'Manual cosine similarity first (no framework)' },
+              { id: 't3-3', title: 'Add: Basic vector store (local or simple DB)', description: 'Understand the mechanics' },
+              { id: 't3-4', title: 'Push to GitHub', description: 'Week 3 project complete' }
+            ]
+          },
+          {
+            id: 'week-4',
+            number: 4,
+            title: 'Vector Databases',
+            resources: [
+              { type: 'Docs', title: 'Qdrant Vector Database', desc: 'Open-source, best for learning', url: 'https://qdrant.tech/' },
+              { type: 'Docs', title: 'pgvector - PostgreSQL Extension', desc: 'Vector support in Postgres', url: 'https://github.com/pgvector/pgvector' },
+              { type: 'Docs', title: 'Pinecone Vector Database', desc: 'Hosted solution', url: 'https://www.pinecone.io/' },
+              { type: 'Tutorial', title: 'Getting Started with Vector Search', desc: 'Comparison guide', url: 'https://www.qdrant.tech/documentation/' }
+            ],
+            tasks: [
+              { id: 't4-1', title: 'Compare: Pinecone, Weaviate, Qdrant, pgvector', description: 'Pros/cons' },
+              { id: 't4-2', title: 'Choose & setup: pgvector or Qdrant', description: 'Docker for local dev' },
+              { id: 't4-3', title: 'Rebuild Week 3 project', description: 'Use real vector DB + metadata filtering' },
+              { id: 't4-4', title: 'Push to GitHub', description: 'Week 4 deliverable' }
+            ]
+          },
+          {
+            id: 'week-5',
+            number: 5,
+            title: 'RAG Done Right',
+            resources: [
+              { type: 'Paper', title: 'RAG vs Fine-tuning for Knowledge', desc: 'Facebook/Meta research', url: 'https://arxiv.org/abs/2005.11401' },
+              { type: 'Library', title: 'Cohere Reranker', desc: 'Improve retrieval ranking', url: 'https://cohere.com/rerank' },
+              { type: 'Library', title: 'Unstructured.io', desc: 'Parse PDFs, docs, images', url: 'https://unstructured.io/' },
+              { type: 'Article', title: 'Advanced RAG Techniques', desc: 'Re-ranking, query expansion, hybrid search', url: 'https://towardsdatascience.com/advanced-rag-techniques-86d1d8b42a6a' }
+            ],
+            tasks: [
+              { id: 't5-1', title: 'Study: Bad chunking, context loss, re-ranking', description: 'Hybrid search (keyword + vector)' },
+              { id: 't5-2', title: 'Build: Document Q&A project', description: 'Real, messy documents (PDFs, public docs)' },
+              { id: 't5-3', title: 'Add: Re-ranker (Cohere or cross-encoder)', description: 'Improve retrieval quality' },
+              { id: 't5-4', title: 'Add: Source citations', description: 'Show where answers came from' },
+              { id: 't5-5', title: 'Push to GitHub', description: 'Week 5 complete' }
+            ]
+          },
+          {
+            id: 'week-6',
+            number: 6,
+            title: 'Evaluation (Not Theory)',
+            resources: [
+              { type: 'Library', title: 'RAGAS: RAG Assessment', desc: 'Automatic evaluation metrics', url: 'https://docs.ragas.io/' },
+              { type: 'Article', title: 'Evaluating RAG Applications', desc: 'Metrics and frameworks', url: 'https://www.anyscale.com/blog/evaluating-rag-applications' },
+              { type: 'Docs', title: 'Anthropic API - Batch Requests', desc: 'Cost-effective evaluation', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Tutorial', title: 'LLM-as-Judge Pattern', desc: 'Using LLMs to evaluate outputs', url: 'https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge' }
+            ],
+            tasks: [
+              { id: 't6-1', title: 'Build: Eval harness', description: 'Golden Q&A pairs, metrics' },
+              { id: 't6-2', title: 'Implement: Retrieval precision/recall, answer relevance', description: 'Custom scoring or RAGAS' },
+              { id: 't6-3', title: 'Baseline: Measure Week 5 project', description: 'Before/after re-ranker' },
+              { id: 't6-4', title: 'Document: Metrics & trade-offs', description: 'What changed, why' },
+              { id: 't6-5', title: 'Push to GitHub', description: 'Week 6 deliverable' }
+            ]
+          },
+          {
+            id: 'week-7',
+            number: 7,
+            title: 'LLMOps & Observability',
+            resources: [
+              { type: 'Platform', title: 'Langfuse Open-Source LLMOps', desc: 'Tracing, evaluation, monitoring', url: 'https://langfuse.com/' },
+              { type: 'Platform', title: 'LangSmith by LangChain', desc: 'Debugging and optimization', url: 'https://www.langchain.com/langsmith' },
+              { type: 'Article', title: 'LLM Observability Best Practices', desc: 'What to track', url: 'https://langfuse.com/blog/llm-observability' },
+              { type: 'Docs', title: 'OpenTelemetry for LLMs', desc: 'Standard tracing format', url: 'https://opentelemetry.io/' }
+            ],
+            tasks: [
+              { id: 't7-1', title: 'Setup: Langfuse or LangSmith', description: 'Pick one' },
+              { id: 't7-2', title: 'Instrument: RAG project with tracing', description: 'See every retrieval + generation step' },
+              { id: 't7-3', title: 'Track: Latency, token cost, model versions', description: 'Prompt versioning' },
+              { id: 't7-4', title: 'Demo: Before/after observability', description: 'Show regression detection' },
+              { id: 't7-5', title: 'Push to GitHub', description: 'Phase 1 complete: Production RAG' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'phase-2',
+        title: 'Phase 2 - Agentic AI',
+        subtitle: 'Weeks 8-12: Multi-step tasks with tools',
+        weeks: [
+          {
+            id: 'week-8',
+            number: 8,
+            title: 'Tool Use from First Principles',
+            resources: [
+              { type: 'Docs', title: 'Anthropic Tool Use Guide', desc: 'Function calling, parallel execution', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Docs', title: 'OpenAI Function Calling', desc: 'Models, best practices', url: 'https://platform.openai.com/docs/guides/function-calling' },
+              { type: 'Article', title: 'Building AI Agents Step by Step', desc: 'Tool use patterns', url: 'https://github.com/anthropics/anthropic-sdk-python' },
+              { type: 'GitHub', title: 'Claude API Examples', desc: 'Tool use samples', url: 'https://github.com/anthropics/anthropic-sdk-python/tree/main/examples' }
+            ],
+            tasks: [
+              { id: 't8-1', title: 'Study: Tool schemas, parallel calls, error handling', description: 'Forcing tool use vs optional' },
+              { id: 't8-2', title: 'Build: Raw agent (no framework)', description: 'Web search, calculator, DB query tools' },
+              { id: 't8-3', title: 'Handle: Tool call failures, retries', description: 'Model called tool wrong? Fix it.' },
+              { id: 't8-4', title: 'Push to GitHub', description: 'Week 8 raw agent' }
+            ]
+          },
+          {
+            id: 'week-9',
+            number: 9,
+            title: 'Agent Framework (LangGraph)',
+            resources: [
+              { type: 'Docs', title: 'LangGraph Documentation', desc: 'State graphs, nodes, edges', url: 'https://langchain-ai.github.io/langgraph/' },
+              { type: 'Tutorial', title: 'LangGraph Tutorial', desc: 'Step-by-step guide', url: 'https://github.com/langchain-ai/langgraph/tree/main/examples' },
+              { type: 'Video', title: 'LangGraph Explained', desc: 'How it works visually', url: 'https://www.youtube.com/results?search_query=langgraph+tutorial' },
+              { type: 'GitHub', title: 'LangGraph Examples', desc: 'Working code samples', url: 'https://github.com/langchain-ai/langgraph/tree/main/examples' }
+            ],
+            tasks: [
+              { id: 't9-1', title: 'Learn: LangGraph state graph model', description: 'Nodes, edges, state' },
+              { id: 't9-2', title: 'Rebuild: Week 8 agent in LangGraph', description: 'Compare complexity' },
+              { id: 't9-3', title: 'Compare: Raw vs LangGraph', description: 'Readability, maintainability' },
+              { id: 't9-4', title: 'Push to GitHub', description: 'Week 9 deliverable' }
+            ]
+          },
+          {
+            id: 'week-10',
+            number: 10,
+            title: 'Memory & Multi-turn',
+            resources: [
+              { type: 'Article', title: 'Agent Memory Patterns', desc: 'Short-term vs long-term', url: 'https://python.langchain.com/docs/modules/memory/' },
+              { type: 'Docs', title: 'LangChain Memory', desc: 'Implementation patterns', url: 'https://python.langchain.com/docs/modules/memory/types/' },
+              { type: 'Paper', title: 'Memory in Language Models', desc: 'Research on context and recall', url: 'https://arxiv.org/search/?query=memory+language+models&searchtype=all' },
+              { type: 'Tutorial', title: 'Building Stateful Agents', desc: 'Persistent conversation', url: 'https://github.com/langchain-ai/langgraph/tree/main/examples' }
+            ],
+            tasks: [
+              { id: 't10-1', title: 'Study: Short-term vs long-term memory', description: 'When to summarize, when to retrieve' },
+              { id: 't10-2', title: 'Add: Persistent memory to agent', description: 'Remember user preferences' },
+              { id: 't10-3', title: 'Implement: In vector DB or key-value store', description: 'Multi-session continuity' },
+              { id: 't10-4', title: 'Test: Multi-turn conversation', description: 'Verify memory works' },
+              { id: 't10-5', title: 'Push to GitHub', description: 'Week 10 complete' }
+            ]
+          },
+          {
+            id: 'week-11',
+            number: 11,
+            title: 'Multi-Agent & Human-in-the-Loop',
+            resources: [
+              { type: 'Docs', title: 'Multi-Agent Patterns with LangGraph', desc: 'Supervisor, delegation', url: 'https://langchain-ai.github.io/langgraph/' },
+              { type: 'Article', title: 'Agent Hierarchies and Supervision', desc: 'Design patterns', url: 'https://blog.langchain.dev/' },
+              { type: 'Docs', title: 'Human-in-the-Loop with LangGraph', desc: 'Interrupts, checkpoints', url: 'https://langchain-ai.github.io/langgraph/how-tos/human-in-the-loop/' },
+              { type: 'GitHub', title: 'Multi-Agent Examples', desc: 'Supervisor patterns', url: 'https://github.com/langchain-ai/langgraph/tree/main/examples' }
+            ],
+            tasks: [
+              { id: 't11-1', title: 'Study: Supervisor patterns, delegation', description: 'When to split work' },
+              { id: 't11-2', title: 'Design: Research agent → search + summarizer', description: 'Two sub-agents' },
+              { id: 't11-3', title: 'Add: Human approval gate', description: 'Before external actions (emails, spending)' },
+              { id: 't11-4', title: 'Implement: LangGraph multi-agent', description: 'Or SDK patterns' },
+              { id: 't11-5', title: 'Push to GitHub', description: 'Week 11 deliverable' }
+            ]
+          },
+          {
+            id: 'week-12',
+            number: 12,
+            title: 'Agent Eval & Safety',
+            resources: [
+              { type: 'Paper', title: 'Evaluating Agent Trajectories', desc: 'Not just final outputs', url: 'https://arxiv.org/search/?query=agent+evaluation&searchtype=all' },
+              { type: 'Article', title: 'AI Safety and Prompt Injection', desc: 'Defense techniques', url: 'https://owasp.org/www-community/attacks/Prompt_Injection' },
+              { type: 'Library', title: 'Guardrails AI', desc: 'Built-in safety checks', url: 'https://www.guardrailsai.com/' },
+              { type: 'Docs', title: 'Model Grading with LLMs', desc: 'Trajectory-based eval', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' }
+            ],
+            tasks: [
+              { id: 't12-1', title: 'Study: Trajectory evaluation', description: 'Score the entire path, not just final answer' },
+              { id: 't12-2', title: 'Build: Trajectory eval harness', description: 'Track agent steps' },
+              { id: 't12-3', title: 'Add: Prompt injection tests', description: 'Adversarial inputs via fake tool results' },
+              { id: 't12-4', title: 'Add: Rate limits & cost caps', description: 'Prevent runaway' },
+              { id: 't12-5', title: 'Push to GitHub', description: 'Phase 2 complete: Multi-agent + safety' }
+            ]
+          }
+        ]
+      },
+      {
+        id: 'phase-3',
+        title: 'Phase 3 - Production & Capstone',
+        subtitle: 'Weeks 13-18: Ship it',
+        weeks: [
+          {
+            id: 'week-13',
+            number: 13,
+            title: 'Model Serving & Economics',
+            resources: [
+              { type: 'Tool', title: 'vLLM - Open Source LLM Serving', desc: 'Self-hosted inference', url: 'https://docs.vllm.ai/' },
+              { type: 'Tool', title: 'Ollama - Local LLMs', desc: 'Run models locally', url: 'https://ollama.ai/' },
+              { type: 'Article', title: 'Model Economics & Trade-offs', desc: 'Cost vs latency analysis', url: 'https://www.interconnects.ai/' },
+              { type: 'Docs', title: 'Claude Model Pricing', desc: 'Haiku vs Sonnet vs Opus', url: 'https://www.anthropic.com/pricing' }
+            ],
+            tasks: [
+              { id: 't13-1', title: 'Benchmark: Haiku/Sonnet/Opus on your RAG', description: 'Cost, latency, quality' },
+              { id: 't13-2', title: 'Compare: vLLM (self-hosted) vs APIs', description: 'When each makes sense' },
+              { id: 't13-3', title: 'Document: Trade-off analysis', description: 'Quantified' },
+              { id: 't13-4', title: 'Deliverable: Benchmark report', description: 'Summary + recommendations' }
+            ]
+          },
+          {
+            id: 'week-14',
+            number: 14,
+            title: 'Fine-tuning & Customization',
+            resources: [
+              { type: 'Docs', title: 'Anthropic Fine-tuning API', desc: 'Official documentation', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Docs', title: 'OpenAI Fine-tuning', desc: 'Models and pricing', url: 'https://platform.openai.com/docs/guides/fine-tuning' },
+              { type: 'Paper', title: 'When to Fine-tune vs Prompt', desc: 'Decision framework', url: 'https://arxiv.org/abs/2305.13073' },
+              { type: 'Article', title: 'LoRA: Low-Rank Adaptation', desc: 'Efficient fine-tuning', url: 'https://github.com/microsoft/LoRA' }
+            ],
+            tasks: [
+              { id: 't14-1', title: 'Study: When fine-tuning beats prompting', description: 'The rare cases' },
+              { id: 't14-2', title: 'Fine-tune: Small open-weight model', description: 'Via hosted API' },
+              { id: 't14-3', title: 'Compare: Fine-tuned vs prompt-engineered baseline', description: 'Quality + cost' },
+              { id: 't14-4', title: 'Document: Findings', description: 'When to reach for fine-tuning' }
+            ]
+          },
+          {
+            id: 'week-15',
+            number: 15,
+            title: 'Security for AI Systems',
+            resources: [
+              { type: 'Article', title: 'Prompt Injection Attacks & Defense', desc: 'OWASP guide', url: 'https://owasp.org/www-community/attacks/Prompt_Injection' },
+              { type: 'Paper', title: 'Indirect Prompt Injection via Documents', desc: 'Research paper', url: 'https://arxiv.org/abs/2302.12173' },
+              { type: 'Article', title: 'LLM Security Best Practices', desc: 'Comprehensive guide', url: 'https://blog.langchain.dev/' },
+              { type: 'Tool', title: 'Guardrails AI Framework', desc: 'Inject safety specs', url: 'https://www.guardrailsai.com/' }
+            ],
+            tasks: [
+              { id: 't15-1', title: 'Study: Prompt injection (direct + indirect)', description: 'Via documents, tool results' },
+              { id: 't15-2', title: 'Study: Data exfiltration risks', description: 'Agents with tool access' },
+              { id: 't15-3', title: 'Red-team: Your Week 11 agent', description: 'Try to break it' },
+              { id: 't15-4', title: 'Document: Vulnerabilities & mitigations', description: 'What you found + fixes' }
+            ]
+          },
+          {
+            id: 'week-16',
+            number: 16,
+            title: 'Capstone - Part 1',
+            resources: [
+              { type: 'Guide', title: 'Building Production RAG', desc: 'End-to-end tutorial', url: 'https://github.com/langchain-ai/langchain/tree/master/docs' },
+              { type: 'Docs', title: 'Deployment Best Practices', desc: 'Production checklist', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Article', title: 'Portfolio Project Guide', desc: 'What to showcase', url: 'https://github.com/topics/rag' },
+              { type: 'Tool', title: 'Streamlit for Demo Apps', desc: 'Quick prototyping', url: 'https://streamlit.io/' }
+            ],
+            tasks: [
+              { id: 't16-1', title: 'Choose: Real problem from your job or community', description: 'RAG assistant, automated workflow, or coding helper' },
+              { id: 't16-2', title: 'Design: Architecture', description: 'Retrieval + agents + evals + safety' },
+              { id: 't16-3', title: 'Begin: Implementation', description: 'Week 16-17 are build time' },
+              { id: 't16-4', title: 'Setup: Observability & metrics', description: 'From day 1' }
+            ]
+          },
+          {
+            id: 'week-17',
+            number: 17,
+            title: 'Capstone - Part 2',
+            resources: [
+              { type: 'Tool', title: 'Loom for Demo Videos', desc: 'Quick screen recording', url: 'https://www.loom.com/' },
+              { type: 'Article', title: 'Writing Great READMEs', desc: 'GitHub best practices', url: 'https://readme.so/' },
+              { type: 'Guide', title: 'Testing AI Systems', desc: 'Unit & integration tests', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Tool', title: 'GitHub Actions for CI/CD', desc: 'Automate testing', url: 'https://github.com/features/actions' }
+            ],
+            tasks: [
+              { id: 't17-1', title: 'Continue: Building capstone', description: 'Finish core features' },
+              { id: 't17-2', title: 'Add: Guardrails & safety layer', description: 'Learn from Week 15' },
+              { id: 't17-3', title: 'Test: Thoroughly', description: 'Unit + integration + eval' },
+              { id: 't17-4', title: 'Record: Demo video (Loom)', description: 'Show it working, 3-5 min' }
+            ]
+          },
+          {
+            id: 'week-18',
+            number: 18,
+            title: 'Polish & Portfolio',
+            resources: [
+              { type: 'Guide', title: 'Writing Case Studies', desc: 'Problem → Solution → Results', url: 'https://www.case-study-hub.com/' },
+              { type: 'Article', title: 'AI Engineer Resume Tips', desc: 'Highlight real projects', url: 'https://www.linkedin.com/in/search/results/' },
+              { type: 'Article', title: 'Preparing for System Design Interviews', desc: 'LLM + Agent questions', url: 'https://www.hellointerview.com/' },
+              { type: 'Resource', title: 'Interview Prep Resources', desc: 'Practice mock interviews', url: 'https://github.com/donnemartin/system-design-primer' }
+            ],
+            tasks: [
+              { id: 't18-1', title: 'Write: Case study', description: 'Problem → architecture → results' },
+              { id: 't18-2', title: 'Update: Resume/LinkedIn', description: 'Lead SWE + hands-on AI experience' },
+              { id: 't18-3', title: 'Push: Capstone to GitHub', description: 'Excellent README + architecture docs' },
+              { id: 't18-4', title: 'Mock interviews: 2-3 AI system design Qs', description: 'RAG, agents, evals' }
+            ]
+          }
+        ]
+      }
+    ];
+
+    const toolsByCategory = {
+      'LLM APIs': ['Anthropic', 'OpenAI'],
+      'Structured Output': ['Pydantic', 'Instructor'],
+      'Vector DB': ['pgvector', 'Qdrant'],
+      'Reranking': ['Cohere rerank', 'Cross-encoder'],
+      'Agent Framework': ['LangGraph'],
+      'Evaluation': ['RAGAS', 'Custom LLM-as-judge'],
+      'Observability': ['Langfuse', 'LangSmith'],
+      'Serving': ['vLLM'],
+      'Fine-tuning': ['LoRA/PEFT via hosted API']
+    };
+
+    // ==================== STATE ====================
+    let taskStates = {}; // { taskId: boolean, ... }
+    const STORAGE_KEY = 'ai-engineer-tracker-progress';
+    const STORAGE_DATE_KEY = 'ai-engineer-tracker-start-date';
+    let allTaskIds = [];
+
+    function initializeTaskStates() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          taskStates = JSON.parse(saved);
+        } catch (e) {
+          console.warn('Failed to load saved progress:', e);
+          taskStates = {};
         }
-      });
-    }
+      }
 
-    function updateStatus() {
-      const total = document.querySelectorAll('input[type="checkbox"]').length;
-      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-      const actualPercent = total > 0 ? (checked / total) * 100 : 0;
-      const expectedPercent = parseFloat(document.getElementById('expectedPercent').textContent);
-
-      document.getElementById('actualPercent').textContent = Math.round(actualPercent) + '%';
-
-      const banner = document.getElementById('statusBanner');
-      const icon = document.getElementById('statusIcon');
-      const text = document.getElementById('statusText');
-
-      // Update phase statuses
-      PHASES.forEach((phase) => {
-        const phaseSection = document.getElementById(phase.id);
-        const phaseTopics = phaseSection.querySelectorAll('.topic');
-        let phaseTotal = 0;
-        let phaseChecked = 0;
-
-        phaseTopics.forEach(topic => {
-          const checks = topic.querySelectorAll('input[type="checkbox"]');
-          checks.forEach(cb => {
-            phaseTotal++;
-            if (cb.checked) phaseChecked++;
+      allTaskIds = [];
+      phaseData.forEach(phase => {
+        phase.weeks.forEach(week => {
+          week.tasks.forEach(task => {
+            allTaskIds.push(task.id);
+            if (taskStates[task.id] === undefined) {
+              taskStates[task.id] = false;
+            }
           });
         });
-
-        const phaseProgress = phaseTotal > 0 ? (phaseChecked / phaseTotal) * 100 : 0;
-        const phaseDeadline = phase.end;
-        const today = new Date();
-        const expectedPhaseProgress = getPhaseExpectedProgress(phase.start, phase.end, today);
-        const statusElement = document.getElementById(`${phase.id}-status`);
-
-        if (today > phaseDeadline) {
-          if (phaseProgress >= 100) {
-            statusElement.innerHTML = '<i class="fas fa-check-circle"></i> Complete';
-            statusElement.className = 'status-badge on-time';
-          } else {
-            statusElement.innerHTML = '<i class="fas fa-warning"></i> Late';
-            statusElement.className = 'status-badge late';
-          }
-        } else if (phaseProgress === 0) {
-          statusElement.innerHTML = '<i class="fas fa-circle-notch"></i> Not Started';
-          statusElement.className = 'status-badge upcoming';
-        } else if (phaseProgress >= expectedPhaseProgress * 0.9) {
-          statusElement.innerHTML = '<i class="fas fa-thumbs-up"></i> On Track';
-          statusElement.className = 'status-badge on-time';
-        } else if (phaseProgress >= expectedPhaseProgress * 0.7) {
-          statusElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Warning';
-          statusElement.className = 'status-badge upcoming';
-        } else {
-          statusElement.innerHTML = '<i class="fas fa-times-circle"></i> Behind';
-          statusElement.className = 'status-badge late';
-        }
-      });
-
-      // Overall status
-      if (actualPercent === 0) {
-        banner.className = 'status-banner on-track';
-        icon.innerHTML = '<i class="fas fa-check-circle"></i>';
-        text.textContent = `On Track - Ready to begin!`;
-      } else if (actualPercent >= expectedPercent - 5) {
-        banner.className = 'status-banner on-track';
-        icon.innerHTML = '<i class="fas fa-check-circle"></i>';
-        text.textContent = `On Track (${Math.round(actualPercent)}% vs ${Math.round(expectedPercent)}% expected)`;
-      } else if (actualPercent >= expectedPercent - 15) {
-        banner.className = 'status-banner warning';
-        icon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
-        text.textContent = `Running Slightly Behind (${Math.round(actualPercent)}% vs ${Math.round(expectedPercent)}% expected)`;
-      } else {
-        banner.className = 'status-banner behind';
-        icon.innerHTML = '<i class="fas fa-times-circle"></i>';
-        text.textContent = `Running Late! (${Math.round(actualPercent)}% vs ${Math.round(expectedPercent)}% expected) - Accelerate!`;
-      }
-
-      // Update gamification
-      updateGamification();
-      updateBurndownChart();
-    }
-
-    function updateGamification() {
-      const total = document.querySelectorAll('input[type="checkbox"]').length;
-      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-      const level = Math.floor(checked / 15) + 1;
-      const xpToNextLevel = (15 * level) - checked;
-      const projects = [6, 7, 5, 7, 8, 10];
-      const projectsCompleted = projects.filter((count, idx) => {
-        const section = document.getElementById(`phase${idx + 1}`);
-        const checks = section.querySelectorAll('input[type="checkbox"]:checked').length;
-        return checks === count;
-      }).length;
-
-      document.getElementById('totalXP').textContent = checked * 10;
-      document.getElementById('level').textContent = level;
-      document.getElementById('nextLevel').textContent = xpToNextLevel;
-      document.getElementById('phasesComplete').textContent = PHASES.filter(p => {
-        const section = document.getElementById(p.id);
-        const checks = section.querySelectorAll('input[type="checkbox"]');
-        const checkedCount = Array.from(checks).filter(c => c.checked).length;
-        return checkedCount === checks.length;
-      }).length;
-
-      // Weekly count
-      const thisWeekStart = new Date();
-      thisWeekStart.setDate(thisWeekStart.getDate() - thisWeekStart.getDay());
-      const thisWeekCount = Math.floor(Math.random() * checked * 0.3);
-      document.getElementById('weeklyTasks').textContent = Math.min(thisWeekCount + 5, checked);
-
-      // Check achievements
-      updateAchievements(checked, level, projectsCompleted);
-    }
-
-    function updateAchievements(checked, level, projectsCompleted) {
-      const achievements = [
-        { id: 'phase1', condition: checked >= 42, emoji: '📚' },
-        { id: 'level5', condition: level >= 5, emoji: '⭐' },
-        { id: 'streak7', condition: true, emoji: '🔥' }, // Would need tracking
-        { id: 'allprojects', condition: projectsCompleted === 6, emoji: '🎯' },
-        { id: 'complete', condition: checked === document.querySelectorAll('input[type="checkbox"]').length, emoji: '🏁' },
-        { id: 'perfectweek', condition: Math.random() > 0.7, emoji: '💯' }
-      ];
-
-      achievements.forEach((ach, idx) => {
-        const badge = document.querySelectorAll('.achievement-badge')[idx];
-        if (ach.condition) {
-          badge.classList.add('unlocked');
-          if (!badge.dataset.unlocked) {
-            badge.dataset.unlocked = 'true';
-            showConfetti();
-            playSound();
-          }
-        }
       });
     }
 
-    function openStandup() {
-      document.getElementById('standupModal').classList.add('show');
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('standupDate').value = today;
-      loadStandupHistory();
-    }
-
-    function closeStandup() {
-      document.getElementById('standupModal').classList.remove('show');
-    }
-
-    function saveStandup() {
-      const date = document.getElementById('standupDate').value;
-      const accomplished = document.getElementById('standupAccomplished').value;
-      const next = document.getElementById('standupNext').value;
-      const challenges = document.getElementById('standupChallenges').value;
-
-      if (!accomplished || !next) {
-        alert('Please fill in accomplishments and next steps');
-        return;
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(taskStates));
+        flashSaveIndicator();
+      } catch (e) {
+        console.warn('Failed to save progress:', e);
       }
-
-      let standups = JSON.parse(localStorage.getItem('standups') || '[]');
-      standups.push({ date, accomplished, next, challenges });
-      localStorage.setItem('standups', JSON.stringify(standups));
-
-      playSound();
-      showConfetti();
-      alert('✅ Standup saved! Great work today!');
-      closeStandup();
-      loadStandupHistory();
     }
 
-    function loadStandupHistory() {
-      const standups = JSON.parse(localStorage.getItem('standups') || '[]');
-      const history = document.getElementById('standupHistory');
-      history.innerHTML = standups.slice(-5).reverse().map(s => `
-        <div class="standup-entry">
-          <div class="standup-date"><i class="fas fa-calendar-alt"></i> ${s.date}</div>
-          <div><i class="fas fa-check-circle"></i> <strong>Done:</strong> ${s.accomplished.substring(0, 50)}...</div>
-          <div><i class="fas fa-arrow-right"></i> <strong>Next:</strong> ${s.next.substring(0, 50)}...</div>
+    function flashSaveIndicator() {
+      const el = document.getElementById('saveIndicator');
+      el.lastChild.textContent = 'saved';
+      el.classList.add('saved');
+      clearTimeout(flashSaveIndicator._t);
+      flashSaveIndicator._t = setTimeout(() => {
+        el.lastChild.textContent = 'idle';
+        el.classList.remove('saved');
+      }, 1600);
+    }
+
+
+    // ==================== RENDERING ====================
+    function renderPhases() {
+      const container = document.getElementById('phasesContainer');
+      container.innerHTML = phaseData.map((phase, phaseIdx) => `
+        <div class="phase phase-${phaseIdx}" id="${phase.id}">
+          <div class="phase-header" onclick="togglePhase('${phase.id}')">
+            <div class="phase-titles">
+              <div class="phase-title">${phase.title}</div>
+              <div class="phase-subtitle">${phase.subtitle}</div>
+            </div>
+            <div class="phase-meta">
+              <div class="phase-progress">
+                <div class="phase-progress-text" id="progress-${phase.id}">0 / 0</div>
+                <div class="phase-progress-bar">
+                  <div class="progress-fill" id="bar-${phase.id}" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="toggle-icon">▼</div>
+            </div>
+          </div>
+          <div class="phase-content">
+            <div class="weeks-container">
+              ${renderWeeks(phase.weeks, phaseIdx)}
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      updateAllProgress();
+    }
+
+    function renderWeeks(weeks, phaseIdx) {
+      return weeks.map((week, weekIdx) => `
+        <div class="week" id="wrap-${week.id}">
+          <div class="week-rail">
+            <div class="commit-dot" id="dot-${week.id}"></div>
+          </div>
+          <div class="week-body" id="${week.id}">
+            <div class="week-header" onclick="toggleWeek('${week.id}')">
+              <div class="week-title-block">
+                <div class="week-title">Week ${week.number}: ${week.title}</div>
+              </div>
+              <div class="week-progress" id="week-progress-${week.id}">0 / ${week.tasks.length}</div>
+              ${week.resources && week.resources.length > 0 ? `
+                <div class="resources-wrap">
+                  <button class="resources-btn" onclick="toggleResources(event, '${week.id}')">resources (${week.resources.length})</button>
+                  <div class="resources-dropdown" id="resources-${week.id}">
+                    <div class="resources-dropdown-content">
+                      ${week.resources.map(res => `
+                        <a href="${res.url}" target="_blank" rel="noopener" class="resource-link" title="Open in new tab">
+                          <div>
+                            <div class="resource-badge">${res.type}</div>
+                            <div class="resource-link-title">${res.title}</div>
+                            <div class="resource-link-desc">${res.desc}</div>
+                          </div>
+                        </a>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              ` : ''}
+              <div class="toggle-icon">▼</div>
+            </div>
+            <div class="week-content">
+              ${renderTasks(week.tasks)}
+            </div>
+          </div>
         </div>
       `).join('');
     }
 
-    function save() {
-      const state = {};
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        state[cb.id] = cb.checked;
+    function renderTasks(tasks) {
+      return tasks.map(task => `
+        <div class="task ${taskStates[task.id] ? 'completed' : ''}" id="${task.id}">
+          <input type="checkbox" class="task-checkbox" ${taskStates[task.id] ? 'checked' : ''}
+            onchange="toggleTask('${task.id}')">
+          <div class="task-content">
+            <div class="task-title" onclick="document.getElementById('${task.id}').querySelector('.task-checkbox').click()">${task.title}</div>
+            ${task.description ? `<div class="task-description">${task.description}</div>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderTools() {
+      const grid = document.getElementById('toolsGrid');
+      grid.innerHTML = Object.entries(toolsByCategory).map(([category, tools]) => `
+        <div class="reference-item">
+          <div class="reference-item-label">${category}</div>
+          <div class="reference-item-value">${tools.join(', ')}</div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== INTERACTIONS ====================
+    function toggleTask(taskId) {
+      taskStates[taskId] = !taskStates[taskId];
+      document.getElementById(taskId).classList.toggle('completed');
+      saveProgress();
+      updateAllProgress();
+    }
+
+    function togglePhase(phaseId) {
+      document.getElementById(phaseId).classList.toggle('collapsed');
+    }
+
+    function toggleWeek(weekId) {
+      document.getElementById(weekId).classList.toggle('collapsed');
+    }
+
+    function toggleResources(event, weekId) {
+      event.stopPropagation();
+      const dropdown = document.getElementById(`resources-${weekId}`);
+      const wasOpen = dropdown.classList.contains('show');
+      closeAllResourceDropdowns();
+      if (!wasOpen) dropdown.classList.add('show');
+    }
+
+    function closeAllResourceDropdowns() {
+      document.querySelectorAll('.resources-dropdown.show').forEach(d => d.classList.remove('show'));
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.phase').forEach(p => p.classList.remove('collapsed'));
+      document.querySelectorAll('.week-body').forEach(w => w.classList.remove('collapsed'));
+    }
+
+    function collapseAll() {
+      document.querySelectorAll('.phase').forEach(p => p.classList.add('collapsed'));
+      document.querySelectorAll('.week-body').forEach(w => w.classList.add('collapsed'));
+    }
+
+    // ==================== PROGRESS ====================
+    function updateAllProgress() {
+      let totalTasks = 0;
+      let completedTasks = 0;
+
+      phaseData.forEach(phase => {
+        let phaseTotal = 0;
+        let phaseCompleted = 0;
+
+        phase.weeks.forEach(week => {
+          const weekCompleted = week.tasks.filter(t => taskStates[t.id]).length;
+          const weekTotal = week.tasks.length;
+
+          phaseTotal += weekTotal;
+          phaseCompleted += weekCompleted;
+          totalTasks += weekTotal;
+          completedTasks += weekCompleted;
+
+          const weekProgressEl = document.getElementById(`week-progress-${week.id}`);
+          if (weekProgressEl) weekProgressEl.textContent = `${weekCompleted} / ${weekTotal}`;
+
+          const dotEl = document.getElementById(`dot-${week.id}`);
+          const wrapEl = document.getElementById(`wrap-${week.id}`);
+          if (wrapEl) wrapEl.classList.toggle('complete', weekCompleted === weekTotal && weekTotal > 0);
+        });
+
+        const phasePercent = phaseTotal > 0 ? Math.round((phaseCompleted / phaseTotal) * 100) : 0;
+        const phaseProgressEl = document.getElementById(`progress-${phase.id}`);
+        const phaseBarEl = document.getElementById(`bar-${phase.id}`);
+        if (phaseProgressEl) phaseProgressEl.textContent = `${phaseCompleted} / ${phaseTotal}`;
+        if (phaseBarEl) phaseBarEl.style.width = `${phasePercent}%`;
       });
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      updateStats();
-      updateStatus();
-      updateLastSaved();
 
-      playSound();
+      const overallPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+      document.getElementById('overallPercent').textContent = `${overallPercent}%`;
+      document.getElementById('overallProgressBar').style.width = `${overallPercent}%`;
+      document.getElementById('overallCount').textContent = `${completedTasks} of ${totalTasks} tasks`;
+      document.getElementById('tasksCompleted').textContent = completedTasks;
+      document.getElementById('tasksCompletedRate').textContent = `${overallPercent}% complete`;
+
+      updateCurrentWeek();
     }
 
-    function load() {
-      const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.checked = state[cb.id] || false;
-      });
-      updateStats();
-      updateStatus();
-      updateTimeline();
-      updateLastSaved();
+    function updateCurrentWeek() {
+      let currentWeekNumber = null;
 
-      // Show random motivation
-      const randomMotivation = MOTIVATIONS[Math.floor(Math.random() * MOTIVATIONS.length)];
-      document.getElementById('motivationBox').innerHTML = randomMotivation;
+      outer:
+      for (let phase of phaseData) {
+        for (let week of phase.weeks) {
+          const completed = week.tasks.every(t => taskStates[t.id]);
+          if (!completed) {
+            currentWeekNumber = week.number;
+            break outer;
+          }
+        }
+      }
+
+      const weekEl = document.getElementById('currentWeek');
+      const statusEl = document.getElementById('weekStatus');
+
+      if (currentWeekNumber) {
+        weekEl.textContent = currentWeekNumber;
+        statusEl.textContent = 'in progress';
+      } else {
+        weekEl.textContent = '✓';
+        statusEl.textContent = 'all weeks complete';
+      }
+
+      updateDaysRemaining();
     }
 
-    function updateStats() {
-      const total = document.querySelectorAll('input[type="checkbox"]').length;
-      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-      const percent = total > 0 ? Math.round((checked / total) * 100) : 0;
+    function updateDaysRemaining() {
+      const startDateInput = document.getElementById('startDate');
+      const daysLeftEl = document.getElementById('daysLeft');
 
-      document.getElementById('totalChecked').textContent = checked;
-      document.getElementById('totalTasks').textContent = total;
-      document.getElementById('overallPercent').textContent = percent + '%';
-      document.getElementById('overall').textContent = percent + '%';
-      document.querySelector('.progress-ring').style.setProperty('--progress', percent);
+      if (!startDateInput.value) {
+        daysLeftEl.textContent = '-';
+        return;
+      }
+
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(startDate.getTime() + (18 * 7 * 24 * 60 * 60 * 1000));
+      const today = new Date();
+      const daysLeft = Math.max(0, Math.ceil((endDate - today) / (1000 * 60 * 60 * 24)));
+
+      daysLeftEl.textContent = daysLeft;
     }
 
-    function updateLastSaved() {
-      const now = new Date().toLocaleString();
-      document.getElementById('lastUpdate').textContent = now;
+    // ==================== START DATE (editable, non-destructive) ====================
+    function lockDateInput() {
+      const input = document.getElementById('startDate');
+      const editBtn = document.getElementById('editDateBtn');
+      input.disabled = true;
+      editBtn.style.display = 'inline-flex';
     }
 
-    function exportProgress() {
-      const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `ai-engineer-6month-progress-${new Date().toISOString().slice(0, 10)}.json`;
-      a.click();
-      URL.revokeObjectURL(url);
+    function unlockDateInput() {
+      const input = document.getElementById('startDate');
+      const editBtn = document.getElementById('editDateBtn');
+      input.disabled = false;
+      input.focus();
+      editBtn.style.display = 'none';
+    }
+
+    // ==================== MODAL ====================
+    function openExportModal() {
+      document.getElementById('exportContent').value = JSON.stringify(taskStates, null, 2);
+      document.getElementById('exportModal').classList.add('show');
+    }
+
+    function openImportModal() {
+      document.getElementById('importError').classList.remove('show');
+      document.getElementById('importContent').value = '';
+      document.getElementById('importModal').classList.add('show');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('show');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function copyToClipboard() {
+      const text = document.getElementById('exportContent').value;
+      const fallback = () => {
+        const textarea = document.getElementById('exportContent');
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast('progress copied to clipboard');
+        } catch (e) {
+          showToast('copy failed - select and copy manually');
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          () => showToast('progress copied to clipboard'),
+          fallback
+        );
+      } else {
+        fallback();
+      }
+    }
+
+    function importProgress() {
+      const content = document.getElementById('importContent').value;
+      const errorEl = document.getElementById('importError');
+      errorEl.classList.remove('show');
+
+      let imported;
+      try {
+        imported = JSON.parse(content);
+      } catch (e) {
+        errorEl.textContent = `invalid JSON: ${e.message}`;
+        errorEl.classList.add('show');
+        return;
+      }
+
+      if (typeof imported !== 'object' || imported === null || Array.isArray(imported)) {
+        errorEl.textContent = 'expected a JSON object of {taskId: boolean} pairs';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      const matchingKeys = Object.keys(imported).filter(k => allTaskIds.includes(k));
+      if (matchingKeys.length === 0) {
+        errorEl.textContent = "this doesn't look like exported progress from this tracker - no matching task IDs found";
+        errorEl.classList.add('show');
+        return;
+      }
+
+      taskStates = imported;
+      saveProgress();
+      renderPhases();
+      closeModal('importModal');
+      showToast(`imported ${matchingKeys.length} task states`);
     }
 
     function resetProgress() {
-      if (confirm('Reset all progress? This cannot be undone.')) {
+      if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+        phaseData.forEach(phase => {
+          phase.weeks.forEach(week => {
+            week.tasks.forEach(task => {
+              taskStates[task.id] = false;
+            });
+          });
+        });
         localStorage.removeItem(STORAGE_KEY);
-        location.reload();
+        localStorage.removeItem(STORAGE_DATE_KEY);
+
+        const startDateInput = document.getElementById('startDate');
+        startDateInput.value = '';
+        unlockDateInput();
+
+        renderPhases();
+        showToast('progress reset');
       }
     }
 
-    // Initialize
-    load();
-    setInterval(() => {
-      updateTimeline();
-      updateStatus();
-    }, 60000);
+    // ==================== INIT ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTaskStates();
+      renderPhases();
+      renderTools();
 
-    // Add click handlers for checkbox changes
-    document.addEventListener('change', (e) => {
-      if (e.target.type === 'checkbox') {
-        save();
+      const savedStartDate = localStorage.getItem(STORAGE_DATE_KEY);
+      const startDateInput = document.getElementById('startDate');
+      if (savedStartDate) {
+        startDateInput.value = savedStartDate;
+        lockDateInput();
+        updateDaysRemaining();
       }
+
+      startDateInput.addEventListener('change', (e) => {
+        if (!e.target.disabled) {
+          localStorage.setItem(STORAGE_DATE_KEY, e.target.value);
+          lockDateInput();
+          updateDaysRemaining();
+        }
+      });
+
+      document.getElementById('editDateBtn').addEventListener('click', unlockDateInput);
+
+      // Close modals on background click
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.remove('show');
+        });
+      });
+
+      // Close resource dropdowns on outside click / escape
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.resources-wrap')) closeAllResourceDropdowns();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeAllResourceDropdowns();
+          document.querySelectorAll('.modal.show').forEach(m => m.classList.remove('show'));
+        }
+      });
     });
   </script>
 </body>
