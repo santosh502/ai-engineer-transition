@@ -23,7 +23,7 @@ Start here. This covers the core concepts.
 **Time**: 3-4 days (spend 1-2 hours per day)
 
 ### 02. Practical Examples
-Time to write code. Don't just read—implement these.
+Time to write code. Don't just read-implement these.
 
 **File**: `02_practical_examples.md`
 - Next-token prediction (understand the core mechanism)
@@ -48,7 +48,7 @@ Use this alongside files 1 and 2. Skip ahead anytime you need a definition.
 - Key takeaways per section
 - Diagnostic checklist (if X happens, try Y)
 
-**Hands-on**: No exercises—just lookup material
+**Hands-on**: No exercises-just lookup material
 **Prerequisite**: Completed #1
 **Time**: 15-30 min to skim
 
@@ -58,8 +58,8 @@ Read this before you ship anything. Seriously.
 **File**: `04_hard_problems.md`
 
 What actually breaks in production:
-- Hallucination (models make things up—architecture is the problem)
-- Alignment conflicts (helpful vs. honest vs. harmless—pick two)
+- Hallucination (models make things up-architecture is the problem)
+- Alignment conflicts (helpful vs. honest vs. harmless-pick two)
 - Why agents fail (they don't recover from mistakes well)
 - Data quality matters more than scale
 - Scaling laws are flattening
@@ -157,7 +157,7 @@ By the end, you should be able to:
 ## How to Learn This
 
 **Do**:
-- Read, run code, then review—don't just read passively
+- Read, run code, then review-don't just read passively
 - Take notes in your own words
 - Run code as you read
 - Build mini-projects after each section

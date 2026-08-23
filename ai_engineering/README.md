@@ -1,6 +1,6 @@
 # AI Engineering Learning Path
 
-A practical guide to understanding Large Language Models—how they actually work, how to build with them, and what matters in 2026.
+A practical guide to understanding Large Language Models-how they actually work, how to build with them, and what matters in 2026.
 
 ## Directory Structure
 
@@ -20,7 +20,7 @@ ai_engineering/
 ## Getting Started
 
 **Just starting out?**
-1. Read [LLM Fundamentals](llm/llm_fundamentals.md) first—it covers what LLMs actually are, not the hype version
+1. Read [LLM Fundamentals](llm/llm_fundamentals.md) first-it covers what LLMs actually are, not the hype version
 2. Keep the [Quick Reference](llm/quick_reference.md) nearby for terms and decision trees
 3. Work through [Practical Examples](llm/practical_examples.md) to see it in action
 
@@ -33,7 +33,7 @@ ai_engineering/
 1. Understand scaling laws and what they predict about future models
 2. Read about reasoning models and test-time compute (o1, DeepSeek-R1)
 3. Build multi-agent systems that compose tools together
-4. Learn security hardening—prompt injection, jailbreaks, alignment challenges
+4. Learn security hardening-prompt injection, jailbreaks, alignment challenges
 
 ## What's Here
 
@@ -48,10 +48,10 @@ What you'll learn: the architecture, how training actually works, why scaling ma
 - Security challenges (jailbreaks, prompt injection, alignment)
 
 ### Retrieval-Augmented Generation (RAG)
-In progress—covering vector embeddings, semantic search, how to wire up a RAG pipeline, and which databases work where.
+In progress-covering vector embeddings, semantic search, how to wire up a RAG pipeline, and which databases work where.
 
 ### Agentic AI
-Coming soon—how agents think, tool use, multi-agent coordination, and building systems that can reason over multiple steps.
+Coming soon-how agents think, tool use, multi-agent coordination, and building systems that can reason over multiple steps.
 
 ## Key Concepts At a Glance
 
@@ -119,9 +119,9 @@ After working through this, you'll understand:
 ## Resources
 
 **Papers that actually matter**
-- "Attention Is All You Need" (Vaswani et al., 2017)—read this if you're serious
-- "Scaling Laws for Neural Language Models" (Hoffmann et al.)—understanding scaling
-- "Language Models are Unsupervised Multitask Learners" (GPT-2 paper)—foundational
+- "Attention Is All You Need" (Vaswani et al., 2017)-read this if you're serious
+- "Scaling Laws for Neural Language Models" (Hoffmann et al.)-understanding scaling
+- "Language Models are Unsupervised Multitask Learners" (GPT-2 paper)-foundational
 
 **Talks**
 - Andrej Karpathy's "Intro to LLMs" (very clear, very good)
@@ -151,7 +151,7 @@ After working through this, you'll understand:
 ## Contributing
 
 As you learn, add to this. Things worth documenting:
-- Architecture tricks that actually work (Flash Attention, GQA, MQA—whatever you find useful)
+- Architecture tricks that actually work (Flash Attention, GQA, MQA-whatever you find useful)
 - Frameworks or tools you've tried and what you actually think of them
 - Things that broke in production and what you learned
 - Security surprises or incidents and how to avoid them
