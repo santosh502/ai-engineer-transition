@@ -4,7 +4,29 @@ A structured sequence to go from "what's an LLM?" to building production systems
 
 Work through the files in order. Each builds on the previous one.
 
-## The 5-File Sequence
+**Note**: File 00 is optional foundation. Start with it if you want deep understanding of Transformers; skip to file 01 if you want to learn LLMs faster.
+
+## The Learning Sequence
+
+### 00. Attention Is All You Need (Optional Foundation)
+A deep dive into the paper that changed everything. Start here if you want to understand the math behind Transformers before diving into LLMs.
+
+**File**: `00_attention_is_all_you_need.md`
+- The problem it solves (word-by-word vs. all-at-once)
+- How attention works (query, key, value vectors)
+- Multi-head attention (multiple perspectives)
+- Positional encoding (word order)
+- Complete Transformer architecture (encoder + decoder)
+- Step-by-step forward pass
+- Connection to Phase 1 vector geometry
+- Why it matters (parallelization, long-range memory)
+
+**Best for**: Understanding the foundation deeply, implementing attention yourself  
+**Prerequisite**: Phase 1: Vector Geometry (or comfortable with vectors, dot products, matrix math)  
+**Time**: 2-3 hours  
+**Note**: Read this *before* file 01 if you want deep understanding. It's optional but highly recommended.
+
+---
 
 ### 01. LLM Fundamentals
 Start here. This covers the core concepts.
@@ -103,6 +125,12 @@ Two schools of thought:
 
 ## Check Your Understanding
 
+**After file 00 (if you read it):**
+- Can you explain the three vectors in attention (Query, Key, Value)?
+- Do you understand how dot products become attention scores?
+- Can you trace through a complete forward pass?
+- Do you see how this uses Phase 1 vector concepts?
+
 **After file 01:**
 - Can you explain what an LLM is (weights + code)?
 - Do you get how self-attention works?
@@ -183,7 +211,8 @@ After you finish all 5 files:
 ## Quick Navigation
 
 **Looking for something specific?**
-- Transformers → file 01 section 2
+- Attention mechanism deep dive → file 00 (all)
+- Transformers → file 00 (complete) or file 01 section 2 (brief)
 - Fine-tuning → file 02 section 4
 - RAG → file 01 section 6 + file 02 section 5
 - Prompting → file 05 (all)
