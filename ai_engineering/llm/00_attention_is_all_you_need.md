@@ -1,6 +1,6 @@
-# Attention Is All You Need — End-to-End Explanation
+# Attention Is All You Need - End-to-End Explanation
 
-*A companion to Phase 1: Vector Geometry — this paper is where your vector intuition (dot products, linear combinations) gets used directly.*
+*A companion to Phase 1: Vector Geometry - this paper is where your vector intuition (dot products, linear combinations) gets used directly.*
 
 ---
 
@@ -15,9 +15,9 @@ Word 1 → Word 2 → Word 3 → Word 4 → Word 5
 ```
 
 **Problems:**
-1. **Slow** — words must be processed one at a time (can't parallelize)
-2. **Forgetting** — by the time the model reaches word 5, it's lost some info about word 1
-3. **No long-range vision** — word 1 and word 5 never directly "see" each other
+1. **Slow** - words must be processed one at a time (can't parallelize)
+2. **Forgetting** - by the time the model reaches word 5, it's lost some info about word 1
+3. **No long-range vision** - word 1 and word 5 never directly "see" each other
 
 ### The Big Idea: Attention (2017)
 
@@ -43,15 +43,15 @@ Every word attends to the entire context at once. Fast, parallel, and with perfe
 
 What does "it" refer to? The animal? The street? 
 
-You instantly know: **the animal** — because you pay *attention* to which word is most relevant when interpreting "it."
+You instantly know: **the animal** - because you pay *attention* to which word is most relevant when interpreting "it."
 
 ### How Attention Works
 
 A Transformer solves this by having each word ask: **"Which words in this sentence should I focus on?"**
 
 For the word "it":
-- It looks at "animal" and thinks: *"This is relevant — it's a living thing that gets tired"*
-- It looks at "street" and thinks: *"Less relevant — streets don't get tired"*
+- It looks at "animal" and thinks: *"This is relevant - it's a living thing that gets tired"*
+- It looks at "street" and thinks: *"Less relevant - streets don't get tired"*
 - It combines information from these words, **weighted by relevance**
 
 Result: "it" correctly understands it refers to the animal.
@@ -103,7 +103,7 @@ $$\text{weight}_i = \text{softmax}(\text{scores}) = \frac{e^{\text{score}_i}}{\s
 
 $$\text{attention}_A = \sum_i \text{weight}_i \cdot V_i$$
 
-(Weighted sum of all Value vectors — a **linear combination**)
+(Weighted sum of all Value vectors - a **linear combination**)
 
 ### Visual Example
 
@@ -138,7 +138,7 @@ Final output:
 
 ## Multi-Head Attention: Multiple Perspectives
 
-The model doesn't do attention just **once** — it does it **8, 12, or 16 times in parallel** ("heads"), each focusing on different patterns:
+The model doesn't do attention just **once** - it does it **8, 12, or 16 times in parallel** ("heads"), each focusing on different patterns:
 
 ```
 Input Vector
@@ -491,7 +491,7 @@ Phase 1: Vectors span a space; basis = minimum spanning set
 Transformer: Embeddings span a "meaning space"; attention operations stay in this space
 ```
 
-**Every single operation in the Transformer rests on concepts from Phase 1 — just applied at massive scale with weights learned from billions of words.**
+**Every single operation in the Transformer rests on concepts from Phase 1 - just applied at massive scale with weights learned from billions of words.**
 
 ---
 
@@ -517,7 +517,7 @@ A: Arbitrary choice (could be 256, 768, 1024). Bigger = more expressiveness but 
 A: Empirically found to work well. Original paper used 6; modern models use 12-96 layers.
 
 **Q: Can I visualize attention?**
-A: Yes! See [Attention is All You Need visualization](https://jalammar.github.io/attention-is-all-you-need/) — shows which words each word attends to.
+A: Yes! See [Attention is All You Need visualization](https://jalammar.github.io/attention-is-all-you-need/) - shows which words each word attends to.
 
 **Q: What's the difference between this and my brain?**
 A: No one knows exactly how attention works in brains. Transformers' attention is mathematically elegant but likely oversimplifies biological cognition.
@@ -544,4 +544,4 @@ This single paper laid the foundation for every major language model built after
 1. **Run the math yourself:** Take a simple sentence, compute dot products, softmax, weighted sums by hand
 2. **Visualize attention:** Use tools to see which words models pay attention to
 3. **Implement a mini Transformer:** Write attention from scratch in PyTorch (20 lines of code!)
-4. **Read the paper:** The original is more readable than you think — starts with figures, math builds naturally
+4. **Read the paper:** The original is more readable than you think - starts with figures, math builds naturally

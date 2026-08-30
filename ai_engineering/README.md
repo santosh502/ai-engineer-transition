@@ -26,7 +26,7 @@ ai_engineering/
 ## Getting Started
 
 **Just starting out? (Beginner Path - 1 week)**
-1. Read [LLM Fundamentals](llm/01_llm_fundamentals.md) first—covers what LLMs actually are, not the hype version
+1. Read [LLM Fundamentals](llm/01_llm_fundamentals.md) first-covers what LLMs actually are, not the hype version
 2. Keep the [Quick Reference](llm/03_quick_reference.md) nearby for terms and decision trees
 3. Work through [Practical Examples](llm/02_practical_examples.md) to see it in action
 4. (Optional) Read [Attention Is All You Need](llm/00_attention_is_all_you_need.md) for deep Transformer understanding
@@ -39,7 +39,7 @@ ai_engineering/
 
 **Ready to build? (Weeks 3+)**
 1. Build something real: a RAG system or a simple agent
-2. Learn security hardening—prompt injection, jailbreaks, alignment challenges
+2. Learn security hardening-prompt injection, jailbreaks, alignment challenges
 3. Build multi-agent systems that compose tools together
 4. Follow the [18-week curriculum](../tracker.html) for structured progression
 
@@ -49,12 +49,12 @@ ai_engineering/
 Complete learning path from theory to production. Learn: the architecture, how training actually works, why scaling matters, reasoning models vs standard inference, and how to build reliable systems.
 
 **Files** (read in order):
-- [00: Attention Is All You Need](llm/00_attention_is_all_you_need.md) — Transformer deep dive (optional but recommended)
-- [01: LLM Fundamentals](llm/01_llm_fundamentals.md) — What LLMs are, architecture, training, scaling
-- [02: Practical Examples](llm/02_practical_examples.md) — Code you can run and modify
-- [03: Quick Reference](llm/03_quick_reference.md) — Terminology, decision trees, lookups
-- [04: Hard Problems](llm/04_hard_problems.md) — What breaks in production
-- [05: Prompt Engineering](llm/05_prompt_engineering.md) — How to get good behavior
+- [00: Attention Is All You Need](llm/00_attention_is_all_you_need.md) - Transformer deep dive (optional but recommended)
+- [01: LLM Fundamentals](llm/01_llm_fundamentals.md) - What LLMs are, architecture, training, scaling
+- [02: Practical Examples](llm/02_practical_examples.md) - Code you can run and modify
+- [03: Quick Reference](llm/03_quick_reference.md) - Terminology, decision trees, lookups
+- [04: Hard Problems](llm/04_hard_problems.md) - What breaks in production
+- [05: Prompt Engineering](llm/05_prompt_engineering.md) - How to get good behavior
 
 **Topics covered**:
 - What is an LLM really? (it's weights + inference code)
@@ -67,14 +67,14 @@ Complete learning path from theory to production. Learn: the architecture, how t
 - How to write effective prompts that work in production
 
 ### Retrieval-Augmented Generation (RAG)
-**Status**: Placeholder—structure ready, content coming soon.
+**Status**: Placeholder-structure ready, content coming soon.
 
 Planning to cover: vector embeddings, semantic search, RAG pipeline architecture, chunking strategies, vector databases (Pinecone, Qdrant, pgvector), production patterns, evaluation metrics.
 
 In the meantime, see the [18-week curriculum](../tracker.html) Week 3-7 for the complete RAG learning path with hands-on projects.
 
 ### Agentic AI
-**Status**: Placeholder—structure ready, content coming soon.
+**Status**: Placeholder-structure ready, content coming soon.
 
 Planning to cover: agent architecture and loops, tool definitions, ReAct framework, multi-agent coordination, error recovery, security & permissions, human-in-the-loop patterns, agent evaluation.
 
@@ -147,14 +147,14 @@ After working through this, you'll understand:
 ## Resources
 
 **Papers that actually matter**
-- "Attention Is All You Need" (Vaswani et al., 2017) — [Full PDF included](NIPS-2017-attention-is-all-you-need-Paper.pdf) locally. Read this if you're serious. See [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) for guided walkthrough.
-- "Scaling Laws for Neural Language Models" (Hoffmann et al.) — Understanding scaling. Covered in [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md)
-- "Language Models are Unsupervised Multitask Learners" (Radford et al., GPT-2 paper) — Foundational
+- "Attention Is All You Need" (Vaswani et al., 2017) - [Full PDF included](NIPS-2017-attention-is-all-you-need-Paper.pdf) locally. Read this if you're serious. See [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) for guided walkthrough.
+- "Scaling Laws for Neural Language Models" (Hoffmann et al.) - Understanding scaling. Covered in [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md)
+- "Language Models are Unsupervised Multitask Learners" (Radford et al., GPT-2 paper) - Foundational
 
 **Talks**
-- Andrej Karpathy: "Intro to LLMs" (1hr, very clear) — https://www.youtube.com/watch?v=zjkBMFhNj_g
+- Andrej Karpathy: "Intro to LLMs" (1hr, very clear) - https://www.youtube.com/watch?v=zjkBMFhNj_g
 - Jeremy Howard: "A Practical Deep Learning for Coders" (courses)
-- 3Blue1Brown: "Attention in Transformers" (visual explanation) — https://www.youtube.com/watch?v=eMlx5aFJsqM
+- 3Blue1Brown: "Attention in Transformers" (visual explanation) - https://www.youtube.com/watch?v=eMlx5aFJsqM
 
 **Communities & Learning**
 - Hugging Face (model hub + forums)
@@ -178,11 +178,11 @@ After working through this, you'll understand:
 
 ## How to Use This Path
 
-1. **Read sequentially** — Each file builds on previous ones. Don't skip ahead.
-2. **Run the code** — You learn by doing, not just reading.
-3. **Take notes** — Write things in your own words as you go.
-4. **Build projects** — Use the [18-week tracker](../tracker.html) for structured project ideas.
-5. **Check yourself** — Each section ends with "Check Your Understanding" questions.
+1. **Read sequentially** - Each file builds on previous ones. Don't skip ahead.
+2. **Run the code** - You learn by doing, not just reading.
+3. **Take notes** - Write things in your own words as you go.
+4. **Build projects** - Use the [18-week tracker](../tracker.html) for structured project ideas.
+5. **Check yourself** - Each section ends with "Check Your Understanding" questions.
 
 ## Contributing & Updates
 
@@ -193,4 +193,4 @@ As you work through this, feel free to:
 - Note security surprises or defense strategies
 - Link papers or talks that changed how you think
 
-This is a living resource—it gets better as people use it and learn from it.
+This is a living resource-it gets better as people use it and learn from it.

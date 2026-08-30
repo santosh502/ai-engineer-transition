@@ -1,15 +1,15 @@
 # AI Engineer Transition
 
-A **practical, 18-week program** for experienced software engineers to master AI engineering—from LLM fundamentals through building production agents.
+A **practical, 18-week program** for experienced software engineers to master AI engineering-from LLM fundamentals through building production agents.
 
 ---
 
 ## What This Is
 
 This repo combines:
-- **Learning materials** — Theory + hands-on code across 5 structured LLM modules
-- **Working projects** — Two production-like applications (text→JSON extractor, hello-world LLM)
-- **Progress tracker** — Interactive 18-week curriculum with tasks, resources, and checkpoints
+- **Learning materials** - Theory + hands-on code across 5 structured LLM modules
+- **Working projects** - Two production-like applications (text→JSON extractor, hello-world LLM)
+- **Progress tracker** - Interactive 18-week curriculum with tasks, resources, and checkpoints
 
 **Ideal for**: Software engineers with 5+ years experience who want to build real AI systems (not just prompt ChatGPT).
 
@@ -85,7 +85,7 @@ ai-engineer-transition/
 **Phase 0 (Week 1)**: Fast context & setup
 - Vocabulary, API access, hello-world tool use
 
-**Phase 1 (Weeks 2-7)**: Core Engineering — RAG from First Principles
+**Phase 1 (Weeks 2-7)**: Core Engineering - RAG from First Principles
 - Week 2: Prompting as engineering (JSON extraction)
 - Week 3: Embeddings & vector search
 - Week 4: Vector databases
@@ -129,11 +129,11 @@ open tracker.html
 
 ### Option 3: Run Existing Projects
 ```bash
-# hello_world — basic Ollama integration
+# hello_world - basic Ollama integration
 cd projects/hello_world
 python main.py
 
-# Jsonify — production JSON extractor with tests
+# Jsonify - production JSON extractor with tests
 cd projects/Jsonify
 python -m pytest tests/ -v      # Run tests
 python -m src.main "your text here"  # Use the CLI
@@ -145,7 +145,7 @@ python -m src.main "your text here"  # Use the CLI
 
 **As a learner:**
 1. Read modules in order (they build on each other)
-2. Run the code examples — don't just read them
+2. Run the code examples - don't just read them
 3. Use the tracker to stay on schedule
 4. Build projects from the curriculum
 

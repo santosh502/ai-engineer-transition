@@ -14,7 +14,7 @@ def main():
         user: User = extract_json(message=args.message)
         print(user.model_dump_json(indent=4))
     except Exception as e:
-        print(f"Error: failed to extract JSON — {e}")
+        print(f"Error: failed to extract JSON - {e}")
         raise SystemExit(1)
 
 
