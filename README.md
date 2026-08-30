@@ -25,7 +25,7 @@ This repo combines:
 **Time**: 1 week to understand the basics. 3-4 weeks to go deep.
 
 ### Want to build projects?
-1. Open [tracker.html](tracker.html) in your browser (no server needed)
+1. Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) in your browser (no server needed)
 2. Start Week 1 tasks to set up environment
 3. Follow Weeks 2-7 (RAG from scratch) + Weeks 8-12 (Agents) + Weeks 13-18 (Capstone)
 4. See [projects/](projects/) for working examples
@@ -151,7 +151,7 @@ python -m src.main "your text here"  # Use the CLI
 
 **As a reference:**
 - Jump to [ai_engineering/llm/03_quick_reference.md](ai_engineering/llm/03_quick_reference.md) for definitions and decision trees
-- Check [tracker.html](tracker.html) for Week X resources and tasks
+- Check [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for Week X resources and tasks
 - See [projects/](projects/) for working code examples
 
 **As a self-challenge:**
@@ -165,7 +165,7 @@ python -m src.main "your text here"  # Use the CLI
 
 | File | Purpose |
 |------|---------|
-| [tracker.html](tracker.html) | Interactive progress tracker + 18-week curriculum (open in browser) |
+| [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) | Interactive progress tracker + 18-week curriculum (open in browser) |
 | [ai_engineering/README.md](ai_engineering/README.md) | Learning path guide + key concepts |
 | [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md) | Start here for foundations |
 | [ai_engineering/llm/03_quick_reference.md](ai_engineering/llm/03_quick_reference.md) | Lookup table + decision trees |
@@ -196,7 +196,7 @@ python -m src.main "your text here"  # Use the CLI
 - Langfuse (observability)
 - Custom metrics
 
-See each week's resources in [tracker.html](tracker.html) for the complete toolkit per phase.
+See each week's resources in [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for the complete toolkit per phase.
 
 ---
 ## License
@@ -205,6 +205,6 @@ This learning path and all materials are open and free to use, modify, and share
 
 ---
 
-**Ready?** → Open [tracker.html](tracker.html) or read [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
+**Ready?** → Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) or read [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
 
 Good luck!
