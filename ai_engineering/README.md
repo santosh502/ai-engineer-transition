@@ -6,39 +6,57 @@ A practical guide to understanding Large Language Models-how they actually work,
 
 ```
 ai_engineering/
-├── llm/                    # How LLMs work
-│   ├── llm_fundamentals.md    # Core concepts, explained
-│   ├── practical_examples.md  # Code you can run
-│   └── quick_reference.md     # Lookup when you need it
-├── rag/                    # Retrieval-Augmented Generation
-│   └── README.md          # WIP
-├── agentic/               # AI Agents & Multi-Agent Systems
-│   └── README.md          # WIP
-└── README.md              # This file
+├── llm/                           # How LLMs work
+│   ├── 00_attention_is_all_you_need.md    # Transformer deep dive (optional foundation)
+│   ├── 01_llm_fundamentals.md             # Core concepts, explained
+│   ├── 02_practical_examples.md           # Code you can run
+│   ├── 03_quick_reference.md              # Lookup when you need it
+│   ├── 04_hard_problems.md                # Production realities
+│   ├── 05_prompt_engineering.md           # How to get good behavior
+│   ├── assets/                            # Diagrams and supporting materials
+│   └── README.md                          # Learning sequence guide
+├── rag/                           # Retrieval-Augmented Generation
+│   └── README.md                  # WIP - coming soon
+├── agentic/                       # AI Agents & Multi-Agent Systems
+│   └── README.md                  # WIP - coming soon
+├── NIPS-2017-attention-is-all-you-need-Paper.pdf
+└── README.md                      # This file
 ```
 
 ## Getting Started
 
-**Just starting out?**
-1. Read [LLM Fundamentals](llm/llm_fundamentals.md) first-it covers what LLMs actually are, not the hype version
-2. Keep the [Quick Reference](llm/quick_reference.md) nearby for terms and decision trees
-3. Work through [Practical Examples](llm/practical_examples.md) to see it in action
+**Just starting out? (Beginner Path - 1 week)**
+1. Read [LLM Fundamentals](llm/01_llm_fundamentals.md) first—covers what LLMs actually are, not the hype version
+2. Keep the [Quick Reference](llm/03_quick_reference.md) nearby for terms and decision trees
+3. Work through [Practical Examples](llm/02_practical_examples.md) to see it in action
+4. (Optional) Read [Attention Is All You Need](llm/00_attention_is_all_you_need.md) for deep Transformer understanding
 
-**Already comfortable with the basics?**
-1. Dig into Transformer architecture and why self-attention works
-2. Play with fine-tuning in practical_examples.md
-3. Build something real: a RAG system or a simple agent
+**Already comfortable with the basics? (2-3 weeks)**
+1. Work through all 5 LLM files in order (fundamentals → examples → reference → hard problems → prompting)
+2. Dig into Transformer architecture and why self-attention works
+3. Understand scaling laws and what they predict about future models
+4. Read about reasoning models and test-time compute (o1, DeepSeek-R1)
 
-**Deep into it?**
-1. Understand scaling laws and what they predict about future models
-2. Read about reasoning models and test-time compute (o1, DeepSeek-R1)
+**Ready to build? (Weeks 3+)**
+1. Build something real: a RAG system or a simple agent
+2. Learn security hardening—prompt injection, jailbreaks, alignment challenges
 3. Build multi-agent systems that compose tools together
-4. Learn security hardening-prompt injection, jailbreaks, alignment challenges
+4. Follow the [18-week curriculum](../tracker.html) for structured progression
 
 ## What's Here
 
 ### Large Language Models (LLM)
-What you'll learn: the architecture, how training actually works, why scaling matters, and how to think about reasoning models vs standard inference.
+Complete learning path from theory to production. Learn: the architecture, how training actually works, why scaling matters, reasoning models vs standard inference, and how to build reliable systems.
+
+**Files** (read in order):
+- [00: Attention Is All You Need](llm/00_attention_is_all_you_need.md) — Transformer deep dive (optional but recommended)
+- [01: LLM Fundamentals](llm/01_llm_fundamentals.md) — What LLMs are, architecture, training, scaling
+- [02: Practical Examples](llm/02_practical_examples.md) — Code you can run and modify
+- [03: Quick Reference](llm/03_quick_reference.md) — Terminology, decision trees, lookups
+- [04: Hard Problems](llm/04_hard_problems.md) — What breaks in production
+- [05: Prompt Engineering](llm/05_prompt_engineering.md) — How to get good behavior
+
+**Topics covered**:
 - What is an LLM really? (it's weights + inference code)
 - Transformer architecture and why self-attention changed everything
 - Training pipeline: pretraining → fine-tuning → alignment
@@ -46,26 +64,35 @@ What you'll learn: the architecture, how training actually works, why scaling ma
 - Reasoning models and test-time compute (o1, DeepSeek-R1)
 - Multimodal models (vision, audio, text in one)
 - Security challenges (jailbreaks, prompt injection, alignment)
+- How to write effective prompts that work in production
 
 ### Retrieval-Augmented Generation (RAG)
-In progress-covering vector embeddings, semantic search, how to wire up a RAG pipeline, and which databases work where.
+**Status**: Placeholder—structure ready, content coming soon.
+
+Planning to cover: vector embeddings, semantic search, RAG pipeline architecture, chunking strategies, vector databases (Pinecone, Qdrant, pgvector), production patterns, evaluation metrics.
+
+In the meantime, see the [18-week curriculum](../tracker.html) Week 3-7 for the complete RAG learning path with hands-on projects.
 
 ### Agentic AI
-Coming soon-how agents think, tool use, multi-agent coordination, and building systems that can reason over multiple steps.
+**Status**: Placeholder—structure ready, content coming soon.
+
+Planning to cover: agent architecture and loops, tool definitions, ReAct framework, multi-agent coordination, error recovery, security & permissions, human-in-the-loop patterns, agent evaluation.
+
+In the meantime, see the [18-week curriculum](../tracker.html) Week 8-12 for the complete agentic AI learning path with hands-on projects.
 
 ## Key Concepts At a Glance
 
 | Concept | Why It Matters | Learn More |
 |---------|---|---|
-| **Transformers** | The architecture behind every major LLM | llm/llm_fundamentals.md §2 |
-| **Self-Attention** | Lets tokens understand context from all positions | llm/llm_fundamentals.md §2 |
-| **Scaling Laws** | Bigger model + more data = predictably better | llm/llm_fundamentals.md §4 |
-| **Fine-tuning** | Customize models for specific domains/tasks | llm/practical_examples.md §4 |
-| **RAG** | Ground LLM answers in real documents | rag/README.md |
-| **Agents** | LLMs coordinating tools for autonomous action | agentic/README.md |
-| **Reasoning Models** | "Think longer" for harder problems | llm/llm_fundamentals.md §5 |
-| **Multimodality** | LLMs understanding vision, audio, text | llm/llm_fundamentals.md §7 |
-| **Security** | Jailbreaks, injection, alignment challenges | llm/llm_fundamentals.md §8 |
+| **Transformers** | The architecture behind every major LLM | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) or [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) (deep dive) |
+| **Self-Attention** | Lets tokens understand context from all positions | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) |
+| **Scaling Laws** | Bigger model + more data = predictably better | [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md) |
+| **Fine-tuning** | Customize models for specific domains/tasks | [02_practical_examples.md §4](llm/02_practical_examples.md) |
+| **RAG** | Ground LLM answers in real documents | [rag/README.md](rag/README.md) (coming soon) |
+| **Agents** | LLMs coordinating tools for autonomous action | [agentic/README.md](agentic/README.md) (coming soon) |
+| **Reasoning Models** | "Think longer" for harder problems | [01_llm_fundamentals.md §5](llm/01_llm_fundamentals.md) |
+| **Multimodality** | LLMs understanding vision, audio, text | [01_llm_fundamentals.md §7](llm/01_llm_fundamentals.md) |
+| **Security** | Jailbreaks, injection, alignment challenges | [04_hard_problems.md](llm/04_hard_problems.md) + [05_prompt_engineering.md](llm/05_prompt_engineering.md) |
 
 ## Tools & Platforms
 
@@ -99,13 +126,13 @@ After working through this, you'll understand:
 ## Quick Decision Trees
 
 **Picking a model?**
-- Need to run it on your laptop? → Llama 2, Mistral, or DeepSeek (7B-70B)
-- Running via API is fine? → Claude, GPT, Gemini
-- Need math or hard reasoning? → DeepSeek-R1, o1, or Claude w/ extended thinking
-- Need vision? → GPT-4o, Claude 3.5 Sonnet, or Gemini 2.0
+- Need to run it on your laptop? → Llama 2, Mistral, or DeepSeek (7B-70B) - see [01_llm_fundamentals.md](llm/01_llm_fundamentals.md)
+- Running via API is fine? → Claude, GPT, Gemini - see [03_quick_reference.md](llm/03_quick_reference.md) model comparison table
+- Need math or hard reasoning? → DeepSeek-R1, o1, or Claude w/ extended thinking - see [05_prompt_engineering.md](llm/05_prompt_engineering.md)
+- Need vision? → GPT-4o, Claude 3.5 Sonnet, or Gemini 2.0 - see [01_llm_fundamentals.md §7](llm/01_llm_fundamentals.md)
 
 **Fine-tuning worth it?**
-- Have 1K+ examples in your domain? → Probably yes
+- Have 1K+ examples in your domain? → Probably yes - see [02_practical_examples.md §4](llm/02_practical_examples.md)
 - Less than that? → Try RAG first, it's usually cheaper
 - Cost per inference is critical? → Fine-tune a smaller model
 - Otherwise? → Start with a big model + RAG, fine-tune later if needed
@@ -115,44 +142,55 @@ After working through this, you'll understand:
 - Data is stable? → Fine-tuning (faster at inference)
 - Need to cite sources? → RAG is natural for that
 - Unsure? → RAG first, then fine-tune if it's not working
+- **See** [03_quick_reference.md](llm/03_quick_reference.md) for decision tree in detail
 
 ## Resources
 
 **Papers that actually matter**
-- "Attention Is All You Need" (Vaswani et al., 2017)-read this if you're serious
-- "Scaling Laws for Neural Language Models" (Hoffmann et al.)-understanding scaling
-- "Language Models are Unsupervised Multitask Learners" (GPT-2 paper)-foundational
+- "Attention Is All You Need" (Vaswani et al., 2017) — [Full PDF included](NIPS-2017-attention-is-all-you-need-Paper.pdf) locally. Read this if you're serious. See [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) for guided walkthrough.
+- "Scaling Laws for Neural Language Models" (Hoffmann et al.) — Understanding scaling. Covered in [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md)
+- "Language Models are Unsupervised Multitask Learners" (Radford et al., GPT-2 paper) — Foundational
 
 **Talks**
-- Andrej Karpathy's "Intro to LLMs" (very clear, very good)
-- Jeremy Howard's deep learning course
-
-**Communities**
-- Hugging Face forums (lots of practitioners)
-- r/MachineLearning (Reddit)
-- Anthropic Discord
-- OpenAI community
-
-### Papers (Foundational)
-- "Attention Is All You Need" (Vaswani et al., 2017)
-- "Language Models are Unsupervised Multitask Learners" (Radford et al., GPT-2)
-- "Scaling Laws for Neural Language Models" (Hoffmann et al., Chinchilla)
-
-### Talks
-- Andrej Karpathy: "Intro to LLMs" (referenced extensively)
+- Andrej Karpathy: "Intro to LLMs" (1hr, very clear) — https://www.youtube.com/watch?v=zjkBMFhNj_g
 - Jeremy Howard: "A Practical Deep Learning for Coders" (courses)
+- 3Blue1Brown: "Attention in Transformers" (visual explanation) — https://www.youtube.com/watch?v=eMlx5aFJsqM
 
-### Communities
-- Hugging Face Discuss
-- r/MachineLearning
-- Anthropic Discord
+**Communities & Learning**
+- Hugging Face (model hub + forums)
+- r/MachineLearning (Reddit)
+- Anthropic Discord (latest on Claude)
 - OpenAI Community Forum
+- arXiv.org (read papers from the source)
 
-## Contributing
+## What This Course Is & Isn't
 
-As you learn, add to this. Things worth documenting:
-- Architecture tricks that actually work (Flash Attention, GQA, MQA-whatever you find useful)
-- Frameworks or tools you've tried and what you actually think of them
-- Things that broke in production and what you learned
-- Security surprises or incidents and how to avoid them
-- Papers or talks that changed how you think about this stuff
+**What it IS:**
+- A practical, hands-on learning path from theory → code → production
+- Focused on **building real systems**, not just understanding concepts
+- Rooted in 2024-2026 state of the art (reasoning models, extended thinking, etc.)
+- Designed for engineers transitioning to AI (not starting from math degree)
+
+**What it ISN'T:**
+- A complete ML theory course (assumes some comfort with matrices, calculus)
+- A replacement for papers and original research
+- Dogmatic about any one framework or model
+
+## How to Use This Path
+
+1. **Read sequentially** — Each file builds on previous ones. Don't skip ahead.
+2. **Run the code** — You learn by doing, not just reading.
+3. **Take notes** — Write things in your own words as you go.
+4. **Build projects** — Use the [18-week tracker](../tracker.html) for structured project ideas.
+5. **Check yourself** — Each section ends with "Check Your Understanding" questions.
+
+## Contributing & Updates
+
+As you work through this, feel free to:
+- Document tricks that actually work in production (Flash Attention, GQA, quantization, etc.)
+- Share frameworks or tools you've tried (what worked, what didn't)
+- Add things that broke and how you fixed them
+- Note security surprises or defense strategies
+- Link papers or talks that changed how you think
+
+This is a living resource—it gets better as people use it and learn from it.
