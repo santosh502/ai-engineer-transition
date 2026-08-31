@@ -10,7 +10,7 @@ A **practical, 18-week program** for experienced software engineers to master AI
 
 This repo combines:
 - **Learning materials** - Theory + hands-on code across 5 structured LLM modules
-- **Working projects** - Two production-like applications (text→JSON extractor, hello-world LLM)
+- **Working projects** - Two production-like applications (text-to-JSON extractor, hello-world LLM)
 - **Progress tracker** - Interactive 18-week curriculum with tasks, resources, and checkpoints
 
 **Ideal for**: Software engineers with 5+ years experience who want to build real AI systems (not just prompt ChatGPT).
@@ -20,76 +20,53 @@ This repo combines:
 ## Table of Contents
 
 ### Quick Navigation
-- [Access This Course](#access-this-course) — How to view
-- [Quick Start](#quick-start-choose-your-path) — Choose your path
-- [Repository Structure](#repository-structure) — What's inside
-- [Learning Path](#the-learning-path-at-a-glance) — 18-week curriculum
-- [Getting Started](#getting-started-right-now) — 4 options to begin
+- [Access This Course](#access-this-course) - How to view
+- [Quick Start](#quick-start) - Choose your path
+- [Repository Structure](#repository-structure) - What's inside
+- [Learning Path](#the-learning-path-at-a-glance) - 18-week curriculum
+- [How to Use](#how-to-use-this-repo) - Learning modes
 
 ### Learning Materials
-- [RAG Materials](#rag-learning-materials) — Complete RAG guide
-- [Key Files](#key-files) — Important resources
-- [Tools](#tools-youll-use) — Required tools & platforms
+- [RAG Materials](#rag-learning-materials) - Complete RAG guide
+- [Key Files](#key-files) - Important resources
+- [Tools](#tools-youll-use) - Required tools & platforms
 
 ### For Forkers
-- [Host Your Own Tracker](#-host-this-tracker-for-your-own-use-no-changes-needed) — Use as-is (3 steps)
-- [License](#license) — Permissions & attribution
+- [Host Your Own Tracker](#host-your-own-tracker) - Use as-is (3 steps)
+- [License](#license) - Permissions & attribution
 
 ---
 
 ## Access This Course
 
 ### Online (Recommended)
-- **Interactive Tracker**: [https://santosh502.github.io/ai-engineer-transition/tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) - Best for progress tracking
-- **GitHub Repository**: [https://github.com/santosh502/ai-engineer-transition](https://github.com/santosh502/ai-engineer-transition)
+- **Interactive Tracker** - [https://santosh502.github.io/ai-engineer-transition/tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) (best for progress tracking)
+- **GitHub Repository** - [https://github.com/santosh502/ai-engineer-transition](https://github.com/santosh502/ai-engineer-transition)
 
-### Want Your Own Tracker?
-**Two options:**
-1. **Use This Tracker As-Is** → [Host for Your Own Use](#-host-this-tracker-for-your-own-use-no-changes-needed) (recommended for most people)
-   - Fork & deploy in 3 steps
-   - No customization needed
-   - Perfect for tracking your own progress
-
-2. **Create Your Own Custom Tracker** → [Fork & Customize](#-fork--customize-advanced-customization)
-   - Modify weeks, content, and tasks
-   - Full customization guide included
-   - Perfect for your class or program
-
-### Local (Offline Access)
+### Local (Clone & Use Offline)
 ```bash
-# Clone the repo
 git clone https://github.com/santosh502/ai-engineer-transition.git
 cd ai-engineer-transition
-
-# View in your editor
-code .
-
-# Or serve locally (if you prefer)
-# (all markdown links work in your IDE/editor)
+code .  # View in your editor
 ```
 
 ---
 
-## Quick Start (Choose Your Path)
+## Quick Start
 
-### Just want to learn?
-1. Open [ai_engineering/README.md](ai_engineering/README.md)
-2. Start with [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
-3. Work through in order: fundamentals → examples → reference → hard problems → prompting
-4. **For RAG**: See [ai_engineering/rag/README.md](ai_engineering/rag/README.md) for comprehensive materials
+**Just want to learn?**
+- Start: [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
+- Then work through: fundamentals → examples → reference → hard problems → prompting
+- For RAG: [ai_engineering/rag/README.md](ai_engineering/rag/README.md)
+- Time: 1 week basics, 3-4 weeks for depth
 
-**Time**: 1 week to understand the basics. 3-4 weeks to go deep.
+**Want to build projects?**
+- Open [Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html)
+- Follow 18-week curriculum or accelerate to 4-6 weeks
+- See [projects/](projects/) for working examples
 
-### Want to build projects?
-1. Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) in your browser (no server needed)
-2. Start Week 1 tasks to set up environment
-3. Follow Weeks 2-7 (RAG from scratch) + Weeks 8-12 (Agents) + Weeks 13-18 (Capstone)
-4. See [projects/](projects/) for working examples
-
-**Time**: 18 weeks full commitment. Scales down to 4-6 weeks if you accelerate.
-
-### Want to understand the structure first?
-Keep reading this file.
+**Prefer to understand structure first?**
+- Keep reading below
 
 ---
 
@@ -146,10 +123,10 @@ ai-engineer-transition/
 
 **Phase 1 (Weeks 2-7)**: Core Engineering - RAG from First Principles
 - Week 2: Prompting as engineering (JSON extraction)
-- Week 3: Embeddings & vector search → See [rag/notes.md - Vector Embeddings](ai_engineering/rag/notes.md#2-vector-embeddings--similarity-search)
-- Week 4: Vector databases → See [rag/quick-reference.md - Vector Databases](ai_engineering/rag/quick-reference.md#vector-databases)
-- Week 5: RAG done right (retrieval + re-ranking) → See [rag/implementation-examples.md](ai_engineering/rag/implementation-examples.md)
-- Week 6: Evaluation frameworks → See [rag/notes.md - Evaluation Metrics](ai_engineering/rag/notes.md#evaluation-metrics)
+- Week 3: Embeddings & vector search - See [rag/notes.md - Vector Embeddings](ai_engineering/rag/notes.md#2-vector-embeddings--similarity-search)
+- Week 4: Vector databases - See [rag/quick-reference.md - Vector Databases](ai_engineering/rag/quick-reference.md#vector-databases)
+- Week 5: RAG done right (retrieval + re-ranking) - See [rag/implementation-examples.md](ai_engineering/rag/implementation-examples.md)
+- Week 6: Evaluation frameworks - See [rag/notes.md - Evaluation Metrics](ai_engineering/rag/notes.md#evaluation-metrics)
 - Week 7: LLMOps & observability
 
 **Phase 2 (Weeks 8-12)**: Agentic AI
@@ -167,73 +144,21 @@ ai-engineer-transition/
 
 ---
 
-## Getting Started Right Now
-
-### Option 1: Learn Theory First
-**On GitHub Pages**: Read from [ai_engineering/README.md](https://santosh502.github.io/ai-engineer-transition/ai_engineering/README.md)
-
-**Locally** (after cloning):
-```bash
-# Open the learning path
-open ai_engineering/README.md
-
-# Then read
-ai_engineering/llm/01_llm_fundamentals.md
-```
-
-### Option 2: Use the Tracker (Recommended)
-**Live Version**: Open [Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html) on GitHub Pages (no server needed)
-
-**Locally** (after cloning):
-```bash
-# Open in your browser
-open tracker.html
-
-# Set a start date and begin tracking Week 1 tasks
-# For Phase 1 (RAG weeks), cross-reference: ai_engineering/rag/
-```
-
-### Option 2b: Deep Dive into RAG
-```bash
-# Jump directly to comprehensive RAG materials
-open ai_engineering/rag/README.md
-
-# Then choose:
-# - For theory: ai_engineering/rag/notes.md
-# - For code: ai_engineering/rag/implementation-examples.md
-# - For quick lookup: ai_engineering/rag/quick-reference.md
-```
-
-### Option 3: Run Existing Projects
-```bash
-# hello_world - basic Ollama integration
-cd projects/hello_world
-python main.py
-
-# Jsonify - production JSON extractor with tests
-cd projects/Jsonify
-python -m pytest tests/ -v      # Run tests
-python -m src.main "your text here"  # Use the CLI
-```
-
----
-
 ## How to Use This Repo
 
-**As a learner:**
+**Learning mode**
 1. Read modules in order (they build on each other)
-2. Run the code examples - don't just read them
+2. Run code examples - don't just read them
 3. Use the tracker to stay on schedule
-4. Build projects from the curriculum
 
-**As a reference:**
-- Jump to [ai_engineering/llm/03_quick_reference.md](ai_engineering/llm/03_quick_reference.md) for definitions and decision trees
-- Check [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for Week X resources and tasks
-- See [projects/](projects/) for working code examples
+**Reference mode**
+- Jump to [Quick Reference](ai_engineering/llm/03_quick_reference.md) for definitions and decision trees
+- Check [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for resources and tasks
+- See [projects/](projects/) for working code
 
-**As a self-challenge:**
-- Use the tracker's evaluations to check your understanding
-- Complete the 18-week capstone project
+**Self-challenge mode**
+- Complete evaluations to check your understanding
+- Build the 18-week capstone project
 - Red-team your own systems (Week 15)
 
 ---
@@ -270,54 +195,26 @@ Complete, comprehensive materials for mastering Retrieval-Augmented Generation:
 
 ## Tools You'll Use
 
-**LLM APIs & Platforms**
-- Anthropic Claude (primary)
-- OpenAI GPT (comparison)
-- Ollama (local models)
+**LLM APIs** - Anthropic Claude, OpenAI GPT, Ollama
 
-**Data & Vectors**
-- Pydantic (validation)
-- Vector databases (Qdrant, pgvector, Pinecone)
-- Sentence Transformers (embeddings)
+**Data & Vectors** - Pydantic, Vector databases (Qdrant, pgvector, Pinecone), Sentence Transformers
 
-**Building & Frameworks**
-- LangGraph (agent workflows)
-- LangChain (composing with LLMs)
-- Instructor (structured outputs)
+**Frameworks** - LangGraph, LangChain, Instructor
 
-**Evaluation & Observability**
-- RAGAS (RAG evaluation)
-- Langfuse (observability)
-- Custom metrics
+**Evaluation** - RAGAS, Langfuse, custom metrics
 
-See each week's resources in [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for the complete toolkit per phase.
+See [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for the complete toolkit per phase.
 
 ---
 
-## Host This Tracker For Your Own Use (No Changes Needed)
+## Host Your Own Tracker
 
-Want to use this 18-week AI engineering curriculum for yourself or your team? Simply fork and deploy - no customization required!
+Want to use this 18-week curriculum for yourself or your team? Simply fork and deploy - no customization required.
 
-### Quick Start (3 Steps)
-```bash
-# Step 1: Fork the repo (click fork on GitHub)
-# Your fork: https://github.com/YOUR_USERNAME/ai-engineer-transition
-
-# Step 2: Enable GitHub Pages in Settings → Pages
-# Select: main branch, / (root) folder
-
-# Step 3: Access your tracker
-# Your tracker: https://YOUR_USERNAME.github.io/ai-engineer-transition/tracker.html
-```
-
-**That's it!** Your own tracker is live and ready to use.
-
-### What You Get
-- Personal progress tracker
-- All 18 weeks of curriculum
-- Interactive checkboxes
-- Your own GitHub Pages URL
-- No coding/customization needed
+**3 steps:**
+1. Fork the repo on GitHub
+2. Enable GitHub Pages in Settings (main branch, root folder)
+3. Access your tracker at `https://YOUR_USERNAME.github.io/ai-engineer-transition/tracker.html`
 
 ---
 
@@ -325,14 +222,9 @@ Want to use this 18-week AI engineering curriculum for yourself or your team? Si
 
 This learning path and all materials are open and free to use, modify, and share.
 
-**Ready?** 
-
-**Start Here**: [Interactive Tracker on GitHub Pages](https://santosh502.github.io/ai-engineer-transition/tracker.html) (recommended)
-
-**Alternative**: Read [LLM Fundamentals](ai_engineering/llm/01_llm_fundamentals.md) first
-
-**For RAG**: Jump to [RAG Learning Materials](ai_engineering/rag/README.md)
-
----
+**Ready to start?**
+- **Recommended**: [Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html)
+- **Alternative**: [LLM Fundamentals](ai_engineering/llm/01_llm_fundamentals.md)
+- **For RAG**: [RAG Learning Materials](ai_engineering/rag/README.md)
 
 Good luck!
