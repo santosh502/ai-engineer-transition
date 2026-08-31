@@ -6,7 +6,7 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 
 ## What's Inside
 
-### 📚 **[notes.md](notes.md)** - Comprehensive Study Guide
+### **[notes.md](notes.md)** - Comprehensive Study Guide
 - What is RAG and why it matters
 - Core components: Retriever, Embeddings, Vector Stores, Generator
 - Complete pipeline architecture with visual diagrams
@@ -33,7 +33,7 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 
 **Best for:** Building and implementing RAG systems
 
-### ⚡ **[quick-reference.md](quick-reference.md)** - Quick Lookup
+### **[quick-reference.md](quick-reference.md)** - Quick Lookup
 - The 4 steps of RAG at a glance
 - Embedding models comparison
 - Vector database options
@@ -232,21 +232,6 @@ from langchain.vectorstores import Chroma
 db = Chroma.from_documents(chunks, embeddings)
 retriever = db.as_retriever()
 ```
-
----
-
-## Study Progress
-
-- [ ] Read notes.md - Core Concepts
-- [ ] Read notes.md - RAG Pipeline
-- [ ] Read notes.md - Components
-- [ ] Read quick-reference.md - Key takeaways
-- [ ] Study implementation-examples.md - Simple RAG
-- [ ] Study implementation-examples.md - Hybrid Retrieval
-- [ ] Build: Simple RAG project
-- [ ] Build: Hybrid RAG project
-- [ ] Evaluate: Set up metrics
-- [ ] Review: All three documents again
 
 ---
 
