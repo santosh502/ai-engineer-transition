@@ -16,7 +16,10 @@ ai_engineering/
 │   ├── assets/                            # Diagrams and supporting materials
 │   └── README.md                          # Learning sequence guide
 ├── rag/                           # Retrieval-Augmented Generation
-│   └── README.md                  # WIP - coming soon
+│   ├── README.md                  # Navigation & overview
+│   ├── notes.md                   # Comprehensive study guide
+│   ├── implementation-examples.md # Practical code examples
+│   └── quick-reference.md         # Quick lookup cheat sheet
 ├── agentic/                       # AI Agents & Multi-Agent Systems
 │   └── README.md                  # WIP - coming soon
 ├── NIPS-2017-attention-is-all-you-need-Paper.pdf
@@ -67,11 +70,26 @@ Complete learning path from theory to production. Learn: the architecture, how t
 - How to write effective prompts that work in production
 
 ### Retrieval-Augmented Generation (RAG)
-**Status**: Placeholder-structure ready, content coming soon.
+Complete learning materials for mastering RAG systems.
 
-Planning to cover: vector embeddings, semantic search, RAG pipeline architecture, chunking strategies, vector databases (Pinecone, Qdrant, pgvector), production patterns, evaluation metrics.
+**Files** (in suggested order):
+- [README.md](rag/README.md) - Overview and navigation
+- [notes.md](rag/notes.md) - Comprehensive study guide (concepts, diagrams, best practices)
+- [implementation-examples.md](rag/implementation-examples.md) - Practical code examples (9 working implementations)
+- [quick-reference.md](rag/quick-reference.md) - Quick lookups and cheat sheet during development
 
-In the meantime, see the [18-week curriculum](../tracker.html) Week 3-7 for the complete RAG learning path with hands-on projects.
+**Topics covered**:
+- Vector embeddings and similarity search
+- Semantic vs keyword search
+- RAG pipeline architecture
+- Chunking strategies (sliding window, recursive, hierarchical, etc.)
+- Vector databases (Qdrant, pgvector, Pinecone, Weaviate, FAISS, Milvus)
+- LLM integration with RAG
+- Prompt injection attacks in RAG systems
+- Evaluating RAG quality (retrieval precision, answer relevance, RAGAS metrics)
+- Production deployment patterns
+
+See the [18-week curriculum](../tracker.html) Week 3-7 for hands-on projects and structured progression.
 
 ### Agentic AI
 **Status**: Placeholder-structure ready, content coming soon.
@@ -88,7 +106,7 @@ In the meantime, see the [18-week curriculum](../tracker.html) Week 8-12 for the
 | **Self-Attention** | Lets tokens understand context from all positions | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) |
 | **Scaling Laws** | Bigger model + more data = predictably better | [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md) |
 | **Fine-tuning** | Customize models for specific domains/tasks | [02_practical_examples.md §4](llm/02_practical_examples.md) |
-| **RAG** | Ground LLM answers in real documents | [rag/README.md](rag/README.md) (coming soon) |
+| **RAG** | Ground LLM answers in real documents | [rag/README.md](rag/README.md) |
 | **Agents** | LLMs coordinating tools for autonomous action | [agentic/README.md](agentic/README.md) (coming soon) |
 | **Reasoning Models** | "Think longer" for harder problems | [01_llm_fundamentals.md §5](llm/01_llm_fundamentals.md) |
 | **Multimodality** | LLMs understanding vision, audio, text | [01_llm_fundamentals.md §7](llm/01_llm_fundamentals.md) |
