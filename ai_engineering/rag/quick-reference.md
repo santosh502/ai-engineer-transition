@@ -1,6 +1,6 @@
 # RAG Quick Reference Guide
 
-> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
+**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
 
 ## At a Glance
 
@@ -12,12 +12,12 @@ Takes a query → Finds relevant documents → Generates answer based on those d
 
 ## The 4 Steps
 
-| Step | What | How | Output |
+| Step · What · How · Output |
 |------|------|-----|--------|
-| **1. Query Encoding** | Convert query to vector | Use embedding model | Query vector (e.g., 1536D) |
-| **2. Retrieval** | Find similar docs | Vector DB similarity search | Top K relevant chunks |
-| **3. Augmentation** | Combine context | Format chunks + query into prompt | Enriched prompt |
-| **4. Generation** | Create answer | Send to LLM | Final answer |
+| **1. Query Encoding** · Convert query to vector · Use embedding model · Query vector (e.g., 1536D) |
+| **2. Retrieval** · Find similar docs · Vector DB similarity search · Top K relevant chunks |
+| **3. Augmentation** · Combine context · Format chunks + query into prompt · Enriched prompt |
+| **4. Generation** · Create answer · Send to LLM · Final answer |
 
 ---
 
@@ -134,15 +134,15 @@ ANSWER:"""
 
 ## Common Failure Modes & Fixes
 
-| Problem | Symptom | Fix |
+| Problem · Symptom · Fix |
 |---------|---------|-----|
-| Wrong docs retrieved | "I don't have info about that" | Use hybrid search, rerank, or rewrite chunks |
-| Context too small | Missing important details | Increase chunk size or overlap |
-| Context too large | Token limit exceeded | Use reranking, compression, or smaller K |
-| Embedding mismatch | Retrieval fails silently | Use same model for index & query |
-| Hallucinations | LLM makes up facts | Use stricter prompts, source attribution |
-| Slow queries | Takes >1 second | Add indexing, caching, reduce K |
-| Stale data | Old information returned | Refresh embeddings, version control |
+| Wrong docs retrieved · "I don't have info about that" · Use hybrid search, rerank, or rewrite chunks |
+| Context too small · Missing important details · Increase chunk size or overlap |
+| Context too large · Token limit exceeded · Use reranking, compression, or smaller K |
+| Embedding mismatch · Retrieval fails silently · Use same model for index & query |
+| Hallucinations · LLM makes up facts · Use stricter prompts, source attribution |
+| Slow queries · Takes >1 second · Add indexing, caching, reduce K |
+| Stale data · Old information returned · Refresh embeddings, version control |
 
 ---
 

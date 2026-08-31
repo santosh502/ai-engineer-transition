@@ -1,6 +1,6 @@
 # Prompt Engineering: Anthropic vs OpenAI Best Practices
 
-> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
+**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
 
 *Official guidance from the two major LLM labs - philosophies and practical examples.*
 
@@ -10,12 +10,12 @@
 
 Anthropic and OpenAI have different philosophies on prompt engineering, reflecting their models' design and alignment approaches.
 
-| Aspect | OpenAI | Anthropic |
+| Aspect · OpenAI · Anthropic |
 |--------|--------|-----------|
-| **Philosophy** | Explicit instructions + examples | Constitutional principles + reasoning |
-| **Model focus** | Pattern matching from examples | Thoughtful analysis and reasoning |
-| **System message** | Specific role/task definition | Constitutional guidance |
-| **Best for** | Well-defined tasks, consistency | Complex problems, explainability |
+| **Philosophy** · Explicit instructions + examples · Constitutional principles + reasoning |
+| **Model focus** · Pattern matching from examples · Thoughtful analysis and reasoning |
+| **System message** · Specific role/task definition · Constitutional guidance |
+| **Best for** · Well-defined tasks, consistency · Complex problems, explainability |
 
 ---
 
@@ -281,8 +281,8 @@ system_prompt = """Extract information as JSON with this structure:
   "name": "string (person's full name)",
   "email": "string (email address) or null if not found",
   "phone": "string (phone number) or null if not found",
-  "urgency": "enum: low | medium | high",
-  "issue_type": "enum: billing | technical | account | other"
+  "urgency": "enum: low · medium · high",
+  "issue_type": "enum: billing · technical · account · other"
 }
 
 Return ONLY valid JSON, no explanation."""
@@ -1558,17 +1558,17 @@ metrics = {
 
 ## Quick Reference: Which Pattern to Use
 
-| Situation | Best Pattern | Why |
+| Situation · Best Pattern · Why |
 |-----------|--------------|-----|
-| **Need reasoning about complex decision** | Thought-Action-Observation or Extended Thinking | Iterative refinement catches errors |
-| **Exploring multiple solution paths** | Tree of Thoughts | Avoids premature optimization |
-| **Have specific constraints (performance, security)** | Directional Stimulus | Keeps solutions aligned |
-| **Analyzing images or diagrams** | Multimodal Prompting | Direct visual reasoning |
-| **Need deterministic API calls** | Function Calling | Structured, reliable automation |
-| **Have expensive, reused context** | Prompt Caching | 90% cost reduction |
-| **Working with large amounts of data** | Multi-turn Conversation | Cheaper than dumping all context |
-| **Need to optimize spending** | Token Counting + Right-sized max_tokens | Avoid surprise costs |
-| **Building production system** | Hybrid Approach + Testing + Error Handling | Reliable, measurable quality |
+| **Need reasoning about complex decision** · Thought-Action-Observation or Extended Thinking · Iterative refinement catches errors |
+| **Exploring multiple solution paths** · Tree of Thoughts · Avoids premature optimization |
+| **Have specific constraints (performance, security)** · Directional Stimulus · Keeps solutions aligned |
+| **Analyzing images or diagrams** · Multimodal Prompting · Direct visual reasoning |
+| **Need deterministic API calls** · Function Calling · Structured, reliable automation |
+| **Have expensive, reused context** · Prompt Caching · 90% cost reduction |
+| **Working with large amounts of data** · Multi-turn Conversation · Cheaper than dumping all context |
+| **Need to optimize spending** · Token Counting + Right-sized max_tokens · Avoid surprise costs |
+| **Building production system** · Hybrid Approach + Testing + Error Handling · Reliable, measurable quality |
 
 ---
 
@@ -1623,26 +1623,26 @@ metrics = {
 
 ## Complete Pattern Summary
 
-| Pattern | Best For | Complexity | Cost | Example |
+| Pattern · Best For · Complexity · Cost · Example |
 |---------|----------|-----------|------|---------|
-| **Constitutional Guidance** | Values-driven responses | Low | Low | Customer support with principles |
-| **Structured Reasoning** | Clear thinking | Medium | Medium | Code review, analysis |
-| **Separated Content** | Prompt injection safety | Low | Low | User input processing |
-| **Extended Thinking** | Complex problems | High | High | System architecture design |
-| **Multi-Turn Dialog** | Context building | Medium | Medium | Debugging sessions |
-| **Few-Shot Learning** | Pattern recognition | Medium | Low | Sentiment classification |
-| **Explicit Format** | Structured data | Low | Low | Extract info to JSON |
-| **Chain-of-Thought** | Step-by-step reasoning | Medium | Medium | Investment analysis |
-| **Role-Based** | Perspective adoption | Low | Low | Code review as expert |
-| **TAO Loop** | Iterative debugging | High | High | Root cause analysis |
-| **Tree of Thoughts** | Multi-path exploration | Very High | Very High | Complex decisions |
-| **Directional Stimulus** | Constraint alignment | Medium | Low | Feature design |
-| **Iterative Refinement** | Progressive improvement | High | High | Architecture design |
-| **Multimodal** | Visual reasoning | Medium | Medium | Diagram analysis |
-| **Function Calling** | Tool automation | Medium | Medium | Database queries |
-| **Prompt Caching** | Cost optimization | Low | Very Low | Repeated context |
-| **Token Optimization** | Budget management | Low | Low | Cost tracking |
-| **Testing & Eval** | Quality assurance | High | Medium | Production monitoring |
+| **Constitutional Guidance** · Values-driven responses · Low · Low · Customer support with principles |
+| **Structured Reasoning** · Clear thinking · Medium · Medium · Code review, analysis |
+| **Separated Content** · Prompt injection safety · Low · Low · User input processing |
+| **Extended Thinking** · Complex problems · High · High · System architecture design |
+| **Multi-Turn Dialog** · Context building · Medium · Medium · Debugging sessions |
+| **Few-Shot Learning** · Pattern recognition · Medium · Low · Sentiment classification |
+| **Explicit Format** · Structured data · Low · Low · Extract info to JSON |
+| **Chain-of-Thought** · Step-by-step reasoning · Medium · Medium · Investment analysis |
+| **Role-Based** · Perspective adoption · Low · Low · Code review as expert |
+| **TAO Loop** · Iterative debugging · High · High · Root cause analysis |
+| **Tree of Thoughts** · Multi-path exploration · Very High · Very High · Complex decisions |
+| **Directional Stimulus** · Constraint alignment · Medium · Low · Feature design |
+| **Iterative Refinement** · Progressive improvement · High · High · Architecture design |
+| **Multimodal** · Visual reasoning · Medium · Medium · Diagram analysis |
+| **Function Calling** · Tool automation · Medium · Medium · Database queries |
+| **Prompt Caching** · Cost optimization · Low · Very Low · Repeated context |
+| **Token Optimization** · Budget management · Low · Low · Cost tracking |
+| **Testing & Eval** · Quality assurance · High · Medium · Production monitoring |
 
 ---
 

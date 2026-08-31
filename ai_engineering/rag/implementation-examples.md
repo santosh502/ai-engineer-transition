@@ -1,6 +1,6 @@
 # RAG Implementation Examples
 
-> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
+**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
 
 ## 1. Simple RAG Pipeline with LangChain
 

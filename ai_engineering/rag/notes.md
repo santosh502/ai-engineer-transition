@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation (RAG) - Study Notes
 
-> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
+**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
 
 ## What is RAG?
 
@@ -74,7 +74,7 @@ Embeddings are numerical representations of text captured in high-dimensional sp
 - **PCA (Principal Component Analysis)**: Extracts components with greatest variance
 - **FAISS (Facebook AI Similarity Search)**: Efficient vector indexing for retrieval
 
-**Reference:** [Visualize Vector Embeddings in a RAG System](https://medium.com/@sarmadafzalj/visualize-vector-embeddings-in-a-rag-system-89d0c44a3be4) | [Text Embeddings and Vector Search](https://www.btelligent.com/en/blog/text-embeddings-vector-search)
+**Reference:** [Visualize Vector Embeddings in a RAG System](https://medium.com/@sarmadafzalj/visualize-vector-embeddings-in-a-rag-system-89d0c44a3be4) · [Text Embeddings and Vector Search](https://www.btelligent.com/en/blog/text-embeddings-vector-search)
 
 ### 3. **Knowledge Base / Vector Store**
 - Repository of documents/data to retrieve from
@@ -98,14 +98,14 @@ How you split documents directly impacts retrieval quality:
 
 **Chunking Methods:**
 
-| Strategy | Best For | Pros | Cons |
+| Strategy · Best For · Pros · Cons |
 |----------|----------|------|------|
-| **Fixed-size** | General documents | Simple, predictable | Splits sentences, loses context |
-| **Sentence-based** | Structured text | Preserves sentences | May be too small or large |
-| **Paragraph-based** | Reports, papers | Natural boundaries | Varying sizes |
-| **Recursive** (Recommended) | Most use cases | Balances efficiency & context | Slightly complex |
-| **Semantic** | Unstructured data | Groups by meaning | Computationally expensive |
-| **Overlapping** | Technical content | Preserves context flow | More storage overhead |
+| **Fixed-size** · General documents · Simple, predictable · Splits sentences, loses context |
+| **Sentence-based** · Structured text · Preserves sentences · May be too small or large |
+| **Paragraph-based** · Reports, papers · Natural boundaries · Varying sizes |
+| **Recursive** (Recommended) · Most use cases · Balances efficiency & context · Slightly complex |
+| **Semantic** · Unstructured data · Groups by meaning · Computationally expensive |
+| **Overlapping** · Technical content · Preserves context flow · More storage overhead |
 
 **Best Practice:**
 - Use **RecursiveCharacterTextSplitter** as default (hierarchy of natural separators)
@@ -113,7 +113,7 @@ How you split documents directly impacts retrieval quality:
 - For unstructured docs (notes, social media): Use semantic or embedding-based chunking
 - Always preserve metadata: title, author, URL, timestamp, page numbers
 
-**Reference:** [13 RAG chunking strategies for better retrieval](https://www.meilisearch.com/blog/rag-chunking-strategies) | [RAG Document Chunking: 6 Best Practices](https://airbyte.com/agentic-data/ag-document-chunking-best-practices) | [11 Chunking Strategies for RAG — Simplified & Visualized](https://masteringllm.medium.com/11-chunking-strategies-for-rag-simplified-visualized-df0dbec8e373)
+**Reference:** [13 RAG chunking strategies for better retrieval](https://www.meilisearch.com/blog/rag-chunking-strategies) · [RAG Document Chunking: 6 Best Practices](https://airbyte.com/agentic-data/ag-document-chunking-best-practices) · [11 Chunking Strategies for RAG — Simplified & Visualized](https://masteringllm.medium.com/11-chunking-strategies-for-rag-simplified-visualized-df0dbec8e373)
 
 ### 5. **Generator (LLM)**
 - Takes retrieved context + original query
@@ -186,16 +186,16 @@ This happens for each query in real-time.
 
 ## Key Challenges & Solutions
 
-| Challenge | Impact | Solution |
+| Challenge · Impact · Solution |
 |-----------|--------|----------|
-| **Poor retrieval results** | LLM generates wrong answers | Use hybrid retrieval, reranking, better chunking |
-| **Context contradiction** | LLM confused by conflicting info | Filter contradictory results, rerank better |
-| **Lost context in chunks** | Important info split across chunks | Use overlapping chunks, adjust chunk size |
-| **Embedding model mismatch** | Retrieval fails | Use same model for indexing & retrieval |
-| **Scalability issues** | Slow queries | Use vector indexes (FAISS), parallel processing |
-| **Knowledge base updates** | Stale information | Version control, update pipeline automation |
-| **Hallucinations** | LLM makes up info | Better context, source attribution |
-| **Token limit exceeded** | Can't fit all context | Compress context, select top-K smarter |
+| **Poor retrieval results** · LLM generates wrong answers · Use hybrid retrieval, reranking, better chunking |
+| **Context contradiction** · LLM confused by conflicting info · Filter contradictory results, rerank better |
+| **Lost context in chunks** · Important info split across chunks · Use overlapping chunks, adjust chunk size |
+| **Embedding model mismatch** · Retrieval fails · Use same model for indexing & retrieval |
+| **Scalability issues** · Slow queries · Use vector indexes (FAISS), parallel processing |
+| **Knowledge base updates** · Stale information · Version control, update pipeline automation |
+| **Hallucinations** · LLM makes up info · Better context, source attribution |
+| **Token limit exceeded** · Can't fit all context · Compress context, select top-K smarter |
 
 ---
 
@@ -241,14 +241,14 @@ This happens for each query in real-time.
 
 ## Popular RAG Frameworks & Tools
 
-| Framework | Focus | Best For |
+| Framework · Focus · Best For |
 |-----------|-------|----------|
-| **LangChain** | Full-featured framework | General RAG applications |
-| **LlamaIndex** | Data indexing & retrieval | Structured knowledge |
-| **Haystack** | Modular pipelines | Custom RAG systems |
-| **FastEmbed** | Lightweight embeddings | Edge devices, performance |
-| **Azure AI Search** | Enterprise RAG | Cloud deployments |
-| **Weaviate** | Vector database | Open-source solutions |
+| **LangChain** · Full-featured framework · General RAG applications |
+| **LlamaIndex** · Data indexing & retrieval · Structured knowledge |
+| **Haystack** · Modular pipelines · Custom RAG systems |
+| **FastEmbed** · Lightweight embeddings · Edge devices, performance |
+| **Azure AI Search** · Enterprise RAG · Cloud deployments |
+| **Weaviate** · Vector database · Open-source solutions |
 
 ---
 

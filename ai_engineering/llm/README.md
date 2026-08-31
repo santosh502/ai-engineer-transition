@@ -1,6 +1,6 @@
 # LLM Learning Path
 
-> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
+**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
 
 A structured sequence to go from "what's an LLM?" to building production systems.
 

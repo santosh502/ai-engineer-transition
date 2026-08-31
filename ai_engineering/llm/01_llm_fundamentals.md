@@ -1,6 +1,6 @@
 # AI Engineering - LLM Fundamentals
 
-> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
+**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
 
 ---
 
@@ -21,10 +21,10 @@
 
 At the simplest level, an LLM is **two artifacts**:
 
-| Artifact | Contents | Example (Llama 2 70B) |
+| Artifact · Contents · Example (Llama 2 70B) |
 |---|---|---|
-| **Parameters (weights)** | The learned numbers of the neural network | 70B params × 2 bytes = **140 GB** |
-| **Run/inference code** | Executes the network on the weights | A few hundred lines, no internet needed to run |
+| **Parameters (weights)** · The learned numbers of the neural network · 70B params × 2 bytes = **140 GB** |
+| **Run/inference code** · Executes the network on the weights · A few hundred lines, no internet needed to run |
 
 ### Key Categories
 
@@ -107,9 +107,9 @@ Output = 0.4 * (value of "bank") + 0.3 * (value of "executive") + ...
 
 Real models run multiple attention computations *in parallel* with **different learned projections** - each "head" learns to track different relationships:
 
-| Head 1 | Head 2 | Head 3 | ... |
+| Head 1 · Head 2 · Head 3 · ... |
 |--------|--------|--------|-----|
-| Subject-verb agreement | Synonym relationships | Long-range dependencies | ... |
+| Subject-verb agreement · Synonym relationships · Long-range dependencies · ... |
 
 **Example**: GPT-3 uses 96 heads per attention layer - 96 independent attention patterns running simultaneously, each learning to capture different linguistic structures.
 
@@ -235,12 +235,12 @@ This example trains the model to prefer B-like behavior
 
 #### Methods Overview
 
-| Method | Mechanism | Pros | Cons |
+| Method · Mechanism · Pros · Cons |
 |--------|-----------|------|------|
-| **RLHF** | Train reward model on comparisons, then use RL (PPO) to optimize against it | Strong ceiling | Complex, unstable, computationally expensive |
-| **DPO** (Direct Preference Optimization) | Reframe alignment as supervised objective directly on preference pairs; no separate reward model | Simpler, more stable | Can hit lower ceiling without further tuning |
-| **RLAIF** (RL from AI Feedback) | Replace human labels with AI-generated preferences | Scales cheaply | Quality sometimes lower than RLHF |
-| **GRPO** | Group-based RL for reasoning-specific training | Efficient for step-by-step reasoning | Specialized use case |
+| **RLHF** · Train reward model on comparisons, then use RL (PPO) to optimize against it · Strong ceiling · Complex, unstable, computationally expensive |
+| **DPO** (Direct Preference Optimization) · Reframe alignment as supervised objective directly on preference pairs; no separate reward model · Simpler, more stable · Can hit lower ceiling without further tuning |
+| **RLAIF** (RL from AI Feedback) · Replace human labels with AI-generated preferences · Scales cheaply · Quality sometimes lower than RLHF |
+| **GRPO** · Group-based RL for reasoning-specific training · Efficient for step-by-step reasoning · Specialized use case |
 
 **Industry consensus (2026)**: Train models to be **helpful, honest/truthful, and harmless** - but these values sometimes conflict (e.g., honesty that an AI can't do something vs. helpfully trying anyway).
 
@@ -250,8 +250,8 @@ This example trains the model to prefer B-like behavior
 # Simplified DPO training loop (pseudocode)
 for prompt, preferred_response, dispreferred_response in training_data:
     # Get log probabilities from model
-    p_preferred = model.log_prob(preferred_response | prompt)
-    p_dispreferred = model.log_prob(dispreferred_response | prompt)
+    p_preferred = model.log_prob(preferred_response · prompt)
+    p_dispreferred = model.log_prob(dispreferred_response · prompt)
     
     # Encourage model to prefer the preferred response
     loss = -log_sigmoid(p_preferred - p_dispreferred)
@@ -280,12 +280,12 @@ where α, β ≈ 0.07 to 0.1
 ### What This Means Practically
 
 ```
-Model Size       | Training Data     | Rough Accuracy Improvement
-10M params       | 10B tokens        | ~60% on benchmarks
-100M params      | 100B tokens       | ~75%
-1B params        | 1T tokens         | ~85%
-10B params       | 5T tokens         | ~92%
-70B params       | 20T+ tokens       | ~95%+
+Model Size       · Training Data     · Rough Accuracy Improvement
+10M params       · 10B tokens        · ~60% on benchmarks
+100M params      · 100B tokens       · ~75%
+1B params        · 1T tokens         · ~85%
+10B params       · 5T tokens         · ~92%
+70B params       · 20T+ tokens       · ~95%+
 ```
 
 **Key insight**: Improvements in next-token prediction *reliably correlate* with improvements on downstream tasks (math, coding, reasoning, factual questions, etc.). This is why so much industry investment has gone into:
@@ -449,12 +449,12 @@ Each sub-agent is specialized; orchestrator coordinates.
 
 ### Risks & Mitigations
 
-| Risk | Example | Mitigation |
+| Risk · Example · Mitigation |
 |------|---------|-----------|
-| **Hallucination** | Agent invents API endpoints that don't exist | Validate tool responses, use RAG with real data |
-| **Tool misuse** | Agent calls right tool with wrong parameters | Tool schema validation, least-privilege permissions |
-| **Prompt injection** | Untrusted data contains hidden instructions | Input filtering, separate trusted/untrusted content |
-| **Cascading failures** | One agent's mistake cascades through multi-agent chain | Error handling, approval gates for high-risk actions |
+| **Hallucination** · Agent invents API endpoints that don't exist · Validate tool responses, use RAG with real data |
+| **Tool misuse** · Agent calls right tool with wrong parameters · Tool schema validation, least-privilege permissions |
+| **Prompt injection** · Untrusted data contains hidden instructions · Input filtering, separate trusted/untrusted content |
+| **Cascading failures** · One agent's mistake cascades through multi-agent chain · Error handling, approval gates for high-risk actions |
 
 ---
 
@@ -622,18 +622,18 @@ model might leak data or give wrong answers.
 
 ## 9. Quick-Reference Summary
 
-| Concept | Key Idea | Example |
+| Concept · Key Idea · Example |
 |---------|----------|---------|
-| **LLM Structure** | Weights + inference code; decoder-only transformers | Llama 2, Claude, GPT |
-| **Self-Attention** | Every token attends to every other token in parallel | Determining pronoun references, long-range dependencies |
-| **Pretraining** | Next-token prediction on internet-scale text | Model learns patterns but can hallucinate |
-| **Fine-tuning** | SFT (Q&A pairs) → Preference alignment (RLHF/DPO) | Model learns to be helpful, honest, harmless |
-| **Scaling Laws** | More params + more data → predictably better | GPT-3 (175B) beats smaller models on benchmarks |
-| **Reasoning Models** | Test-time compute - think longer to solve harder problems | o1 scores 74% on AIME vs GPT-4o's 12% |
-| **Tool Use / Agents** | LLM coordinates tools, memory, other agents | Writing code, searching web, delegating subtasks |
-| **RAG** | Augment model knowledge with external documents | Answering questions about recent events |
-| **Multimodality** | Transformers handle vision, audio, text | Image captioning, speech-to-speech conversation |
-| **Security Risks** | Jailbreaks, prompt injection, data poisoning | Defense-in-depth: filtering, guardrails, permissions, approval gates |
+| **LLM Structure** · Weights + inference code; decoder-only transformers · Llama 2, Claude, GPT |
+| **Self-Attention** · Every token attends to every other token in parallel · Determining pronoun references, long-range dependencies |
+| **Pretraining** · Next-token prediction on internet-scale text · Model learns patterns but can hallucinate |
+| **Fine-tuning** · SFT (Q&A pairs) → Preference alignment (RLHF/DPO) · Model learns to be helpful, honest, harmless |
+| **Scaling Laws** · More params + more data → predictably better · GPT-3 (175B) beats smaller models on benchmarks |
+| **Reasoning Models** · Test-time compute - think longer to solve harder problems · o1 scores 74% on AIME vs GPT-4o's 12% |
+| **Tool Use / Agents** · LLM coordinates tools, memory, other agents · Writing code, searching web, delegating subtasks |
+| **RAG** · Augment model knowledge with external documents · Answering questions about recent events |
+| **Multimodality** · Transformers handle vision, audio, text · Image captioning, speech-to-speech conversation |
+| **Security Risks** · Jailbreaks, prompt injection, data poisoning · Defense-in-depth: filtering, guardrails, permissions, approval gates |
 
 ---
 

@@ -1,6 +1,6 @@
 # AI Engineering Learning Path
 
-> **Navigation** - [LLM Course](llm/README.md) | [RAG Guide](rag/README.md) | [Agentic AI](agentic/README.md)
+**Navigation** - [LLM Course](llm/README.md) · [RAG Guide](rag/README.md) · [Agentic AI](agentic/README.md)
 
 A practical guide to understanding Large Language Models-how they actually work, how to build with them, and what matters in 2026.
 
@@ -102,17 +102,17 @@ In the meantime, see the [18-week curriculum](../tracker.html) Week 8-12 for the
 
 ## Key Concepts At a Glance
 
-| Concept | Why It Matters | Learn More |
+| Concept · Why It Matters · Learn More |
 |---------|---|---|
-| **Transformers** | The architecture behind every major LLM | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) or [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) (deep dive) |
-| **Self-Attention** | Lets tokens understand context from all positions | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) |
-| **Scaling Laws** | Bigger model + more data = predictably better | [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md) |
-| **Fine-tuning** | Customize models for specific domains/tasks | [02_practical_examples.md §4](llm/02_practical_examples.md) |
-| **RAG** | Ground LLM answers in real documents | [rag/README.md](rag/README.md) |
-| **Agents** | LLMs coordinating tools for autonomous action | [agentic/README.md](agentic/README.md) (coming soon) |
-| **Reasoning Models** | "Think longer" for harder problems | [01_llm_fundamentals.md §5](llm/01_llm_fundamentals.md) |
-| **Multimodality** | LLMs understanding vision, audio, text | [01_llm_fundamentals.md §7](llm/01_llm_fundamentals.md) |
-| **Security** | Jailbreaks, injection, alignment challenges | [04_hard_problems.md](llm/04_hard_problems.md) + [05_prompt_engineering.md](llm/05_prompt_engineering.md) |
+| **Transformers** · The architecture behind every major LLM · [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) or [00_attention_is_all_you_need.md](llm/00_attention_is_all_you_need.md) (deep dive) |
+| **Self-Attention** · Lets tokens understand context from all positions · [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) |
+| **Scaling Laws** · Bigger model + more data = predictably better · [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md) |
+| **Fine-tuning** · Customize models for specific domains/tasks · [02_practical_examples.md §4](llm/02_practical_examples.md) |
+| **RAG** · Ground LLM answers in real documents · [rag/README.md](rag/README.md) |
+| **Agents** · LLMs coordinating tools for autonomous action · [agentic/README.md](agentic/README.md) (coming soon) |
+| **Reasoning Models** · "Think longer" for harder problems · [01_llm_fundamentals.md §5](llm/01_llm_fundamentals.md) |
+| **Multimodality** · LLMs understanding vision, audio, text · [01_llm_fundamentals.md §7](llm/01_llm_fundamentals.md) |
+| **Security** · Jailbreaks, injection, alignment challenges · [04_hard_problems.md](llm/04_hard_problems.md) + [05_prompt_engineering.md](llm/05_prompt_engineering.md) |
 
 ## Tools & Platforms
 

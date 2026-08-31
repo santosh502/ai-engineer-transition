@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation (RAG) - Learning Materials
 
-> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
+**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
 
 ## Overview
 
@@ -148,24 +148,24 @@ Query → Encode → Retrieve → Augment → Generate → Answer
 
 ## Popular Frameworks
 
-| Framework | Use Case | Learning Curve |
+| Framework · Use Case · Learning Curve |
 |-----------|----------|-----------------|
-| **LangChain** | General RAG, full-featured | Medium |
-| **LlamaIndex** | Data indexing & retrieval | Low |
-| **Haystack** | Custom modular pipelines | Medium |
-| **FastEmbed** | Lightweight embeddings | Low |
+| **LangChain** · General RAG, full-featured · Medium |
+| **LlamaIndex** · Data indexing & retrieval · Low |
+| **Haystack** · Custom modular pipelines · Medium |
+| **FastEmbed** · Lightweight embeddings · Low |
 
 ---
 
 ## Common Challenges
 
-| Challenge | Root Cause | Solution |
+| Challenge · Root Cause · Solution |
 |-----------|-----------|----------|
-| Wrong docs retrieved | Poor chunking or embedding | Hybrid search, reranking |
-| Context too small | Low chunk size | Increase chunk size or overlap |
-| Token overflow | Too many retrieved chunks | Reranking, compression |
-| Slow queries | No indexing/caching | Add vector DB indexing |
-| Hallucinations | Poor context | Better chunking, source attribution |
+| Wrong docs retrieved · Poor chunking or embedding · Hybrid search, reranking |
+| Context too small · Low chunk size · Increase chunk size or overlap |
+| Token overflow · Too many retrieved chunks · Reranking, compression |
+| Slow queries · No indexing/caching · Add vector DB indexing |
+| Hallucinations · Poor context · Better chunking, source attribution |
 
 ---
 

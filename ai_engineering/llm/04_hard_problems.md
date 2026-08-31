@@ -1,6 +1,6 @@
 # Hard Problems & Limitations in LLMs
 
-> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
+**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
 
 *The gap between "works in research" and "works in production" - where current models actually fail.*
 
@@ -33,13 +33,13 @@ Actual model output:
 
 ### Why Current Fixes Are Incomplete
 
-| Approach | What It Does | Why It Fails |
+| Approach · What It Does · Why It Fails |
 |----------|---|---|
-| **RAG** | Ground answers in real documents | Still hallucinates within retrieved context; retrieval can miss documents |
-| **Fine-tuning on QA pairs** | Model learns what "good answers" look like | Reinforces confident-but-wrong patterns |
-| **Temperature lowering** | Makes model more deterministic | Doesn't reduce hallucination rate, just makes it consistent |
-| **Uncertainty quantification** | Get model to express confidence | Models can be confident while wrong |
-| **Constitutional AI** | Align to principle of honesty | Models still rationalize fabrications as "plausible" |
+| **RAG** · Ground answers in real documents · Still hallucinates within retrieved context; retrieval can miss documents |
+| **Fine-tuning on QA pairs** · Model learns what "good answers" look like · Reinforces confident-but-wrong patterns |
+| **Temperature lowering** · Makes model more deterministic · Doesn't reduce hallucination rate, just makes it consistent |
+| **Uncertainty quantification** · Get model to express confidence · Models can be confident while wrong |
+| **Constitutional AI** · Align to principle of honesty · Models still rationalize fabrications as "plausible" |
 
 ### Why Hallucination is Architectural, Not Just Training
 

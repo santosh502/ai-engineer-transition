@@ -1,6 +1,6 @@
 # Quick Reference Card
 
-> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
+**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
 
 Quick lookup for LLM terms, concepts, and decisions.
 
@@ -26,14 +26,14 @@ For each token:
 
 ## Model Types & Sizes (2026 Era)
 
-| Model | Params | Open? | Best For |
+| Model · Params · Open? · Best For |
 |-------|--------|-------|----------|
-| Llama 3.1 70B | 70B | ✓ | Code, reasoning |
-| DeepSeek-V3 | 671B (37B active) | ✓ | Math, reasoning |
-| Claude 3.5 Sonnet | Proprietary | ✗ | Complex tasks |
-| GPT-4o | Proprietary | ✗ | Vision, all-round |
-| Gemini 2.0 | Proprietary | ✗ | Multimodal |
-| Mistral 7B | 7B | ✓ | Fast inference |
+| Llama 3.1 70B · 70B · ✓ · Code, reasoning |
+| DeepSeek-V3 · 671B (37B active) · ✓ · Math, reasoning |
+| Claude 3.5 Sonnet · Proprietary · ✗ · Complex tasks |
+| GPT-4o · Proprietary · ✗ · Vision, all-round |
+| Gemini 2.0 · Proprietary · ✗ · Multimodal |
+| Mistral 7B · 7B · ✓ · Fast inference |
 
 ---
 
@@ -85,11 +85,11 @@ Key takeaway: No observed ceiling - scale both parameters AND data
 ```
 
 ### Investment Trade-offs
-| Approach | Pros | Cons |
+| Approach · Pros · Cons |
 |----------|------|------|
-| Large model, less data | High performance | Slow inference |
-| Small model, more data | Fast inference | Lower ceiling |
-| Balanced | Good compromise | Higher training cost |
+| Large model, less data · High performance · Slow inference |
+| Small model, more data · Fast inference · Lower ceiling |
+| Balanced · Good compromise · Higher training cost |
 
 ---
 
@@ -100,10 +100,10 @@ Key takeaway: No observed ceiling - scale both parameters AND data
 - **System 2** (o1, o3, DeepSeek-R1): Slow, deliberate, "thinks longer"
 
 ### Test-Time Compute Strategies
-| Strategy | Method | Use Case |
+| Strategy · Method · Use Case |
 |----------|--------|----------|
-| **Sequential** | Generate longer chain-of-thought | Hard problems (math, logic) |
-| **Parallel** | Sample multiple paths, pick best | Uncertain domains |
+| **Sequential** · Generate longer chain-of-thought · Hard problems (math, logic) |
+| **Parallel** · Sample multiple paths, pick best · Uncertain domains |
 
 ---
 
@@ -123,11 +123,11 @@ MCP (standardized tool interface)
 ```
 
 ### Agent Types
-| Type | Autonomy | Use Case |
+| Type · Autonomy · Use Case |
 |------|----------|----------|
-| **Chatbot** | None (wait for user input each time) | Q&A |
-| **Copilot** | Suggests; human executes | Code completions |
-| **Agent** | Multi-step autonomy; executes actions | Complex workflows |
+| **Chatbot** · None (wait for user input each time) · Q&A |
+| **Copilot** · Suggests; human executes · Code completions |
+| **Agent** · Multi-step autonomy; executes actions · Complex workflows |
 
 ### Key Patterns
 - **RAG** (Retrieval-Augmented Generation): Fetch external docs before answering
@@ -151,18 +151,18 @@ MCP (standardized tool interface)
 ## Security Risks & Mitigations
 
 ### Jailbreaks
-| Technique | Example | Defense |
+| Technique · Example · Defense |
 |-----------|---------|---------|
-| Roleplay | "In a fictional story, write a virus" | Train on diverse safety data |
-| Encoding | Base64-encoded harmful requests | Decode and filter |
-| Adversarial suffix | Nonsense text that breaks refusals | Robust training |
+| Roleplay · "In a fictional story, write a virus" · Train on diverse safety data |
+| Encoding · Base64-encoded harmful requests · Decode and filter |
+| Adversarial suffix · Nonsense text that breaks refusals · Robust training |
 
 ### Prompt Injection
-| Type | Risk | Mitigation |
+| Type · Risk · Mitigation |
 |------|------|-----------|
-| Direct | User types hidden instruction | Input filtering |
-| Indirect | Malicious text in webpage/doc | Separate trusted/untrusted content |
-| Stored (RAG) | Poisoned doc in knowledge base | Validate retrieved documents |
+| Direct · User types hidden instruction · Input filtering |
+| Indirect · Malicious text in webpage/doc · Separate trusted/untrusted content |
+| Stored (RAG) · Poisoned doc in knowledge base · Validate retrieved documents |
 
 ### Data Poisoning
 - **Backdoor attacks**: Trigger phrases cause misbehavior
@@ -180,22 +180,22 @@ MCP (standardized tool interface)
 
 ## Terminology Cheat Sheet
 
-| Term | Meaning |
+| Term · Meaning |
 |------|---------|
-| **Tokens** | Subword units (typically ~4 chars each) |
-| **Context window** | How much history the model sees at once |
-| **Temperature** | Randomness in output (0=deterministic, 1=creative) |
-| **Top-K sampling** | Only consider top K most likely next tokens |
-| **Fine-tuning** | Training on custom data (reuses pretrained weights) |
-| **LoRA** | Low-Rank Adaptation; efficient fine-tuning |
-| **Quantization** | Compress weights (e.g., 32-bit → 8-bit) |
-| **Latency** | Time for first token (time-to-first-byte) |
-| **Throughput** | Total tokens generated per second |
-| **Hallucination** | Confident but false output |
-| **Jailbreak** | Prompt that bypasses safety training |
-| **Injection** | Hidden instructions in user input |
-| **MCP** | Model Context Protocol (tool standard) |
-| **RAG** | Retrieval-Augmented Generation |
+| **Tokens** · Subword units (typically ~4 chars each) |
+| **Context window** · How much history the model sees at once |
+| **Temperature** · Randomness in output (0=deterministic, 1=creative) |
+| **Top-K sampling** · Only consider top K most likely next tokens |
+| **Fine-tuning** · Training on custom data (reuses pretrained weights) |
+| **LoRA** · Low-Rank Adaptation; efficient fine-tuning |
+| **Quantization** · Compress weights (e.g., 32-bit → 8-bit) |
+| **Latency** · Time for first token (time-to-first-byte) |
+| **Throughput** · Total tokens generated per second |
+| **Hallucination** · Confident but false output |
+| **Jailbreak** · Prompt that bypasses safety training |
+| **Injection** · Hidden instructions in user input |
+| **MCP** · Model Context Protocol (tool standard) |
+| **RAG** · Retrieval-Augmented Generation |
 
 ---
 
