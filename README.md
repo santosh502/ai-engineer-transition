@@ -53,7 +53,11 @@ ai-engineer-transition/
 │   │   ├── 03_quick_reference.md               # Lookup + decision trees
 │   │   ├── 04_hard_problems.md                 # Production realities
 │   │   └── 05_prompt_engineering.md            # How to prompt well
-│   ├── rag/                           # Retrieval-Augmented Generation (WIP)
+│   ├── rag/                           # Retrieval-Augmented Generation
+│   │   ├── README.md                  # Navigation & overview
+│   │   ├── notes.md                   # Comprehensive study guide
+│   │   ├── implementation-examples.md # Practical code examples
+│   │   └── quick-reference.md         # Quick lookup cheat sheet
 │   ├── agentic/                       # AI Agents & Multi-Agent Systems (WIP)
 │   └── NIPS-2017-attention-is-all-you-need-Paper.pdf
 │
@@ -170,6 +174,8 @@ python -m src.main "your text here"  # Use the CLI
 | [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md) | Start here for foundations |
 | [ai_engineering/llm/03_quick_reference.md](ai_engineering/llm/03_quick_reference.md) | Lookup table + decision trees |
 | [ai_engineering/llm/04_hard_problems.md](ai_engineering/llm/04_hard_problems.md) | What breaks in production |
+| [ai_engineering/rag/README.md](ai_engineering/rag/README.md) | RAG learning path + materials |
+| [ai_engineering/rag/quick-reference.md](ai_engineering/rag/quick-reference.md) | RAG quick lookup guide |
 | [projects/Jsonify/README.md](projects/Jsonify/README.md) | Production-ready project example |
 
 ---
