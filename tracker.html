@@ -1116,13 +1116,17 @@
               { type: 'Docs', title: 'Anthropic Prompt Caching & Long Context', desc: 'System prompts, structured output, JSON mode', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
               { type: 'Article', title: 'Prompt Engineering Best Practices', desc: 'Zero-shot, few-shot, chain-of-thought', url: 'https://platform.openai.com/docs/guides/prompt-engineering' },
               { type: 'Library', title: 'Instructor: Structured LLM Outputs', desc: 'Type-safe, validated outputs with Pydantic', url: 'https://github.com/jxnl/instructor' },
-              { type: 'Docs', title: 'Pydantic Documentation', desc: 'Data validation and serialization', url: 'https://docs.pydantic.dev/' }
+              { type: 'Docs', title: 'Pydantic Documentation', desc: 'Data validation and serialization', url: 'https://docs.pydantic.dev/' },
+              { type: 'Docs', title: 'Token Counting & Context Management', desc: 'How to count tokens, optimize context usage', url: 'https://docs.anthropic.com/en/docs/build-a-chatbot-with-claude' },
+              { type: 'Library', title: 'tiktoken - OpenAI Token Counter', desc: 'Estimate token usage before API calls', url: 'https://github.com/openai/tiktoken' }
             ],
             tasks: [
               { id: 't2-1', title: 'Study: Zero-shot, few-shot, system prompts', description: 'Structured output, JSON mode, prompt patterns' },
               { id: 't2-2', title: 'Study: Chain-of-thought, ReAct patterns', description: 'When to use each' },
-              { id: 't2-3', title: 'Build: Text → JSON extractor CLI', description: 'Retries, validation with Pydantic, handles edge cases' },
-              { id: 't2-4', title: 'Push to GitHub', description: 'Commit with clear README' }
+              { id: 't2-3', title: 'Study: Token counting & context windows', description: 'Why it matters for cost and latency' },
+              { id: 't2-3b', title: 'Build: Token counter CLI', description: 'Count tokens for any input using tiktoken or API' },
+              { id: 't2-4', title: 'Build: Text → JSON extractor CLI', description: 'Retries, validation with Pydantic, handles edge cases + token tracking' },
+              { id: 't2-5', title: 'Push to GitHub', description: 'Commit with clear README' }
             ]
           },
           {
@@ -1133,13 +1137,16 @@
               { type: 'Video', title: 'Sentence Transformers Overview', desc: 'Understanding embeddings and similarity', url: 'https://www.sbert.net/' },
               { type: 'Library', title: 'Sentence Transformers', desc: 'State-of-the-art embeddings', url: 'https://huggingface.co/sentence-transformers' },
               { type: 'Library', title: 'NumPy Documentation', desc: 'Matrix operations and cosine similarity', url: 'https://numpy.org/doc/' },
-              { type: 'Article', title: 'Chunking Strategies for RAG', desc: 'Best practices for document chunking', url: 'https://github.com/FullyHused/text-splitter' }
+              { type: 'Article', title: 'Chunking Strategies for RAG', desc: 'Best practices for document chunking', url: 'https://github.com/FullyHused/text-splitter' },
+              { type: 'Article', title: 'Embeddings Explained', desc: 'Dense vectors and semantic search fundamentals', url: 'https://huggingface.co/blog/getting-the-constants-right' },
+              { type: 'Paper', title: 'Dense Passage Retrieval (DPR)', desc: 'Foundational work on dense retrieval', url: 'https://arxiv.org/abs/2004.04906' }
             ],
             tasks: [
               { id: 't3-1', title: 'Study: Dense vectors, cosine similarity, chunking', description: 'Why chunk size/overlap matters' },
               { id: 't3-2', title: 'Build: Embed a book/docs folder from scratch', description: 'Manual cosine similarity first (no framework)' },
               { id: 't3-3', title: 'Add: Basic vector store (local or simple DB)', description: 'Understand the mechanics' },
-              { id: 't3-4', title: 'Push to GitHub', description: 'Week 3 project complete' }
+              { id: 't3-4', title: 'Experiment: Different embedding models', description: 'Compare quality vs speed tradeoffs' },
+              { id: 't3-5', title: 'Push to GitHub', description: 'Week 3 project complete' }
             ]
           },
           {
@@ -1150,13 +1157,16 @@
               { type: 'Docs', title: 'Qdrant Vector Database', desc: 'Open-source, best for learning', url: 'https://qdrant.tech/' },
               { type: 'Docs', title: 'pgvector - PostgreSQL Extension', desc: 'Vector support in Postgres', url: 'https://github.com/pgvector/pgvector' },
               { type: 'Docs', title: 'Pinecone Vector Database', desc: 'Hosted solution', url: 'https://www.pinecone.io/' },
-              { type: 'Tutorial', title: 'Getting Started with Vector Search', desc: 'Comparison guide', url: 'https://www.qdrant.tech/documentation/' }
+              { type: 'Tutorial', title: 'Getting Started with Vector Search', desc: 'Comparison guide', url: 'https://www.qdrant.tech/documentation/' },
+              { type: 'Article', title: 'Vector DB for RAG: Production Considerations', desc: 'Metadata filtering, hybrid search, scaling', url: 'https://www.qdrant.tech/articles/vector-db-for-rag/' },
+              { type: 'Docs', title: 'Milvus Open Source Vector DB', desc: 'Scalable, with built-in reranking', url: 'https://milvus.io/' }
             ],
             tasks: [
-              { id: 't4-1', title: 'Compare: Pinecone, Weaviate, Qdrant, pgvector', description: 'Pros/cons' },
+              { id: 't4-1', title: 'Compare: Pinecone, Weaviate, Qdrant, pgvector', description: 'Pros/cons for RAG' },
               { id: 't4-2', title: 'Choose & setup: pgvector or Qdrant', description: 'Docker for local dev' },
               { id: 't4-3', title: 'Rebuild Week 3 project', description: 'Use real vector DB + metadata filtering' },
-              { id: 't4-4', title: 'Push to GitHub', description: 'Week 4 deliverable' }
+              { id: 't4-4', title: 'Implement: BM25/keyword search', description: 'For hybrid retrieval (vector + keyword)' },
+              { id: 't4-5', title: 'Push to GitHub', description: 'Week 4 deliverable' }
             ]
           },
           {
@@ -1165,16 +1175,21 @@
             title: 'RAG Done Right',
             resources: [
               { type: 'Paper', title: 'RAG vs Fine-tuning for Knowledge', desc: 'Facebook/Meta research', url: 'https://arxiv.org/abs/2005.11401' },
+              { type: 'Paper', title: 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', desc: 'Original RAG paper (Lewis et al.)', url: 'https://arxiv.org/abs/2005.11401' },
               { type: 'Library', title: 'Cohere Reranker', desc: 'Improve retrieval ranking', url: 'https://cohere.com/rerank' },
               { type: 'Library', title: 'Unstructured.io', desc: 'Parse PDFs, docs, images', url: 'https://unstructured.io/' },
-              { type: 'Article', title: 'Advanced RAG Techniques', desc: 'Re-ranking, query expansion, hybrid search', url: 'https://towardsdatascience.com/advanced-rag-techniques-86d1d8b42a6a' }
+              { type: 'Article', title: 'Advanced RAG Techniques', desc: 'Re-ranking, query expansion, hybrid search', url: 'https://towardsdatascience.com/advanced-rag-techniques-86d1d8b42a6a' },
+              { type: 'Article', title: 'Query Rewriting & Decomposition', desc: 'Breaking complex questions into sub-queries', url: 'https://blog.langchain.dev/' },
+              { type: 'Library', title: 'LangChain Query Analysis', desc: 'Tools for structured query understanding', url: 'https://python.langchain.com/docs/modules/query_constructor/' }
             ],
             tasks: [
               { id: 't5-1', title: 'Study: Bad chunking, context loss, re-ranking', description: 'Hybrid search (keyword + vector)' },
+              { id: 't5-1b', title: 'Study: Query rewriting & multi-step retrieval', description: 'When to decompose questions before retrieval' },
               { id: 't5-2', title: 'Build: Document Q&A project', description: 'Real, messy documents (PDFs, public docs)' },
               { id: 't5-3', title: 'Add: Re-ranker (Cohere or cross-encoder)', description: 'Improve retrieval quality' },
-              { id: 't5-4', title: 'Add: Source citations', description: 'Show where answers came from' },
-              { id: 't5-5', title: 'Push to GitHub', description: 'Week 5 complete' }
+              { id: 't5-4', title: 'Add: Query rewriting layer', description: 'Expand/rephrase queries before retrieval' },
+              { id: 't5-5', title: 'Add: Source citations', description: 'Show where answers came from' },
+              { id: 't5-6', title: 'Push to GitHub', description: 'Week 5 complete' }
             ]
           },
           {
@@ -1424,13 +1439,17 @@
     const toolsByCategory = {
       'LLM APIs': ['Anthropic', 'OpenAI'],
       'Structured Output': ['Pydantic', 'Instructor'],
-      'Vector DB': ['pgvector', 'Qdrant'],
-      'Reranking': ['Cohere rerank', 'Cross-encoder'],
-      'Agent Framework': ['LangGraph'],
-      'Evaluation': ['RAGAS', 'Custom LLM-as-judge'],
-      'Observability': ['Langfuse', 'LangSmith'],
-      'Serving': ['vLLM'],
-      'Fine-tuning': ['LoRA/PEFT via hosted API']
+      'Embeddings': ['Sentence Transformers', 'Anthropic Embeddings'],
+      'Vector DB': ['pgvector', 'Qdrant', 'Pinecone', 'Weaviate'],
+      'Reranking': ['Cohere rerank', 'Cross-encoder', 'BGE-Reranker'],
+      'RAG Retrieval': ['BM25', 'Hybrid search', 'Query rewriting'],
+      'Agent Framework': ['LangGraph', 'Anthropic SDK'],
+      'Evaluation': ['RAGAS', 'LLM-as-judge', 'Custom metrics'],
+      'Observability': ['Langfuse', 'LangSmith', 'OpenTelemetry'],
+      'Document Parsing': ['Unstructured.io', 'PyPDF', 'LLMSherpa'],
+      'Serving': ['vLLM', 'Ollama'],
+      'Fine-tuning': ['LoRA/PEFT via hosted API'],
+      'Token Counting': ['tiktoken', 'Anthropic API']
     };
 
     // ==================== STATE ====================
