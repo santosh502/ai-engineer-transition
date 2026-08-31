@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Engineer Transition - Master AI Engineering in 18 Weeks</title>
+  <meta name="description" content="A practical 18-week program for experienced software engineers to master AI engineering—from LLM fundamentals through building production agents.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-void: #10131a;
+      --bg-panel: #171b24;
+      --bg-panel-raised: #1e232f;
+      --bg-inset: #0c0e13;
+      --border: #2a3040;
+      --border-bright: #3b4356;
+      --text-primary: #e7eaf1;
+      --text-secondary: #9aa3b5;
+      --text-dim: #656e80;
+      --accent: #5eead4;
+      --accent-soft: rgba(94, 234, 212, 0.12);
+      --accent-strong: #99f6e8;
+      --accent-alt: #7dd3fc;
+      --success: #4ade80;
+      --amber: #f0a955;
+      --danger: #f0806e;
+      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse 900px 500px at 15% -10%, rgba(94, 234, 212, 0.06), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 100% 0%, rgba(196, 181, 253, 0.05), transparent 60%),
+        var(--bg-void);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(16, 19, 26, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-btn {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(94, 234, 212, 0.35);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-btn:hover {
+      background: rgba(94, 234, 212, 0.2);
+      border-color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: var(--mono);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+      border: 1px solid rgba(94, 234, 212, 0.2);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--sans);
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-void);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-strong);
+      border-color: var(--accent-strong);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border-color: var(--border-bright);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-panel);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Value Props */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 100px;
+      margin-top: 80px;
+    }
+
+    .value-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .value-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-4px);
+    }
+
+    .value-card:hover::before {
+      opacity: 1;
+    }
+
+    .value-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .value-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .value-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Learning Path */
+    .learning-path {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .phase-card {
+      background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-panel-raised) 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--accent), transparent);
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .phase-number {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .phase-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .phase-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .phase-weeks {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .week-tag {
+      background: var(--bg-inset);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+
+    /* Features */
+    .features {
+      margin-bottom: 100px;
+      background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-panel-raised) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 60px 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(94, 234, 212, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .feature h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* Projects Showcase */
+    .projects-showcase {
+      margin-bottom: 100px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .project-header {
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.1), rgba(125, 211, 252, 0.1));
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-emoji {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .project-subtitle {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+    }
+
+    .project-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .tag {
+      background: var(--bg-inset);
+      color: var(--text-dim);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+
+    .tag.featured {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(94, 234, 212, 0.2);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.1), rgba(125, 211, 252, 0.1));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 60px 40px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .cta-section h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .cta-section p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+      margin-top: -20px;
+    }
+
+    .stat-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--mono);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 100px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-header h2 {
+        font-size: 28px;
+      }
+
+      .features {
+        padding: 40px 24px;
+      }
+
+      .cta-section {
+        padding: 40px 24px;
+      }
+
+      .cta-section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="container">
+    <a href="/" class="logo">AI_ENGINEER</a>
+    <ul class="nav-links">
+      <li><a href="#learning">Learning</a></li>
+      <li><a href="projects/">Projects</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="tracker.html" class="nav-btn">Tracker</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">18-Week Practical Program</div>
+      <h1>From Senior SWE<br>to AI Engineer</h1>
+      <p class="hero-subtitle">
+        Master LLM fundamentals, build production RAG systems, deploy multi-agent frameworks, and ship real AI products. Designed for experienced software engineers.
+      </p>
+      <div class="hero-ctas">
+        <a href="#learning" class="btn btn-primary">Start Learning</a>
+        <a href="tracker.html" class="btn btn-secondary">View Curriculum</a>
+        <a href="https://github.com/santosh502/ai-engineer-transition" class="btn btn-secondary" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-number">18</div>
+        <div class="stat-label">Week Program</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Learning Resources</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Community Support</div>
+      </div>
+    </div>
+
+    <!-- Value Props -->
+    <section class="value-props">
+      <div class="value-card">
+        <div class="value-icon">📚</div>
+        <h3>Structured Learning</h3>
+        <p>Follow a battle-tested 18-week curriculum that takes you from LLM basics through production deployment.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🛠️</div>
+        <h3>Hands-On Projects</h3>
+        <p>Build real applications: JSON extractors, RAG systems, multi-agent workflows, and production-ready code.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚀</div>
+        <h3>Production-Ready</h3>
+        <p>Learn best practices for evaluation, observability, security, and optimization from day one.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <h3>Engineer-Focused</h3>
+        <p>No hand-waving. Understand the theory, implement from scratch, and know when to use frameworks.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📊</div>
+        <h3>Progress Tracking</h3>
+        <p>Interactive tracker with milestones, resources, and tasks to keep you on schedule.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Open Source</h3>
+        <p>All materials are free and open. Fork, modify, and share with your team or community.</p>
+      </div>
+    </section>
+
+    <!-- Learning Path -->
+    <section id="learning" class="learning-path">
+      <div class="section-header">
+        <h2>The 18-Week Curriculum</h2>
+        <p>From fundamentals to shipping production AI systems</p>
+      </div>
+
+      <div class="phases-grid">
+        <div class="phase-card">
+          <div class="phase-number">Phase 0</div>
+          <h3>Fast Context & Setup</h3>
+          <p><strong>Week 1</strong> — Get API access, understand how transformers work, write your first tool-use script.</p>
+          <div class="phase-weeks">
+            <div class="week-tag">Vocabulary</div>
+            <div class="week-tag">Setup</div>
+            <div class="week-tag">Tools</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">Phase 1</div>
+          <h3>Core Engineering Skills</h3>
+          <p><strong>Weeks 2–7</strong> — Build RAG systems from scratch. Prompting, embeddings, vector DBs, re-ranking, evaluation.</p>
+          <div class="phase-weeks">
+            <div class="week-tag">Prompting</div>
+            <div class="week-tag">Embeddings</div>
+            <div class="week-tag">Vector DB</div>
+            <div class="week-tag">RAG</div>
+            <div class="week-tag">Eval</div>
+            <div class="week-tag">Observability</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">Phase 2</div>
+          <h3>Agentic AI</h3>
+          <p><strong>Weeks 8–12</strong> — Master tool use, agents, multi-agent systems, memory, and safety.</p>
+          <div class="phase-weeks">
+            <div class="week-tag">Tool Use</div>
+            <div class="week-tag">LangGraph</div>
+            <div class="week-tag">Memory</div>
+            <div class="week-tag">Multi-Agent</div>
+            <div class="week-tag">Safety</div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-number">Phase 3</div>
+          <h3>Production & Capstone</h3>
+          <p><strong>Weeks 13–18</strong> — Model serving, fine-tuning, security, and build your capstone project.</p>
+          <div class="phase-weeks">
+            <div class="week-tag">Serving</div>
+            <div class="week-tag">Fine-tune</div>
+            <div class="week-tag">Security</div>
+            <div class="week-tag">Capstone</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="tracker.html" class="btn btn-primary">View Full Curriculum & Tracker</a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <h2 style="font-size: 28px;">What You'll Get</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">📖</div>
+          <h4>Complete Study Materials</h4>
+          <p>Deep dives into attention, transformers, RAG, agents, and more—with examples.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💻</div>
+          <h4>Working Code Examples</h4>
+          <p>Practical implementations: JSON extraction, embeddings, RAG Q&A, agent loops.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <h4>Weekly Checkpoints</h4>
+          <p>Track progress, manage time, and celebrate milestones across 18 weeks.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🧪</div>
+          <h4>Evaluation & Testing</h4>
+          <p>Learn how to measure and improve your systems with real metrics.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔧</div>
+          <h4>Tool & Vendor Guide</h4>
+          <p>Reference library of LLM APIs, vector DBs, frameworks, and best practices.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🏆</div>
+          <h4>Capstone Project</h4>
+          <p>Build a production-ready AI system to add to your portfolio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects-showcase">
+      <div class="section-header">
+        <h2>Projects You'll Build</h2>
+        <p>Real applications from fundamentals to production</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">🎯</div>
+            <h3>Text → JSON Extractor</h3>
+            <div class="project-subtitle">Week 2 · Phase 1</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Production-ready structured output system. Learn prompting patterns, validation, retries, and token counting.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">JSON Mode</span>
+              <span class="tag">Pydantic</span>
+              <span class="tag">Prompting</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">📚</div>
+            <h3>Document Q&A (RAG)</h3>
+            <div class="project-subtitle">Weeks 3-5 · Phase 1</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Full RAG pipeline: embeddings, vector DB, hybrid search, re-ranking, query rewriting. Real documents, real problems.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">RAG</span>
+              <span class="tag">Embeddings</span>
+              <span class="tag">Vector DB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">🤖</div>
+            <h3>Raw Agent (Web Search)</h3>
+            <div class="project-subtitle">Week 8 · Phase 2</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Build an agent from first principles. No framework. Tool use, error handling, and multi-step planning.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">Tool Use</span>
+              <span class="tag">Agent Loop</span>
+              <span class="tag">Error Handling</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">🔗</div>
+            <h3>LangGraph Agent</h3>
+            <div class="project-subtitle">Week 9 · Phase 2</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Rebuild using LangGraph. Compare raw vs framework: complexity, maintainability, testability.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">LangGraph</span>
+              <span class="tag">State Graphs</span>
+              <span class="tag">Frameworks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">🌐</div>
+            <h3>Multi-Agent System</h3>
+            <div class="project-subtitle">Week 11 · Phase 2</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Multi-agent supervisor pattern, delegation, human-in-the-loop approvals, safety gates.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">Multi-Agent</span>
+              <span class="tag">Supervision</span>
+              <span class="tag">Safety</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-emoji">🚀</div>
+            <h3>Capstone: Ship It</h3>
+            <div class="project-subtitle">Weeks 16-18 · Phase 3</div>
+          </div>
+          <div class="project-body">
+            <p class="project-desc">
+              Build a real problem-solving AI system. RAG + agents + evaluation + safety + portfolio-ready deployment.
+            </p>
+            <div class="project-tags">
+              <span class="tag featured">End-to-End</span>
+              <span class="tag">Production</span>
+              <span class="tag">Portfolio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2>Ready to transition to AI Engineering?</h2>
+      <p>
+        Choose your path: follow the 18-week curriculum with the interactive tracker, or dive into learning materials on your schedule.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="tracker.html" class="btn btn-primary">Open Tracker</a>
+        <a href="ai_engineering/llm/README.md" class="btn btn-secondary">Learning Materials</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Learning</h3>
+        <ul>
+          <li><a href="ai_engineering/llm/README.md">LLM Fundamentals</a></li>
+          <li><a href="ai_engineering/rag/README.md">RAG Systems</a></li>
+          <li><a href="ai_engineering/agentic/README.md">Agentic AI</a></li>
+          <li><a href="tracker.html">18-Week Tracker</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="projects/">Project Examples</a></li>
+          <li><a href="ai_engineering/llm/03_quick_reference.md">Quick Reference</a></li>
+          <li><a href="README.md">Full Documentation</a></li>
+          <li><a href="https://github.com/santosh502/ai-engineer-transition" target="_blank">GitHub Repo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Get Started</h3>
+        <ul>
+          <li><a href="#learning">Curriculum Overview</a></li>
+          <li><a href="tracker.html">Start Tracking</a></li>
+          <li><a href="ai_engineering/llm/01_llm_fundamentals.md">First Lesson</a></li>
+          <li><a href="https://github.com/santosh502/ai-engineer-transition/fork" target="_blank">Fork This Repo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="README.md">What's This?</a></li>
+          <li><a href="https://github.com/santosh502">Creator</a></li>
+          <li><a href="https://github.com/santosh502/ai-engineer-transition/issues">Report Issue</a></li>
+          <li><a href="https://github.com/santosh502/ai-engineer-transition/discussions">Discuss</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 AI Engineer Transition. All materials free and open source. <a href="https://github.com/santosh502/ai-engineer-transition" target="_blank" style="color: var(--accent); text-decoration: none;">GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>

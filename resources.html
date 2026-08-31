@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources & Tools - AI Engineer Transition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-void: #10131a;
+      --bg-panel: #171b24;
+      --bg-panel-raised: #1e232f;
+      --bg-inset: #0c0e13;
+      --border: #2a3040;
+      --border-bright: #3b4356;
+      --text-primary: #e7eaf1;
+      --text-secondary: #9aa3b5;
+      --text-dim: #656e80;
+      --accent: #5eead4;
+      --accent-soft: rgba(94, 234, 212, 0.12);
+      --accent-strong: #99f6e8;
+      --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse 900px 500px at 15% -10%, rgba(94, 234, 212, 0.06), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 100% 0%, rgba(196, 181, 253, 0.05), transparent 60%),
+        var(--bg-void);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(16, 19, 26, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .breadcrumb {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: var(--mono);
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .header {
+      padding: 60px 0;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .resource-section {
+      margin-bottom: 60px;
+    }
+
+    .resource-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: all 0.3s;
+    }
+
+    .resource-item:hover {
+      border-color: var(--accent);
+      background: var(--bg-panel-raised);
+      transform: translateY(-2px);
+    }
+
+    .resource-badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-family: var(--mono);
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .resource-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .resource-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .resource-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--mono);
+      transition: all 0.2s;
+    }
+
+    .resource-link:hover {
+      gap: 4px;
+    }
+
+    .resource-link::after {
+      content: ' →';
+    }
+
+    .comparison-table {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .comparison-table th {
+      background: var(--bg-inset);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .comparison-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pro { color: #4ade80; }
+    .con { color: #f0806e; }
+    .neutral { color: var(--text-secondary); }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .category-card {
+      background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-panel-raised) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .category-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .category-card ul {
+      list-style: none;
+    }
+
+    .category-card li {
+      font-size: 12px;
+      color: var(--text-secondary);
+      padding: 4px 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-table table {
+        font-size: 11px;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="container">
+    <a href="/" class="logo">AI_ENGINEER</a>
+    <div class="breadcrumb">
+      <a href="/">Home</a> / <a href="/resources.html">Resources</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>Resources & Tools</h1>
+      <p>Comprehensive toolkit for LLM APIs, embeddings, databases, frameworks, and more</p>
+    </div>
+
+    <!-- LLM APIs -->
+    <div class="resource-section">
+      <h2>🧠 LLM APIs</h2>
+      <p class="section-desc">Proprietary and open models. Use for experiments, production, fine-tuning.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">Anthropic Claude</div>
+          <div class="resource-desc">Latest Claude Opus/Sonnet/Haiku models. Long context (200k tokens), strong reasoning, good for RAG and agents.</div>
+          <a href="https://docs.anthropic.com" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">OpenAI GPT</div>
+          <div class="resource-desc">GPT-4, GPT-3.5. Excellent for benchmarking. Function calling well-documented. Widely used baseline.</div>
+          <a href="https://platform.openai.com/docs" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">Google Gemini</div>
+          <div class="resource-desc">Multimodal capabilities, vision support. Good for document-heavy applications.</div>
+          <a href="https://ai.google.dev/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Open Source</div>
+          <div class="resource-title">Ollama</div>
+          <div class="resource-desc">Run open models locally (Llama 2, Mistral, etc.). No internet needed. Great for development and privacy-sensitive work.</div>
+          <a href="https://ollama.ai/" target="_blank" class="resource-link">Site</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Open Source</div>
+          <div class="resource-title">vLLM</div>
+          <div class="resource-desc">High-throughput LLM inference. For self-hosted production deployments. Efficient batching.</div>
+          <a href="https://docs.vllm.ai/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Open Source</div>
+          <div class="resource-title">Llama / Mistral</div>
+          <div class="resource-desc">Open weight models. Free to use, modify, fine-tune. Community-driven.</div>
+          <a href="https://huggingface.co/meta-llama" target="_blank" class="resource-link">Hub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embeddings & Vector Search -->
+    <div class="resource-section">
+      <h2>🔍 Embeddings & Vector Search</h2>
+      <p class="section-desc">Convert text to dense vectors. Enable semantic search and similarity matching.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">Sentence Transformers</div>
+          <div class="resource-desc">State-of-the-art open embeddings. Fast, production-ready. Use for RAG systems.</div>
+          <a href="https://www.sbert.net/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">Anthropic Embeddings</div>
+          <div class="resource-desc">Dense embeddings from Anthropic. Optimized for Claude integration.</div>
+          <a href="https://docs.anthropic.com" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">OpenAI Embeddings</div>
+          <div class="resource-desc">Reliable embeddings API. Works well with GPT models for RAG.</div>
+          <a href="https://platform.openai.com/docs/guides/embeddings" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">Cohere Embeddings</div>
+          <div class="resource-desc">Multilingual embeddings and reranking. Free tier available.</div>
+          <a href="https://cohere.com/" target="_blank" class="resource-link">Site</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vector Databases -->
+    <div class="resource-section">
+      <h2>💾 Vector Databases</h2>
+      <p class="section-desc">Store and search embeddings at scale. Essential for production RAG.</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Database</th>
+              <th>Type</th>
+              <th>Pros</th>
+              <th>Cons</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Qdrant</strong></td>
+              <td>Open Source</td>
+              <td class="pro">✓ Easy local dev<br>✓ Great docs</td>
+              <td>Self-hosted ops</td>
+              <td>Learning, dev</td>
+            </tr>
+            <tr>
+              <td><strong>pgvector</strong></td>
+              <td>PostgreSQL Ext</td>
+              <td class="pro">✓ Existing DB<br>✓ SQL queries</td>
+              <td>Vector scaling</td>
+              <td>Existing Postgres</td>
+            </tr>
+            <tr>
+              <td><strong>Pinecone</strong></td>
+              <td>Hosted SaaS</td>
+              <td class="pro">✓ Managed ops<br>✓ Fast setup</td>
+              <td>Cost at scale</td>
+              <td>Production, teams</td>
+            </tr>
+            <tr>
+              <td><strong>Weaviate</strong></td>
+              <td>Open + Cloud</td>
+              <td class="pro">✓ GraphQL<br>✓ Hybrid</td>
+              <td>Learning curve</td>
+              <td>Flexible search</td>
+            </tr>
+            <tr>
+              <td><strong>Milvus</strong></td>
+              <td>Open Source</td>
+              <td class="pro">✓ Scalable<br>✓ Distributed</td>
+              <td>Complex setup</td>
+              <td>High scale</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Frameworks -->
+    <div class="resource-section">
+      <h2>🔗 Agent & RAG Frameworks</h2>
+      <p class="section-desc">Build complex systems with orchestration and state management.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">Framework</div>
+          <div class="resource-title">LangGraph</div>
+          <div class="resource-desc">State graphs for agents and workflows. Excellent for RAG + agents. Production-ready.</div>
+          <a href="https://langchain-ai.github.io/langgraph/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Framework</div>
+          <div class="resource-title">Anthropic SDK</div>
+          <div class="resource-desc">Native Python and TypeScript SDKs. Full control over tool use loops and streaming.</div>
+          <a href="https://docs.anthropic.com" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">Instructor</div>
+          <div class="resource-desc">Structured outputs with validation. Type-safe LLM calls using Pydantic.</div>
+          <a href="https://github.com/jxnl/instructor" target="_blank" class="resource-link">GitHub</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Framework</div>
+          <div class="resource-title">LangChain</div>
+          <div class="resource-desc">Comprehensive ecosystem. Memory, chains, agents. Large community.</div>
+          <a href="https://python.langchain.com/" target="_blank" class="resource-link">Docs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Evaluation & Observability -->
+    <div class="resource-section">
+      <h2>📊 Evaluation & Observability</h2>
+      <p class="section-desc">Measure performance, track costs, debug production systems.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">RAGAS</div>
+          <div class="resource-desc">Automatic RAG evaluation. Metrics for retrieval quality, answer relevance, factuality.</div>
+          <a href="https://docs.ragas.io/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Platform</div>
+          <div class="resource-title">Langfuse</div>
+          <div class="resource-desc">Open-source LLMOps. Tracing, cost tracking, prompt versioning, evals.</div>
+          <a href="https://langfuse.com/" target="_blank" class="resource-link">Site</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Platform</div>
+          <div class="resource-title">LangSmith</div>
+          <div class="resource-desc">LangChain debugging and optimization. Real-time tracer and evaluation suite.</div>
+          <a href="https://www.langchain.com/langsmith" target="_blank" class="resource-link">Site</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Standard</div>
+          <div class="resource-title">OpenTelemetry</div>
+          <div class="resource-desc">Standard for observability. Logging, metrics, traces. Language-agnostic.</div>
+          <a href="https://opentelemetry.io/" target="_blank" class="resource-link">Docs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data & Structured Outputs -->
+    <div class="resource-section">
+      <h2>📋 Data & Structured Outputs</h2>
+      <p class="section-desc">Parse, validate, and structure LLM outputs safely.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">Pydantic</div>
+          <div class="resource-desc">Data validation and serialization. Core for structured outputs in Python.</div>
+          <a href="https://docs.pydantic.dev/" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">Unstructured.io</div>
+          <div class="resource-desc">Parse PDFs, images, documents. Extract text, tables, and structure.</div>
+          <a href="https://unstructured.io/" target="_blank" class="resource-link">Site</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">PyPDF</div>
+          <div class="resource-desc">PDF manipulation in Python. Extract text and metadata.</div>
+          <a href="https://github.com/py-pdf/pypdf" target="_blank" class="resource-link">GitHub</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">LLMSherpa</div>
+          <div class="resource-desc">Smart document parsing. Layout-aware PDF reading for RAG.</div>
+          <a href="https://github.com/nlmatics/llmsherpa" target="_blank" class="resource-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utilities & Tools -->
+    <div class="resource-section">
+      <h2>🛠️ Utilities & Tools</h2>
+      <p class="section-desc">Common helper libraries and development tools.</p>
+
+      <div class="category-grid">
+        <div class="category-card">
+          <h3>Token Counting</h3>
+          <ul>
+            <li>tiktoken (OpenAI)</li>
+            <li>Python regex (Anthropic)</li>
+            <li>API token counting</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Reranking</h3>
+          <ul>
+            <li>Cohere Rerank API</li>
+            <li>BGE-Reranker (open)</li>
+            <li>Cross-Encoder</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Serialization</h3>
+          <ul>
+            <li>Pickle (Python objects)</li>
+            <li>JSON (standard)</li>
+            <li>MessagePack (binary)</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Async/Concurrency</h3>
+          <ul>
+            <li>asyncio (Python)</li>
+            <li>concurrent.futures</li>
+            <li>threading (caution)</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Testing</h3>
+          <ul>
+            <li>pytest</li>
+            <li>unittest</li>
+            <li>mock & fixtures</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Deployment</h3>
+          <ul>
+            <li>Docker</li>
+            <li>GitHub Actions</li>
+            <li>AWS/GCP/Azure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fine-tuning -->
+    <div class="resource-section">
+      <h2>🎯 Fine-tuning</h2>
+      <p class="section-desc">When and how to customize models to your task.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">Anthropic Fine-tuning</div>
+          <div class="resource-desc">Fine-tune Claude models. Significant performance gains for domain-specific tasks.</div>
+          <a href="https://docs.anthropic.com" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">API</div>
+          <div class="resource-title">OpenAI Fine-tuning</div>
+          <div class="resource-desc">Fine-tune GPT models. Simple API, good for smaller models like GPT-3.5.</div>
+          <a href="https://platform.openai.com/docs/guides/fine-tuning" target="_blank" class="resource-link">Docs</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Library</div>
+          <div class="resource-title">LoRA / PEFT</div>
+          <div class="resource-desc">Efficient fine-tuning. Low-rank adaptation for large models. Memory-friendly.</div>
+          <a href="https://github.com/microsoft/LoRA" target="_blank" class="resource-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Resources -->
+    <div class="resource-section">
+      <h2>📚 Learning Resources</h2>
+      <p class="section-desc">Foundational papers, videos, and courses.</p>
+
+      <div class="resource-grid">
+        <div class="resource-item">
+          <div class="resource-badge">Paper</div>
+          <div class="resource-title">Attention Is All You Need</div>
+          <div class="resource-desc">The Transformer paper. Foundation for all modern LLMs. Vaswani et al., 2017.</div>
+          <a href="https://arxiv.org/abs/1706.03762" target="_blank" class="resource-link">ArXiv</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Paper</div>
+          <div class="resource-title">Retrieval-Augmented Generation</div>
+          <div class="resource-desc">RAG foundation. Lewis et al. How to augment LLMs with external knowledge.</div>
+          <a href="https://arxiv.org/abs/2005.11401" target="_blank" class="resource-link">ArXiv</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Video</div>
+          <div class="resource-title">Andrej Karpathy - LLM Intro</div>
+          <div class="resource-desc">1-hour overview of how LLMs work. Great intuitions. Perfect starting point.</div>
+          <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" target="_blank" class="resource-link">YouTube</a>
+        </div>
+
+        <div class="resource-item">
+          <div class="resource-badge">Video</div>
+          <div class="resource-title">3Blue1Brown - Attention</div>
+          <div class="resource-desc">Visual explanation of attention mechanism. Beautiful visualizations.</div>
+          <a href="https://www.youtube.com/watch?v=eMlx5aFJsqM" target="_blank" class="resource-link">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="resource-section">
+      <h2>✅ Best Practices & Checklists</h2>
+      <p class="section-desc">Production-ready patterns and decision frameworks.</p>
+
+      <div class="category-grid">
+        <div class="category-card">
+          <h3>RAG Checklist</h3>
+          <ul>
+            <li>✓ Test retrieval quality</li>
+            <li>✓ Measure relevance</li>
+            <li>✓ Add re-ranking</li>
+            <li>✓ Log & monitor</li>
+            <li>✓ Evaluate E2E</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Agent Checklist</h3>
+          <ul>
+            <li>✓ Define tool schemas</li>
+            <li>✓ Handle errors</li>
+            <li>✓ Test loop logic</li>
+            <li>✓ Add timeouts</li>
+            <li>✓ Cost limits</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Security</h3>
+          <ul>
+            <li>✓ Prompt injection defense</li>
+            <li>✓ Input sanitization</li>
+            <li>✓ Rate limiting</li>
+            <li>✓ Audit logging</li>
+            <li>✓ Access control</li>
+          </ul>
+        </div>
+
+        <div class="category-card">
+          <h3>Observability</h3>
+          <ul>
+            <li>✓ Log all queries</li>
+            <li>✓ Track latency</li>
+            <li>✓ Monitor cost</li>
+            <li>✓ Version prompts</li>
+            <li>✓ Debug traces</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container">
+    <p>All resources are curated and tested. Contributions welcome: <a href="https://github.com/santosh502/ai-engineer-transition" style="color: var(--accent); text-decoration: none;">GitHub</a></p>
+  </footer>
+</body>
+</html>
