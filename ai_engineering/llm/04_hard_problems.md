@@ -1,5 +1,18 @@
 # Hard Problems & Limitations in LLMs
 
+<div style="float: right; width: 220px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
+
+**LLM Materials**
+- [Overview](README.md)
+- [00: Attention Paper](00_attention_is_all_you_need.md)
+- [01: Fundamentals](01_llm_fundamentals.md)
+- [02: Examples](02_practical_examples.md)
+- [03: Reference](03_quick_reference.md)
+- **04: Hard Problems** ← You are here
+- [05: Prompting](05_prompt_engineering.md)
+
+</div>
+
 *The gap between "works in research" and "works in production" - where current models actually fail.*
 
 ---

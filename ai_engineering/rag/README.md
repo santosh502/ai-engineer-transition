@@ -1,5 +1,15 @@
 # Retrieval-Augmented Generation (RAG) - Learning Materials
 
+<div style="float: right; width: 200px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
+
+**RAG Materials**
+- **Overview** ← You are here
+- [Study Guide](notes.md)
+- [Code Examples](implementation-examples.md)
+- [Quick Reference](quick-reference.md)
+
+</div>
+
 ## Overview
 
 This directory contains comprehensive study materials for **Retrieval-Augmented Generation (RAG)**, a powerful technique that combines information retrieval with generative AI to build more accurate, grounded, and current LLM applications.

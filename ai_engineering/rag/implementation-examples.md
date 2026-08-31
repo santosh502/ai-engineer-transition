@@ -1,5 +1,15 @@
 # RAG Implementation Examples
 
+<div style="float: right; width: 200px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
+
+**RAG Materials**
+- [Overview](README.md)
+- [Study Guide](notes.md)
+- **Code Examples** ← You are here
+- [Quick Reference](quick-reference.md)
+
+</div>
+
 ## 1. Simple RAG Pipeline with LangChain
 
 ```python

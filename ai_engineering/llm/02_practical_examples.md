@@ -1,5 +1,18 @@
 # Practical Examples: Write Code, Not Just Theory
 
+<div style="float: right; width: 220px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
+
+**LLM Materials**
+- [Overview](README.md)
+- [00: Attention Paper](00_attention_is_all_you_need.md)
+- [01: Fundamentals](01_llm_fundamentals.md)
+- **02: Examples** ← You are here
+- [03: Reference](03_quick_reference.md)
+- [04: Hard Problems](04_hard_problems.md)
+- [05: Prompting](05_prompt_engineering.md)
+
+</div>
+
 The best way to understand LLMs is to implement them. This file has working code for every major concept.
 
 Read the concept, then run the code. Modify it. Break it. Fix it. That's how understanding sticks.

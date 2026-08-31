@@ -1,5 +1,14 @@
 # Agentic AI
 
+<div style="float: right; width: 220px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
+
+**Learning Materials**
+- [LLM Course](../llm/README.md)
+- [RAG Guide](../rag/README.md)
+- **Agentic AI** ← You are here
+
+</div>
+
 This directory contains notes and examples on building AI agents - systems where LLMs coordinate tools and take autonomous actions.
 
 ## Topics to Cover
