@@ -2,6 +2,8 @@
 
 A **practical, 18-week program** for experienced software engineers to master AI engineering-from LLM fundamentals through building production agents.
 
+**Live on GitHub Pages**: [https://santosh502.github.io/ai-engineer-transition/](https://santosh502.github.io/ai-engineer-transition/)
+
 ---
 
 ## What This Is
@@ -12,6 +14,39 @@ This repo combines:
 - **Progress tracker** - Interactive 18-week curriculum with tasks, resources, and checkpoints
 
 **Ideal for**: Software engineers with 5+ years experience who want to build real AI systems (not just prompt ChatGPT).
+
+---
+
+## Access This Course
+
+### Online (Recommended)
+- **Interactive Tracker**: [https://santosh502.github.io/ai-engineer-transition/tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) - Best for progress tracking
+- **GitHub Repository**: [https://github.com/santosh502/ai-engineer-transition](https://github.com/santosh502/ai-engineer-transition)
+
+### Want Your Own Tracker?
+**Two options:**
+1. **Use This Tracker As-Is** → [Host for Your Own Use](#-host-this-tracker-for-your-own-use-no-changes-needed) (recommended for most people)
+   - Fork & deploy in 3 steps
+   - No customization needed
+   - Perfect for tracking your own progress
+
+2. **Create Your Own Custom Tracker** → [Fork & Customize](#-fork--customize-advanced-customization)
+   - Modify weeks, content, and tasks
+   - Full customization guide included
+   - Perfect for your class or program
+
+### Local (Offline Access)
+```bash
+# Clone the repo
+git clone https://github.com/santosh502/ai-engineer-transition.git
+cd ai-engineer-transition
+
+# View in your editor
+code .
+
+# Or serve locally (if you prefer)
+# (all markdown links work in your IDE/editor)
+```
 
 ---
 
@@ -49,7 +84,7 @@ Keep reading this file.
 ```
 ai-engineer-transition/
 ├── [README.md](README.md)                          # You are here
-├── [tracker.html](tracker.html)                    # Interactive 18-week curriculum
+├── [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) # Interactive 18-week curriculum
 │
 ├── [ai_engineering/](ai_engineering/README.md)     # Learning materials
 │   ├── [README.md](ai_engineering/README.md)       # Learning path guide
@@ -122,6 +157,9 @@ ai-engineer-transition/
 ## Getting Started Right Now
 
 ### Option 1: Learn Theory First
+**On GitHub Pages**: Read from [ai_engineering/README.md](https://santosh502.github.io/ai-engineer-transition/ai_engineering/README.md)
+
+**Locally** (after cloning):
 ```bash
 # Open the learning path
 open ai_engineering/README.md
@@ -130,9 +168,12 @@ open ai_engineering/README.md
 ai_engineering/llm/01_llm_fundamentals.md
 ```
 
-### Option 2: Use the Tracker
+### Option 2: Use the Tracker (Recommended)
+**Live Version**: Open [Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html) on GitHub Pages (no server needed)
+
+**Locally** (after cloning):
 ```bash
-# Open in any browser (no server required)
+# Open in your browser
 open tracker.html
 
 # Set a start date and begin tracking Week 1 tasks
@@ -181,6 +222,16 @@ python -m src.main "your text here"  # Use the CLI
 - Use the tracker's evaluations to check your understanding
 - Complete the 18-week capstone project
 - Red-team your own systems (Week 15)
+
+**Want to track your own progress?**
+- See [Host This Tracker For Your Own Use](#-host-this-tracker-for-your-own-use-no-changes-needed) section below
+- Fork & deploy in 3 steps (no customization needed)
+- Your own tracker on GitHub Pages
+
+**Want to create a fully custom tracker?**
+- See [🍴 Fork & Customize](#-fork--customize-advanced-customization) section below
+- Full guide for modifying weeks, content, and tasks
+- Great for running your own class or program
 
 ---
 
@@ -239,12 +290,46 @@ Complete, comprehensive materials for mastering Retrieval-Augmented Generation:
 See each week's resources in [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) for the complete toolkit per phase.
 
 ---
+
+## Host This Tracker For Your Own Use (No Changes Needed)
+
+Want to use this 18-week AI engineering curriculum for yourself or your team? Simply fork and deploy - no customization required!
+
+### Quick Start (3 Steps)
+```bash
+# Step 1: Fork the repo (click fork on GitHub)
+# Your fork: https://github.com/YOUR_USERNAME/ai-engineer-transition
+
+# Step 2: Enable GitHub Pages in Settings → Pages
+# Select: main branch, / (root) folder
+
+# Step 3: Access your tracker
+# Your tracker: https://YOUR_USERNAME.github.io/ai-engineer-transition/tracker.html
+```
+
+**That's it!** Your own tracker is live and ready to use.
+
+### What You Get
+- Personal progress tracker
+- All 18 weeks of curriculum
+- Interactive checkboxes
+- Your own GitHub Pages URL
+- No coding/customization needed
+
+---
+
 ## License
 
 This learning path and all materials are open and free to use, modify, and share.
 
----
+**Ready?** 
 
-**Ready?** → Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) or read [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
+**Start Here**: [Interactive Tracker on GitHub Pages](https://santosh502.github.io/ai-engineer-transition/tracker.html) (recommended)
+
+**Alternative**: Read [LLM Fundamentals](ai_engineering/llm/01_llm_fundamentals.md) first
+
+**For RAG**: Jump to [RAG Learning Materials](ai_engineering/rag/README.md)
+
+---
 
 Good luck!
