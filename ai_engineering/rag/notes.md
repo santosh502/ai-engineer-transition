@@ -1,14 +1,6 @@
 # Retrieval-Augmented Generation (RAG) - Study Notes
 
-<div style="float: right; width: 200px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
-
-**RAG Materials**
-- [Overview](README.md)
-- **Study Guide** ← You are here
-- [Code Examples](implementation-examples.md)
-- [Quick Reference](quick-reference.md)
-
-</div>
+> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
 
 ## What is RAG?
 

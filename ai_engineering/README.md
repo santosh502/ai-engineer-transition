@@ -1,14 +1,6 @@
 # AI Engineering Learning Path
 
-<div style="float: right; width: 220px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
-
-**Learning Materials**
-- **Main Guide** ← You are here
-- [LLM Course](llm/README.md)
-- [RAG Guide](rag/README.md)
-- [Agentic AI](agentic/README.md)
-
-</div>
+> **Navigation** - [LLM Course](llm/README.md) | [RAG Guide](rag/README.md) | [Agentic AI](agentic/README.md)
 
 A practical guide to understanding Large Language Models-how they actually work, how to build with them, and what matters in 2026.
 

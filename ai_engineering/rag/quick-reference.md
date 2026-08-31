@@ -1,14 +1,6 @@
 # RAG Quick Reference Guide
 
-<div style="float: right; width: 200px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
-
-**RAG Materials**
-- [Overview](README.md)
-- [Study Guide](notes.md)
-- [Code Examples](implementation-examples.md)
-- **Quick Reference** ← You are here
-
-</div>
+> **RAG Materials** - [Overview](README.md) | [Study Guide](notes.md) | [Code Examples](implementation-examples.md) | [Quick Reference](quick-reference.md)
 
 ## At a Glance
 

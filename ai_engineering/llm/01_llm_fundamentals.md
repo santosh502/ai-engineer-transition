@@ -1,17 +1,6 @@
 # AI Engineering - LLM Fundamentals
 
-<div style="float: right; width: 220px; background: #f5f5f5; padding: 15px; border-radius: 5px; margin-left: 20px;">
-
-**LLM Materials**
-- [Overview](README.md)
-- [00: Attention Paper](00_attention_is_all_you_need.md)
-- **01: Fundamentals** ← You are here
-- [02: Examples](02_practical_examples.md)
-- [03: Reference](03_quick_reference.md)
-- [04: Hard Problems](04_hard_problems.md)
-- [05: Prompting](05_prompt_engineering.md)
-
-</div>
+> **LLM Materials** - [Overview](README.md) | [00: Attention](00_attention_is_all_you_need.md) | [01: Fundamentals](01_llm_fundamentals.md) | [02: Examples](02_practical_examples.md) | [03: Reference](03_quick_reference.md) | [04: Hard Problems](04_hard_problems.md) | [05: Prompting](05_prompt_engineering.md)
 
 ---
 
