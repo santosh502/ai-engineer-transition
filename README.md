@@ -17,6 +17,26 @@ This repo combines:
 
 ---
 
+## Table of Contents
+
+### Quick Navigation
+- [Access This Course](#access-this-course) — How to view
+- [Quick Start](#quick-start-choose-your-path) — Choose your path
+- [Repository Structure](#repository-structure) — What's inside
+- [Learning Path](#the-learning-path-at-a-glance) — 18-week curriculum
+- [Getting Started](#getting-started-right-now) — 4 options to begin
+
+### Learning Materials
+- [RAG Materials](#rag-learning-materials) — Complete RAG guide
+- [Key Files](#key-files) — Important resources
+- [Tools](#tools-youll-use) — Required tools & platforms
+
+### For Forkers
+- [Host Your Own Tracker](#-host-this-tracker-for-your-own-use-no-changes-needed) — Use as-is (3 steps)
+- [License](#license) — Permissions & attribution
+
+---
+
 ## Access This Course
 
 ### Online (Recommended)
@@ -60,12 +80,6 @@ code .
 
 **Time**: 1 week to understand the basics. 3-4 weeks to go deep.
 
-**RAG Learning Path**:
-- [RAG Overview & Study Guide](ai_engineering/rag/README.md) - Start here
-- [RAG Comprehensive Notes](ai_engineering/rag/notes.md) - Deep dive (317 lines)
-- [RAG Code Examples](ai_engineering/rag/implementation-examples.md) - 9 working examples
-- [RAG Quick Reference](ai_engineering/rag/quick-reference.md) - Developer cheat sheet
-
 ### Want to build projects?
 1. Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) in your browser (no server needed)
 2. Start Week 1 tasks to set up environment
@@ -83,45 +97,44 @@ Keep reading this file.
 
 ```
 ai-engineer-transition/
-├── [README.md](README.md)                          # You are here
-├── [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) # Interactive 18-week curriculum
+├── README.md                          # Main documentation
+├── tracker.html                       # Interactive 18-week curriculum
 │
-├── [ai_engineering/](ai_engineering/README.md)     # Learning materials
-│   ├── [README.md](ai_engineering/README.md)       # Learning path guide
-│   ├── [llm/](ai_engineering/llm/)                 # Complete LLM course (5 modules)
-│   │   ├── [00_attention_is_all_you_need.md](ai_engineering/llm/00_attention_is_all_you_need.md)     # Transformer deep dive
-│   │   ├── [01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)                       # Start here
-│   │   ├── [02_practical_examples.md](ai_engineering/llm/02_practical_examples.md)                   # Code to run
-│   │   ├── [03_quick_reference.md](ai_engineering/llm/03_quick_reference.md)                         # Lookup + decision trees
-│   │   ├── [04_hard_problems.md](ai_engineering/llm/04_hard_problems.md)                             # Production realities
-│   │   └── [05_prompt_engineering.md](ai_engineering/llm/05_prompt_engineering.md)                   # How to prompt well
-│   ├── [rag/](ai_engineering/rag/README.md)                           # Retrieval-Augmented Generation
-│   │   ├── [README.md](ai_engineering/rag/README.md)                  # Navigation & overview
-│   │   ├── [notes.md](ai_engineering/rag/notes.md)                    # Comprehensive study guide
-│   │   ├── [implementation-examples.md](ai_engineering/rag/implementation-examples.md) # Practical code examples
-│   │   └── [quick-reference.md](ai_engineering/rag/quick-reference.md)                 # Quick lookup cheat sheet
-│   ├── [agentic/](ai_engineering/agentic/)                            # AI Agents & Multi-Agent Systems (WIP)
-│   └── [NIPS-2017-attention-is-all-you-need-Paper.pdf](ai_engineering/NIPS-2017-attention-is-all-you-need-Paper.pdf)
+├── ai_engineering/                    # Learning materials
+│   ├── README.md                      # Learning path guide
+│   ├── llm/                           # Complete LLM course (5 modules)
+│   │   ├── 00_attention_is_all_you_need.md
+│   │   ├── 01_llm_fundamentals.md
+│   │   ├── 02_practical_examples.md
+│   │   ├── 03_quick_reference.md
+│   │   ├── 04_hard_problems.md
+│   │   └── 05_prompt_engineering.md
+│   ├── rag/                           # Retrieval-Augmented Generation
+│   │   ├── README.md                  # Navigation & overview
+│   │   ├── notes.md                   # Comprehensive study guide
+│   │   ├── implementation-examples.md # Practical code examples
+│   │   └── quick-reference.md         # Quick lookup cheat sheet
+│   ├── agentic/                       # AI Agents & Multi-Agent Systems (WIP)
+│   └── NIPS-2017-attention-is-all-you-need-Paper.pdf
 │
-└── [projects/](projects/)                          # Hands-on implementations
-    ├── [hello_world/](projects/hello_world/)       # Simple Ollama + streaming example
-    │   ├── [main.py](projects/hello_world/main.py)
-    │   └── [pyproject.toml](projects/hello_world/pyproject.toml)
-    └── [Jsonify/](projects/Jsonify/README.md)      # Production-ready JSON extractor
-        ├── [README.md](projects/Jsonify/README.md)
-        ├── [src/](projects/Jsonify/src/)
-        │   ├── [main.py](projects/Jsonify/src/main.py)                # CLI entry point
-        │   ├── [config.py](projects/Jsonify/src/config.py)            # Configuration
-        │   ├── [core/](projects/Jsonify/src/core/)                    # Core logic
-        │   │   ├── [extractor.py](projects/Jsonify/src/core/extractor.py)     # LLM + retry logic
-        │   │   └── [models.py](projects/Jsonify/src/core/models.py)           # Pydantic schemas
-        │   └── [utils/](projects/Jsonify/src/utils/)                  # Utilities
-        │       ├── [retry.py](projects/Jsonify/src/utils/retry.py)            # Exponential backoff
-        │       └── [exceptions.py](projects/Jsonify/src/utils/exceptions.py)  # Error types
-        ├── [tests/](projects/Jsonify/tests/)
-        │   └── [test_extractor.py](projects/Jsonify/tests/test_extractor.py)  # Comprehensive test suite
-        └── [pyproject.toml](projects/Jsonify/pyproject.toml)
-
+└── projects/                          # Hands-on implementations
+    ├── hello_world/                   # Simple Ollama + streaming example
+    │   ├── main.py
+    │   └── pyproject.toml
+    └── Jsonify/                       # Production-ready JSON extractor
+        ├── README.md
+        ├── src/
+        │   ├── main.py
+        │   ├── config.py
+        │   ├── core/
+        │   │   ├── extractor.py
+        │   │   └── models.py
+        │   └── utils/
+        │       ├── retry.py
+        │       └── exceptions.py
+        ├── tests/
+        │   └── test_extractor.py
+        └── pyproject.toml
 ```
 
 ---
@@ -222,16 +235,6 @@ python -m src.main "your text here"  # Use the CLI
 - Use the tracker's evaluations to check your understanding
 - Complete the 18-week capstone project
 - Red-team your own systems (Week 15)
-
-**Want to track your own progress?**
-- See [Host This Tracker For Your Own Use](#-host-this-tracker-for-your-own-use-no-changes-needed) section below
-- Fork & deploy in 3 steps (no customization needed)
-- Your own tracker on GitHub Pages
-
-**Want to create a fully custom tracker?**
-- See [🍴 Fork & Customize](#-fork--customize-advanced-customization) section below
-- Full guide for modifying weeks, content, and tasks
-- Great for running your own class or program
 
 ---
 
