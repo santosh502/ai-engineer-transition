@@ -1,14 +1,17 @@
-# Retrieval-Augmented Generation (RAG) - Learning Materials
+# Retrieval-Augmented Generation (RAG)
 
-**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
-
-## Overview
+**Materials**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
 
 This directory contains comprehensive study materials for **Retrieval-Augmented Generation (RAG)**, a powerful technique that combines information retrieval with generative AI to build more accurate, grounded, and current LLM applications.
 
+---
+
 ## What's Inside
 
-### **[notes.md](notes.md)** - Comprehensive Study Guide
+### [notes.md](notes.md) — Comprehensive Study Guide
+
+**Best for**: Understanding concepts and theory
+
 - What is RAG and why it matters
 - Core components: Retriever, Embeddings, Vector Stores, Generator
 - Complete pipeline architecture with visual diagrams
@@ -20,9 +23,10 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Best practices checklist
 - Learning resources
 
-**Best for:** Understanding concepts and theory
+### [implementation-examples.md](implementation-examples.md) — Practical Code
 
-###  **[implementation-examples.md](implementation-examples.md)** - Practical Code
+**Best for**: Building and implementing RAG systems
+
 - Simple RAG pipeline with LangChain
 - Hybrid retrieval (dense + sparse)
 - Reranking for better relevance
@@ -33,9 +37,10 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Evaluation with RAGAS framework
 - Configuration templates for different use cases
 
-**Best for:** Building and implementing RAG systems
+### [quick-reference.md](quick-reference.md) — Quick Lookup
 
-### **[quick-reference.md](quick-reference.md)** - Quick Lookup
+**Best for**: Quick answers during development
+
 - The 4 steps of RAG at a glance
 - Embedding models comparison
 - Vector database options
@@ -48,81 +53,83 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Common mistakes to avoid
 - Decision tree for "Should I use RAG?"
 
-**Best for:** Quick answers during development
-
 ---
 
-## Key Concepts at a Glance
+## RAG at a Glance
 
-### RAG Pipeline (4 Steps)
+**RAG Pipeline (4 Steps)**
+
 ```
 Query → Encode → Retrieve → Augment → Generate → Answer
 ```
 
-### Why RAG Matters
-- Ground answers in actual data (reduce hallucinations)
-- Keep information current (even if training data is old)
-- Work with specialized domain knowledge
-- Provide citations and sources
-- Handle large knowledge bases efficiently
+**Why RAG Matters**
+
+> Ground answers in actual data (reduce hallucinations)  
+> Keep information current (even if training data is old)  
+> Work with specialized domain knowledge  
+> Provide citations and sources  
+> Handle large knowledge bases efficiently
 
 ---
 
 ## Quick Start
 
-**Want to build a RAG system?**
+### Build a RAG System
 
-1. Read [notes.md](notes.md) - **"What is RAG?"** section
-2. Check [quick-reference.md](quick-reference.md) - **"Quick Setup"** section
-3. Use code from [implementation-examples.md](implementation-examples.md) - **"Simple RAG Pipeline"**
+1. Read [notes.md](notes.md) — "What is RAG?" section
+2. Check [quick-reference.md](quick-reference.md) — "Quick Setup" section
+3. Use code from [implementation-examples.md](implementation-examples.md) — "Simple RAG Pipeline"
 
-**Want to understand RAG deeply?**
+### Understand RAG Deeply
 
-1. Start with [notes.md](notes.md) - Read completely
-2. Study [implementation-examples.md](implementation-examples.md) - Understand each example
-3. Review [quick-reference.md](quick-reference.md) - Reinforce key points
+1. Start with [notes.md](notes.md) — Read completely
+2. Study [implementation-examples.md](implementation-examples.md) — Understand each example
+3. Review [quick-reference.md](quick-reference.md) — Reinforce key points
 
 ---
 
-## Core Components You Need to Know
+## Core Components
 
-### 1. **Embeddings**
-- Text → Vector (e.g., 768-1536 dimensions)
+### 1. Embeddings
+- Text → Vector (768-1536 dimensions)
 - Capture semantic meaning
 - Enable similarity search
 
-### 2. **Chunking**
+### 2. Chunking
 - Split documents into manageable pieces
 - Recommended: RecursiveCharacterTextSplitter
 - Typical: 512-1024 tokens, 20% overlap
 
-### 3. **Vector Database**
+### 3. Vector Database
 - Store and retrieve embeddings
 - Options: Pinecone, Weaviate, Chroma, FAISS
 - Enable semantic search
 
-### 4. **Retriever**
+### 4. Retriever
 - Finds relevant chunks for a query
 - Can be dense (embedding-based) or sparse (keyword-based)
 - Hybrid approach is more robust
 
-### 5. **Generator (LLM)**
+### 5. Generator (LLM)
 - Takes query + retrieved context
 - Generates grounded response
 - Prompt engineering matters
 
 ---
 
-## Decision: Should I Use RAG?
+## Should I Use RAG?
 
-### Use RAG If:
+### Use RAG When
+
 - Knowledge base updates frequently
 - Domain-specific information matters
 - Need citations/sources (compliance)
 - Large knowledge base
 - Hallucinations are costly (medical, legal)
 
-### Don't Use RAG If:
+### Don't Use RAG When
+
 - General knowledge questions
 - Extremely low latency required (<100ms)
 - Model already knows the answer
@@ -133,83 +140,83 @@ Query → Encode → Retrieve → Augment → Generate → Answer
 
 ## Best Practices
 
-1. **Use same embedding model** everywhere
-2. **RecursiveCharacterTextSplitter** is your default
-3. **Chunk size: 512-1024** tokens (adjust by use case)
-4. **Chunk overlap: 20%** (50-200 tokens)
-5. **Hybrid retrieval** (dense + sparse) beats either alone
-6. **Reranking** improves results significantly
-7. **Separate metrics** for retrieval vs generation
-8. **Test with real queries** from your domain
-9. **Preserve metadata** (source, date, version)
-10. **Version your knowledge base** and configs
+1. Use same embedding model everywhere
+2. RecursiveCharacterTextSplitter is your default
+3. Chunk size: 512-1024 tokens (adjust by use case)
+4. Chunk overlap: 20% (50-200 tokens)
+5. Hybrid retrieval (dense + sparse) beats either alone
+6. Reranking improves results significantly
+7. Separate metrics for retrieval vs generation
+8. Test with real queries from your domain
+9. Preserve metadata (source, date, version)
+10. Version your knowledge base and configs
 
 ---
 
 ## Popular Frameworks
 
-| Framework · Use Case · Learning Curve |
+| Framework | Use Case | Learning Curve |
 |-----------|----------|-----------------|
-| **LangChain** · General RAG, full-featured · Medium |
-| **LlamaIndex** · Data indexing & retrieval · Low |
-| **Haystack** · Custom modular pipelines · Medium |
-| **FastEmbed** · Lightweight embeddings · Low |
+| **LangChain** | General RAG, full-featured | Medium |
+| **LlamaIndex** | Data indexing & retrieval | Low |
+| **Haystack** | Custom modular pipelines | Medium |
+| **FastEmbed** | Lightweight embeddings | Low |
 
 ---
 
-## Common Challenges
+## Common Challenges & Solutions
 
-| Challenge · Root Cause · Solution |
+| Challenge | Root Cause | Solution |
 |-----------|-----------|----------|
-| Wrong docs retrieved · Poor chunking or embedding · Hybrid search, reranking |
-| Context too small · Low chunk size · Increase chunk size or overlap |
-| Token overflow · Too many retrieved chunks · Reranking, compression |
-| Slow queries · No indexing/caching · Add vector DB indexing |
-| Hallucinations · Poor context · Better chunking, source attribution |
+| Wrong docs retrieved | Poor chunking or embedding | Hybrid search, reranking |
+| Context too small | Low chunk size | Increase chunk size or overlap |
+| Token overflow | Too many retrieved chunks | Reranking, compression |
+| Slow queries | No indexing/caching | Add vector DB indexing |
+| Hallucinations | Poor context | Better chunking, source attribution |
 
 ---
 
 ## Evaluation
 
 **Retrieval Quality Metrics:**
-- Recall@K: Did relevant docs appear?
-- Precision@K: Were top-K relevant?
-- NDCG: Is ranking good?
+- Recall@K — Did relevant docs appear?
+- Precision@K — Were top-K relevant?
+- NDCG — Is ranking good?
 
 **Generation Quality Metrics:**
-- Faithfulness: Does answer match context?
-- Relevance: Does answer address question?
-- Hallucination rate: How many made-up facts?
+- Faithfulness — Does answer match context?
+- Relevance — Does answer address question?
+- Hallucination rate — How many made-up facts?
 
-**Framework:** Use RAGAS for comprehensive RAG evaluation
+> Use **RAGAS Framework** for comprehensive RAG evaluation
 
 ---
 
-## Next Steps
+## Getting Started
 
-1. **Learn the theory:** Read [notes.md](notes.md)
-2. **See code examples:** Study [implementation-examples.md](implementation-examples.md)
-3. **Build something:** Start with simple pipeline
-4. **Evaluate:** Use RAGAS framework
-5. **Iterate:** Monitor metrics and improve
+1. **Learn the theory** — Read [notes.md](notes.md)
+2. **See code examples** — Study [implementation-examples.md](implementation-examples.md)
+3. **Build something** — Start with simple pipeline
+4. **Evaluate** — Use RAGAS framework
+5. **Iterate** — Monitor metrics and improve
 
 ---
 
 ## External Resources
 
-### Foundational
+**Foundational**
 - [NVIDIA RAG 101](https://developer.nvidia.com/blog/rag-101-demystifying-retrieval-augmented-generation-pipelines/)
 - [IBM RAG Architecture](https://www.ibm.com/think/architectures/patterns/genai-rag)
 
-### Implementation
+**Implementation**
 - [LangChain Documentation](https://python.langchain.com/)
 - [LlamaIndex Guide](https://docs.llamaindex.ai/)
 
-### Advanced
+**Advanced**
 - [Engineering the RAG Stack (arxiv)](https://arxiv.org/pdf/2601.05264)
 - [Best Chunking Strategies 2026](https://www.firecrawl.dev/blog/best-chunking-strategies-rag)
 
-### Evaluation
+**Evaluation**
 - [RAGAS Framework](https://docs.ragas.io/)
 
 ---
@@ -239,13 +246,11 @@ retriever = db.as_retriever()
 
 ## Key Takeaways
 
-1. **RAG = Smart Context**: Retrieve relevant info before generating
-2. **Chunking is Critical**: How you split docs affects everything
-3. **Embeddings + Vector DB**: Enable semantic search at scale
-4. **Prompt Matters**: Good formatting improves answers
-5. **Hybrid > Single**: Dense + sparse retrieval is more robust
-6. **Evaluate Separately**: Check retrieval and generation independently
-7. **Same Model Everywhere**: Use identical embedding model throughout
-8. **Domain-Specific Wins**: RAG excels with specialized knowledge
-
----
+1. **RAG = Smart Context** — Retrieve relevant info before generating
+2. **Chunking is Critical** — How you split docs affects everything
+3. **Embeddings + Vector DB** — Enable semantic search at scale
+4. **Prompt Matters** — Good formatting improves answers
+5. **Hybrid > Single** — Dense + sparse retrieval is more robust
+6. **Evaluate Separately** — Check retrieval and generation independently
+7. **Same Model Everywhere** — Use identical embedding model throughout
+8. **Domain-Specific Wins** — RAG excels with specialized knowledge

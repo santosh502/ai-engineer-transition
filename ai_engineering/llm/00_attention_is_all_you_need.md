@@ -1,6 +1,8 @@
-# Attention Is All You Need - End-to-End Explanation
+# Attention Is All You Need
 
-**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
+**Navigation**: [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
+
+*A companion to Phase 1: Vector Geometry—this paper is where your vector intuition (dot products, linear combinations) gets used directly.*
 
 *A companion to Phase 1: Vector Geometry - this paper is where your vector intuition (dot products, linear combinations) gets used directly.*
 

@@ -1,10 +1,12 @@
 # Agentic AI
 
-**Learning Materials** - [LLM Course](../llm/README.md) · [RAG Guide](../rag/README.md) · [Agentic AI](README.md)
+**Navigation**: [LLM Course](../llm/README.md) · [RAG Guide](../rag/README.md) · [Agentic AI](README.md)
 
-This directory contains notes and examples on building AI agents - systems where LLMs coordinate tools and take autonomous actions.
+This directory contains notes and examples on building AI agents—systems where LLMs coordinate tools and take autonomous actions.
 
-## Topics to Cover
+---
+
+## Learning Roadmap
 
 - [ ] Agent architecture and loops
 - [ ] Tool definitions and schemas
@@ -18,19 +20,32 @@ This directory contains notes and examples on building AI agents - systems where
 - [ ] Human-in-the-loop for high-risk actions
 - [ ] Agent evaluation and testing
 
+---
+
 ## Why Agents Matter
 
-- **Multi-step autonomy**: Accomplish complex tasks without human intervention at each step
-- **Tool coordination**: Seamlessly integrate code execution, web search, database queries
-- **Scalability**: One agent can delegate to specialized sub-agents
-- **Real-world grounding**: Actions have consequences; agents learn to verify
+**Multi-step autonomy** — Accomplish complex tasks without human intervention at each step
+
+**Tool coordination** — Seamlessly integrate code execution, web search, database queries
+
+**Scalability** — One agent can delegate to specialized sub-agents
+
+**Real-world grounding** — Actions have consequences; agents learn to verify
+
+---
 
 ## Agent vs Chatbot vs Copilot
 
-| Type · Autonomy · Example |
+| Type | Autonomy | Example |
 |------|----------|---------|
-| **Chatbot** · User submits prompt; model responds · ChatGPT, Claude web interface |
-| **Copilot** · Suggests next action; human executes · GitHub Copilot (code completion) |
-| **Agent** · Multi-step autonomous execution · Langchain agents, Claude with tools |
+| **Chatbot** | User submits prompt; model responds | ChatGPT, Claude web interface |
+| **Copilot** | Suggests next action; human executes | GitHub Copilot (code completion) |
+| **Agent** | Multi-step autonomous execution | LangChain agents, Claude with tools |
 
-Coming soon: Architecture patterns, tool design, multi-agent frameworks.
+---
+
+## Coming Soon
+
+Architecture patterns, tool design, multi-agent frameworks, and hands-on examples.
+
+See the [18-week curriculum](../../tracker.html) Weeks 8-12 for the complete agentic AI learning path.

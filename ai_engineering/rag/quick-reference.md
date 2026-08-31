@@ -1,6 +1,8 @@
-# RAG Quick Reference Guide
+# RAG Quick Reference
 
-**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Navigation**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+
+Quick lookup guide for RAG development and decision-making.
 
 ## At a Glance
 

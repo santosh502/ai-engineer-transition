@@ -1,6 +1,8 @@
-# Retrieval-Augmented Generation (RAG) - Study Notes
+# RAG Study Guide
 
-**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Navigation**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+
+Comprehensive study notes for Retrieval-Augmented Generation.
 
 ## What is RAG?
 

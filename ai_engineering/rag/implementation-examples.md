@@ -1,6 +1,8 @@
 # RAG Implementation Examples
 
-**RAG Materials** - [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Navigation**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+
+Practical, working code examples for building RAG systems.
 
 ## 1. Simple RAG Pipeline with LangChain
 

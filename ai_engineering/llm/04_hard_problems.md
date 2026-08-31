@@ -1,6 +1,8 @@
 # Hard Problems & Limitations in LLMs
 
-**LLM Materials** - [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
+**Navigation**: [Overview](README.md) · [00: Attention](00_attention_is_all_you_need.md) · [01: Fundamentals](01_llm_fundamentals.md) · [02: Examples](02_practical_examples.md) · [03: Reference](03_quick_reference.md) · [04: Hard Problems](04_hard_problems.md) · [05: Prompting](05_prompt_engineering.md)
+
+*The gap between "works in research" and "works in production"—where current models actually fail.*
 
 *The gap between "works in research" and "works in production" - where current models actually fail.*
 
