@@ -21,8 +21,15 @@ This repo combines:
 1. Open [ai_engineering/README.md](ai_engineering/README.md)
 2. Start with [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)
 3. Work through in order: fundamentals → examples → reference → hard problems → prompting
+4. **For RAG**: See [ai_engineering/rag/README.md](ai_engineering/rag/README.md) for comprehensive materials
 
 **Time**: 1 week to understand the basics. 3-4 weeks to go deep.
+
+**RAG Learning Path**:
+- [RAG Overview & Study Guide](ai_engineering/rag/README.md) - Start here
+- [RAG Comprehensive Notes](ai_engineering/rag/notes.md) - Deep dive (317 lines)
+- [RAG Code Examples](ai_engineering/rag/implementation-examples.md) - 9 working examples
+- [RAG Quick Reference](ai_engineering/rag/quick-reference.md) - Developer cheat sheet
 
 ### Want to build projects?
 1. Open [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) in your browser (no server needed)
@@ -41,44 +48,44 @@ Keep reading this file.
 
 ```
 ai-engineer-transition/
-├── README.md                          # You are here
-├── tracker.html                       # Interactive 18-week curriculum
+├── [README.md](README.md)                          # You are here
+├── [tracker.html](tracker.html)                    # Interactive 18-week curriculum
 │
-├── ai_engineering/                    # Learning materials
-│   ├── README.md                      # Learning path guide
-│   ├── llm/                           # Complete LLM course (5 modules)
-│   │   ├── 00_attention_is_all_you_need.md     # Transformer deep dive (optional)
-│   │   ├── 01_llm_fundamentals.md              # Start here
-│   │   ├── 02_practical_examples.md            # Code to run
-│   │   ├── 03_quick_reference.md               # Lookup + decision trees
-│   │   ├── 04_hard_problems.md                 # Production realities
-│   │   └── 05_prompt_engineering.md            # How to prompt well
-│   ├── rag/                           # Retrieval-Augmented Generation
-│   │   ├── README.md                  # Navigation & overview
-│   │   ├── notes.md                   # Comprehensive study guide
-│   │   ├── implementation-examples.md # Practical code examples
-│   │   └── quick-reference.md         # Quick lookup cheat sheet
-│   ├── agentic/                       # AI Agents & Multi-Agent Systems (WIP)
-│   └── NIPS-2017-attention-is-all-you-need-Paper.pdf
+├── [ai_engineering/](ai_engineering/README.md)     # Learning materials
+│   ├── [README.md](ai_engineering/README.md)       # Learning path guide
+│   ├── [llm/](ai_engineering/llm/)                 # Complete LLM course (5 modules)
+│   │   ├── [00_attention_is_all_you_need.md](ai_engineering/llm/00_attention_is_all_you_need.md)     # Transformer deep dive
+│   │   ├── [01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md)                       # Start here
+│   │   ├── [02_practical_examples.md](ai_engineering/llm/02_practical_examples.md)                   # Code to run
+│   │   ├── [03_quick_reference.md](ai_engineering/llm/03_quick_reference.md)                         # Lookup + decision trees
+│   │   ├── [04_hard_problems.md](ai_engineering/llm/04_hard_problems.md)                             # Production realities
+│   │   └── [05_prompt_engineering.md](ai_engineering/llm/05_prompt_engineering.md)                   # How to prompt well
+│   ├── [rag/](ai_engineering/rag/README.md)                           # Retrieval-Augmented Generation
+│   │   ├── [README.md](ai_engineering/rag/README.md)                  # Navigation & overview
+│   │   ├── [notes.md](ai_engineering/rag/notes.md)                    # Comprehensive study guide
+│   │   ├── [implementation-examples.md](ai_engineering/rag/implementation-examples.md) # Practical code examples
+│   │   └── [quick-reference.md](ai_engineering/rag/quick-reference.md)                 # Quick lookup cheat sheet
+│   ├── [agentic/](ai_engineering/agentic/)                            # AI Agents & Multi-Agent Systems (WIP)
+│   └── [NIPS-2017-attention-is-all-you-need-Paper.pdf](ai_engineering/NIPS-2017-attention-is-all-you-need-Paper.pdf)
 │
-└── projects/                          # Hands-on implementations
-    ├── hello_world/                   # Simple Ollama + streaming example
-    │   ├── main.py
-    │   └── pyproject.toml
-    └── Jsonify/                       # Production-ready JSON extractor
-        ├── README.md
-        ├── src/
-        │   ├── main.py                # CLI entry point
-        │   ├── config.py              # Configuration
-        │   ├── core/                  # Core logic
-        │   │   ├── extractor.py       # LLM + retry logic
-        │   │   └── models.py          # Pydantic schemas
-        │   └── utils/                 # Utilities
-        │       ├── retry.py           # Exponential backoff
-        │       └── exceptions.py      # Error types
-        ├── tests/
-        │   └── test_extractor.py      # Comprehensive test suite
-        └── pyproject.toml
+└── [projects/](projects/)                          # Hands-on implementations
+    ├── [hello_world/](projects/hello_world/)       # Simple Ollama + streaming example
+    │   ├── [main.py](projects/hello_world/main.py)
+    │   └── [pyproject.toml](projects/hello_world/pyproject.toml)
+    └── [Jsonify/](projects/Jsonify/README.md)      # Production-ready JSON extractor
+        ├── [README.md](projects/Jsonify/README.md)
+        ├── [src/](projects/Jsonify/src/)
+        │   ├── [main.py](projects/Jsonify/src/main.py)                # CLI entry point
+        │   ├── [config.py](projects/Jsonify/src/config.py)            # Configuration
+        │   ├── [core/](projects/Jsonify/src/core/)                    # Core logic
+        │   │   ├── [extractor.py](projects/Jsonify/src/core/extractor.py)     # LLM + retry logic
+        │   │   └── [models.py](projects/Jsonify/src/core/models.py)           # Pydantic schemas
+        │   └── [utils/](projects/Jsonify/src/utils/)                  # Utilities
+        │       ├── [retry.py](projects/Jsonify/src/utils/retry.py)            # Exponential backoff
+        │       └── [exceptions.py](projects/Jsonify/src/utils/exceptions.py)  # Error types
+        ├── [tests/](projects/Jsonify/tests/)
+        │   └── [test_extractor.py](projects/Jsonify/tests/test_extractor.py)  # Comprehensive test suite
+        └── [pyproject.toml](projects/Jsonify/pyproject.toml)
 
 ```
 
@@ -91,10 +98,10 @@ ai-engineer-transition/
 
 **Phase 1 (Weeks 2-7)**: Core Engineering - RAG from First Principles
 - Week 2: Prompting as engineering (JSON extraction)
-- Week 3: Embeddings & vector search
-- Week 4: Vector databases
-- Week 5: RAG done right (retrieval + re-ranking)
-- Week 6: Evaluation frameworks
+- Week 3: Embeddings & vector search → See [rag/notes.md - Vector Embeddings](ai_engineering/rag/notes.md#2-vector-embeddings--similarity-search)
+- Week 4: Vector databases → See [rag/quick-reference.md - Vector Databases](ai_engineering/rag/quick-reference.md#vector-databases)
+- Week 5: RAG done right (retrieval + re-ranking) → See [rag/implementation-examples.md](ai_engineering/rag/implementation-examples.md)
+- Week 6: Evaluation frameworks → See [rag/notes.md - Evaluation Metrics](ai_engineering/rag/notes.md#evaluation-metrics)
 - Week 7: LLMOps & observability
 
 **Phase 2 (Weeks 8-12)**: Agentic AI
@@ -129,6 +136,18 @@ ai_engineering/llm/01_llm_fundamentals.md
 open tracker.html
 
 # Set a start date and begin tracking Week 1 tasks
+# For Phase 1 (RAG weeks), cross-reference: ai_engineering/rag/
+```
+
+### Option 2b: Deep Dive into RAG
+```bash
+# Jump directly to comprehensive RAG materials
+open ai_engineering/rag/README.md
+
+# Then choose:
+# - For theory: ai_engineering/rag/notes.md
+# - For code: ai_engineering/rag/implementation-examples.md
+# - For quick lookup: ai_engineering/rag/quick-reference.md
 ```
 
 ### Option 3: Run Existing Projects
@@ -162,6 +181,21 @@ python -m src.main "your text here"  # Use the CLI
 - Use the tracker's evaluations to check your understanding
 - Complete the 18-week capstone project
 - Red-team your own systems (Week 15)
+
+---
+
+## RAG Learning Materials
+
+Complete, comprehensive materials for mastering Retrieval-Augmented Generation:
+
+| Resource | Type | Best For | Size |
+|----------|------|----------|------|
+| [rag/README.md](ai_engineering/rag/README.md) | Overview | Navigation & understanding structure | Quick read |
+| [rag/notes.md](ai_engineering/rag/notes.md) | Study Guide | Deep learning (concepts, diagrams, best practices) | 317 lines |
+| [rag/implementation-examples.md](ai_engineering/rag/implementation-examples.md) | Code | Building RAG systems (9 working examples) | 345 lines |
+| [rag/quick-reference.md](ai_engineering/rag/quick-reference.md) | Reference | Quick lookups during development | 298 lines |
+
+**Start with**: [rag/README.md](ai_engineering/rag/README.md) → Choose your path (depth vs speed)
 
 ---
 
