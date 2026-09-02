@@ -1,8 +1,8 @@
 # AI Engineering Learning Path
 
-**Quick Navigation**: [LLM Course](llm/README.md) · [RAG Guide](rag/README.md) · [Agentic AI](agentic/README.md)
+**Quick Navigation**: [LLM Course](llm/README.md) · [Embeddings](embeddings/README.md) · [Vector Databases](vector_databases/README.md) · [RAG Guide](rag/README.md) · [Agentic AI](agentic/README.md)
 
-A practical guide to understanding Large Language Models—how they actually work, how to build with them, and what matters in 2026.
+A practical guide to understanding Large Language Models - how they actually work, how to build with them, and what matters in 2026.
 
 ---
 
@@ -18,6 +18,18 @@ ai_engineering/
 │   ├── 04_hard_problems.md              # Production challenges
 │   ├── 05_prompt_engineering.md         # Getting good behavior
 │   └── README.md                        # Learning sequence
+│
+├── embeddings/                          # Phase 2A: Embeddings & Semantic Search
+│   ├── 00_embeddings_guide.md           # Fundamentals & from-scratch implementation
+│   ├── 01_practical_code_examples.md    # 4 runnable code examples
+│   ├── 02_quick_reference.md            # Cheat sheet for models & chunking
+│   └── README.md                        # Learning paths & navigation
+│
+├── vector_databases/                    # Phase 2B: Vector DBs & ANN
+│   ├── 00_vector_databases_guide.md     # ANN algorithms & DB comparison
+│   ├── 01_practical_code_examples.md    # 6 runnable code examples
+│   ├── 02_quick_reference.md            # DB decision tree & tuning guide
+│   └── README.md                        # Learning paths & navigation
 │
 ├── rag/                                 # Retrieval-Augmented Generation
 │   ├── README.md                        # Navigation & overview
@@ -87,6 +99,59 @@ Complete learning path from theory to production.
 
 ---
 
+### Embeddings (Phase 2A)
+
+Learn what embeddings are and how to build semantic search from first principles.
+
+**Files** (in suggested order):
+
+| File | Focus | Level |
+|------|-------|-------|
+| [README.md](embeddings/README.md) | Navigation & learning paths | All levels |
+| [00: Embeddings Guide](embeddings/00_embeddings_guide.md) | What embeddings are, cosine similarity, chunking (Sections 1–9) | Beginner |
+| [01: Practical Code](embeddings/01_practical_code_examples.md) | 4 runnable examples + integration | Intermediate |
+| [02: Quick Reference](embeddings/02_quick_reference.md) | Model recommendations, chunking sizes, API reference | All levels |
+
+**Topics covered**:
+- What embeddings are and why we need them (Phase 1 vector geometry extended to N dimensions)
+- Cosine similarity: the "angle between meanings"
+- Dense vs. sparse vectors
+- Text chunking strategies (5 approaches with trade-offs)
+- Building a semantic search engine from scratch in pure Python (no frameworks)
+- Comparing embedding models (OpenAI, Cohere, Sentence Transformers, BAAI, etc.)
+- Practical model selection and cost analysis
+
+**Learning outcomes**: Deep intuition for embeddings, ability to design chunking strategies, implement semantic search without frameworks, compare models.
+
+---
+
+### Vector Databases (Phase 2B)
+
+Learn how to scale semantic search to millions/billions of vectors using ANN algorithms.
+
+**Files** (in suggested order):
+
+| File | Focus | Level |
+|------|-------|-------|
+| [README.md](vector_databases/README.md) | Navigation & learning paths | All levels |
+| [00: Vector DB Guide](vector_databases/00_vector_databases_guide.md) | ANN algorithms, DB comparison, hybrid search (Sections 10–16) | Intermediate |
+| [01: Practical Code](vector_databases/01_practical_code_examples.md) | 6 runnable examples (pgvector, Qdrant, hybrid search) | Intermediate |
+| [02: Quick Reference](vector_databases/02_quick_reference.md) | DB decision tree, algorithm comparison, performance tuning | All levels |
+
+**Topics covered**:
+- What vector databases solve (scaling similarity search from O(n) to O(log n))
+- ANN algorithms in depth: HNSW, IVF, LSH, Product Quantization
+- Top vector databases compared (Pinecone, Qdrant, pgvector, Weaviate, Milvus, FAISS)
+- Choosing the right vector DB for your scale
+- Setting up pgvector (Postgres) and Qdrant locally
+- Metadata filtering and access control
+- Hybrid search: combining dense embeddings + BM25 keyword search
+- Performance tuning and latency optimization
+
+**Learning outcomes**: Understand ANN algorithms and their trade-offs, choose the right vector DB, implement hybrid search, optimize for production.
+
+---
+
 ### Retrieval-Augmented Generation (RAG)
 
 Complete learning materials for mastering RAG systems.
@@ -133,6 +198,11 @@ Complete learning materials for mastering RAG systems.
 | **Self-Attention** | Lets tokens understand context from all positions | [01_llm_fundamentals.md §2](llm/01_llm_fundamentals.md) |
 | **Scaling Laws** | Bigger model + more data = predictably better | [01_llm_fundamentals.md §4](llm/01_llm_fundamentals.md) |
 | **Fine-tuning** | Customize models for specific domains/tasks | [02_practical_examples.md §4](llm/02_practical_examples.md) |
+| **Embeddings** | Text → vectors, similar meaning = nearby vectors | [embeddings/README.md](embeddings/README.md) |
+| **Cosine Similarity** | The angle between vectors (ignores magnitude, perfect for semantic comparison) | [embeddings/00_embeddings_guide.md](embeddings/00_embeddings_guide.md) §5 |
+| **Chunking** | Splitting documents for optimal embedding + retrieval (balances precision vs. context) | [embeddings/00_embeddings_guide.md](embeddings/00_embeddings_guide.md) §6 |
+| **ANN (Approximate Nearest Neighbor)** | Algorithms that trade <1% accuracy for 100x speed gains (HNSW, IVF, etc.) | [vector_databases/00_vector_databases_guide.md](vector_databases/00_vector_databases_guide.md) §12 |
+| **Vector Databases** | Fast similarity search at scale (Qdrant, pgvector, Pinecone) | [vector_databases/README.md](vector_databases/README.md) |
 | **RAG** | Ground LLM answers in real documents | [rag/README.md](rag/README.md) |
 | **Agents** | LLMs coordinating tools for autonomous action | [agentic/README.md](agentic/README.md) |
 | **Reasoning Models** | "Think longer" for harder problems | [01_llm_fundamentals.md §5](llm/01_llm_fundamentals.md) |
