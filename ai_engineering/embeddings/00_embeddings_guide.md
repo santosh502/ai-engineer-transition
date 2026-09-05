@@ -279,6 +279,46 @@ def search(query, index, top_k=5):
 
 This is a full semantic search engine - just brute-force (compares the query against *every* stored vector). That brute-force comparison is exactly the bottleneck vector databases exist to solve (see the Vector Databases module).
 
+### 7.4 When to Stop Building and Start Using APIs
+
+You now understand cosine similarity, chunking, and retrieval. Next question: should you keep building, or start using pre-built models?
+
+**Use free/open-source local embeddings when:**
+- Prototyping or learning
+- Dataset < 10K documents
+- Latency-insensitive (queries can take 1+ second)
+- Privacy-critical (don't want to send data to APIs)
+- Budget-constrained (self-hosted cost is just GPU electricity)
+
+**Use paid API embeddings (OpenAI, Cohere) when:**
+- Production system, quality matters
+- Dataset > 10K documents
+- Latency requirements < 100ms
+- You can afford API costs
+- Want best-in-class model quality
+
+**Cost example for 100M tokens/month:**
+```
+text-embedding-3-small (OpenAI):
+  100M tokens × $0.02/1M = $2,000/month
+
+all-MiniLM-L6-v2 (self-hosted on GPU):
+  GPU cost: ~$1/month (batch embeddings efficiently)
+  BUT: requires maintaining GPU infrastructure
+
+Rule of thumb:
+- < 10M tokens/month: self-host wins on cost
+- > 100M tokens/month: API becomes comparable
+- Quality-critical: API models win
+```
+
+**Practical path forward:**
+1. Prototype locally with `all-MiniLM-L6-v2` (free, fast)
+2. Test retrieval quality on your domain data
+3. If quality acceptable → keep it, save money
+4. If quality needs improvement → try `text-embedding-3-small`
+5. Measure ROI: does better embedding quality justify 50x cost?
+
 ---
 
 ## 8. Add: Basic Vector Store (Local, No Framework)

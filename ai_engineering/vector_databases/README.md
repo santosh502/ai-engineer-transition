@@ -4,6 +4,8 @@
 
 Learn how to scale semantic search to millions of vectors using ANN algorithms and production vector databases.
 
+> **Where this fits:** You've learned embeddings from [Phase 2A](../embeddings/README.md). Now scale it to millions of vectors. After this, build a complete RAG system with [Phase 4: RAG](../rag/README.md). See [architecture overview](../rag/architecture-overview.md) to understand how embeddings → vector DB → RAG connect.
+
 ## Content
 
 ### 1. **[00_vector_databases_guide.md](00_vector_databases_guide.md)** (Main Guide)
@@ -55,6 +57,20 @@ Quick lookups:
 - Performance tuning checklist
 - Cost comparison (2024 pricing)
 - Debugging guide (why is search slow?)
+
+---
+
+## ⚠️ Common Mistakes
+
+These will bite you in production:
+
+- **ANN accuracy loss is real, but tiny.** HNSW at default settings trades ~1% recall loss for 100x speed gain. Measure on your actual data—the trade-off might not be worth it for your use case.
+
+- **Index doesn't auto-rebuild.** If you change chunk size, embedding model, or re-chunk your documents, old vectors in the index are stale. You must completely rebuild the index. There's no "just reindex changed docs" feature in most vector DBs.
+
+- **Schema changes are expensive.** If you add a new metadata field after indexing, you can't retroactively fill it. Plan your metadata schema upfront.
+
+- **Similarity scores don't have absolute meaning.** A score of 0.85 is high, but "high" depends on your embedding model and data distribution. Always measure retrieval quality empirically on your own data.
 
 ---
 

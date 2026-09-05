@@ -1,8 +1,10 @@
 # RAG Study Guide
 
-**Navigation**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Navigation**: [Overview](README.md) · [Architecture](architecture-overview.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md) · [Troubleshooting](troubleshooting.md)
 
 Comprehensive study notes for Retrieval-Augmented Generation.
+
+> **New here?** See [architecture-overview.md](architecture-overview.md) to understand how embeddings, vector databases, and RAG work together. Having trouble? Go to [troubleshooting.md](troubleshooting.md).
 
 ## What is RAG?
 

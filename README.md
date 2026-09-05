@@ -1,6 +1,6 @@
 # AI Engineer Transition
 
-A **practical, 18-week program** for experienced software engineers to master AI engineering—from LLM fundamentals through building production agents.
+A **practical, 18-week program** for experienced software engineers to master AI engineering - from LLM fundamentals through building production agents.
 
 📍 **Live on GitHub Pages**: [https://santosh502.github.io/ai-engineer-transition/](https://santosh502.github.io/ai-engineer-transition/)
 
@@ -9,9 +9,9 @@ A **practical, 18-week program** for experienced software engineers to master AI
 ## Overview
 
 This repo combines:
-- **Learning materials** — Theory + hands-on code across 5 structured LLM modules
-- **Working projects** — Two production-like applications (text-to-JSON extractor, hello-world LLM)
-- **Progress tracker** — Interactive 18-week curriculum with tasks, resources, and checkpoints
+- **Learning materials** - Theory + hands-on code across 5 structured LLM modules
+- **Working projects** - Two production-like applications (text-to-JSON extractor, hello-world LLM)
+- **Progress tracker** - Interactive 18-week curriculum with tasks, resources, and checkpoints
 
 > **Ideal for**: Software engineers with 5+ years experience who want to build real AI systems (not just prompt ChatGPT).
 
@@ -33,8 +33,8 @@ This repo combines:
 
 **Online (Recommended)**
 
-- **[Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html)** — Best for progress tracking and structured learning
-- **[GitHub Repository](https://github.com/santosh502/ai-engineer-transition)** — Source code and materials
+- **[Interactive Tracker](https://santosh502.github.io/ai-engineer-transition/tracker.html)** - Best for progress tracking and structured learning
+- **[GitHub Repository](https://github.com/santosh502/ai-engineer-transition)** - Source code and materials
 
 **Local (Clone & Use Offline)**
 
@@ -122,10 +122,10 @@ ai-engineer-transition/
 
 ## The Learning Path
 
-### Phase 0 — Week 1: Fast Context & Setup
+### Phase 0 - Week 1: Fast Context & Setup
 Vocabulary, API access, hello-world tool use
 
-### Phase 1 — Weeks 2-7: Core Engineering (RAG from First Principles)
+### Phase 1 - Weeks 2-7: Core Engineering (RAG from First Principles)
 
 | Week | Topic | Resources |
 |------|-------|-----------|
@@ -136,14 +136,14 @@ Vocabulary, API access, hello-world tool use
 | 6 | Evaluation frameworks | [RAG notes: Evaluation Metrics](ai_engineering/rag/notes.md#evaluation-metrics) |
 | 7 | LLMOps & observability | [Tracker resources](https://santosh502.github.io/ai-engineer-transition/tracker.html) |
 
-### Phase 2 — Weeks 8-12: Agentic AI
+### Phase 2 - Weeks 8-12: Agentic AI
 - Week 8: Tool use from first principles
 - Week 9: Agent frameworks (LangGraph)
 - Week 10: Memory & multi-turn
 - Week 11: Multi-agent & human-in-the-loop
 - Week 12: Evaluation & safety
 
-### Phase 3 — Weeks 13-18: Production & Capstone
+### Phase 3 - Weeks 13-18: Production & Capstone
 - Week 13: Model serving & economics
 - Week 14: Fine-tuning & customization
 - Week 15: Security for AI systems
@@ -155,7 +155,7 @@ Vocabulary, API access, hello-world tool use
 
 **Learning Mode**
 1. Read modules in order (they build on each other)
-2. Run code examples—don't just read them
+2. Run code examples-don't just read them
 3. Use the tracker to stay on schedule
 
 **Reference Mode**
@@ -183,7 +183,7 @@ Complete materials for mastering RAG systems:
 | [rag/implementation-examples.md](ai_engineering/rag/implementation-examples.md) | Code | Building systems | 9 examples |
 | [rag/quick-reference.md](ai_engineering/rag/quick-reference.md) | Reference | Quick lookups | 298 lines |
 
-**Start with**: [rag/README.md](ai_engineering/rag/README.md) — Choose your path (depth vs speed)
+**Start with**: [rag/README.md](ai_engineering/rag/README.md) - Choose your path (depth vs speed)
 
 ---
 
@@ -195,7 +195,7 @@ Complete materials for mastering RAG systems:
 |------|---------|
 | [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.html) | Interactive progress tracker & 18-week curriculum |
 | [ai_engineering/README.md](ai_engineering/README.md) | Learning path guide & key concepts |
-| [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md) | Foundations—start here |
+| [ai_engineering/llm/01_llm_fundamentals.md](ai_engineering/llm/01_llm_fundamentals.md) | Foundations-start here |
 | [ai_engineering/llm/03_quick_reference.md](ai_engineering/llm/03_quick_reference.md) | Lookup table & decision trees |
 | [ai_engineering/llm/04_hard_problems.md](ai_engineering/llm/04_hard_problems.md) | What breaks in production |
 | [ai_engineering/rag/README.md](ai_engineering/rag/README.md) | RAG learning path & materials |
@@ -219,7 +219,7 @@ See [tracker.html](https://santosh502.github.io/ai-engineer-transition/tracker.h
 
 Want to use this 18-week curriculum for yourself or your team?
 
-> **No customization required**—simply fork and deploy.
+> **No customization required**-simply fork and deploy.
 
 **3-step setup**:
 1. Fork the repo on GitHub

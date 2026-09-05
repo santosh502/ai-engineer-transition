@@ -1,8 +1,10 @@
 # Retrieval-Augmented Generation (RAG)
 
-**Materials**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Materials**: [Overview](README.md) · [Architecture](architecture-overview.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md) · [Troubleshooting](troubleshooting.md)
 
 This directory contains comprehensive study materials for **Retrieval-Augmented Generation (RAG)**, a powerful technique that combines information retrieval with generative AI to build more accurate, grounded, and current LLM applications.
+
+> **New to RAG?** Start with [architecture-overview.md](architecture-overview.md) to see how embeddings, vector databases, and RAG connect. Then follow the golden path below.
 
 ---
 
@@ -52,6 +54,95 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Metrics to track
 - Common mistakes to avoid
 - Decision tree for "Should I use RAG?"
+
+---
+
+## Your First RAG System (Golden Path)
+
+**Start here if you're new to RAG.** Follow these steps in order:
+
+| Step | What | Where | Time | What You'll Learn |
+|------|------|-------|------|-------------------|
+| 0️⃣ | See how it all connects | [architecture-overview.md](architecture-overview.md) | 15 min | How embeddings → DB → retrieval → generation work together |
+| 1️⃣ | Learn RAG concepts | [notes.md](notes.md) Section 1-2 | 20 min | What RAG is and why it matters |
+| 2️⃣ | Understand chunking | [chunking-strategies.md](chunking-strategies.md) Levels 1-3 only | 30 min | How to split documents (pick 1 strategy, not all 12) |
+| 3️⃣ | Build your first system | [implementation-examples.md](implementation-examples.md) "Simple RAG" | 45 min | Working code end-to-end |
+| 4️⃣ | When it breaks | [troubleshooting.md](troubleshooting.md) (your error) | varies | Debug and fix common issues |
+
+**Total time: 2 hours** to have a working RAG system.
+
+**Don't read all 12 chunking strategies yet.** Levels 1-3 solve 80% of real problems. Come back to advanced techniques only after you've built something.
+
+---
+
+## ⚠️ Silent Failures: Learn These or Get Burned
+
+RAG has gotchas that silently break production systems. Read these warnings **now**:
+
+### 🔴 Embedding Model Mismatch
+```
+❌ This silently fails:
+   Index docs with: OpenAI text-embedding-3-small
+   Query with: Cohere embed-v3
+   Result: All similarity scores garbage, retrieval broken
+
+✅ Fix:
+   Use the SAME embedding model for indexing and querying
+   Store the model name in metadata
+   If you switch models, rebuild entire index
+```
+
+### 🔴 Chunk Size Drift
+```
+❌ This causes inconsistent retrieval:
+   Some docs chunked at 300 tokens
+   Other docs chunked at 2000 tokens
+   Result: Small chunks precise, large chunks noisy, unpredictable quality
+
+✅ Fix:
+   Use ONE chunking strategy for all documents
+   Document your chunk size (300-800 tokens typical)
+   If you change it, re-chunk and re-index everything
+```
+
+### 🔴 Missing Metadata
+```
+❌ When retrieval fails, you're blind:
+   Retrieved chunks with no source doc ID or page number
+   Can't debug which document is causing bad results
+   
+✅ Fix:
+   Preserve metadata: source file, page, section, timestamp, version
+   Store with every chunk in vector DB
+   When debugging, trace chunks back to source
+```
+
+### 🔴 Context Token Overflow
+```
+❌ Silent truncation:
+   Retrieve 10 chunks (looks good)
+   Pass to LLM (exceeds token limit)
+   LLM silently truncates last chunks
+   Answer uses incomplete context → hallucination
+   
+✅ Fix:
+   Count tokens in prompt before sending to LLM
+   Reduce k (number of chunks) or chunk size if needed
+   Leave room: LLM context window = query + context + response space
+```
+
+### 🔴 No Grounding in Prompt
+```
+❌ LLM still hallucinates:
+   Prompt: "Answer the question: {question}"
+   Context provided but not emphasized
+   
+✅ Fix:
+   Prompt: "Answer ONLY using the context. If not in context, say 'I don't know'."
+   Explicitly tell LLM to stay grounded
+```
+
+**Full troubleshooting guide:** See [troubleshooting.md](troubleshooting.md) for 20+ specific failure modes and fixes.
 
 ---
 

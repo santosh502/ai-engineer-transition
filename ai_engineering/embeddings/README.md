@@ -4,6 +4,8 @@
 
 Learn what embeddings are, why they matter, and how to build semantic search from first principles.
 
+> **Important:** Embeddings are the foundation for vector databases and RAG. After learning embeddings, see [Vector Databases module](../vector_databases/README.md) to scale to millions of documents, then [RAG module](../rag/README.md) to build a complete question-answering system. See [architecture overview](../rag/architecture-overview.md) to understand how all three connect.
+
 ## Content
 
 ### 1. **[00_embeddings_guide.md](00_embeddings_guide.md)** (Main Guide)
@@ -49,6 +51,20 @@ Quick lookups:
 - Common mistakes & how to fix them
 - Cost comparison (2024 pricing)
 - Debugging guide
+
+---
+
+## ⚠️ Common Mistakes
+
+These will break your system silently. Learn them now:
+
+- **Don't mix embedding models.** Vectors from OpenAI's `text-embedding-3-small` are not comparable to `bge-large`. If you switch models mid-project, your vector index becomes useless. Rebuild entirely with the new model.
+
+- **Token counting matters.** 500 *characters* ≠ 500 *tokens*. A 500-character chunk might be 100 tokens in English but 300 tokens in Chinese. Use token-based splitting for multilingual data or when you care about staying under a model's input limit.
+
+- **Don't re-embed unchanged documents.** Costs money. Cache embeddings by content hash so you only embed new/changed docs.
+
+- **Normalized vectors matter.** If your embedding model outputs normalized vectors (most do), cosine similarity and dot product become interchangeable. But if not normalized, similarity scores can be misleading.
 
 ---
 

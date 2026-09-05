@@ -1,4 +1,4 @@
-# AI Engineer Transition — Project Guide
+# AI Engineer Transition - Project Guide
 
 ## Project Overview
 An interactive learning hub for the 18-week AI engineering transition program with beautiful markdown viewer, chapter navigation, and organized learning materials.
@@ -86,8 +86,8 @@ python3 -m http.server 3000
 ```
 
 ### File changes to track
-- Markdown files (`.md`) — content
-- `reader.html` — chapters array only
+- Markdown files (`.md`) - content
+- `reader.html` - chapters array only
 - No other HTML files need updating
 
 ### Testing
@@ -143,13 +143,13 @@ http://localhost:3000/reader.html?file=ai_engineering/embeddings/00_embeddings_g
 - Click section headers to expand/collapse
 
 ### Reorder chapters
-Edit `chapters` array in `reader.html` — order determines navigation sequence.
+Edit `chapters` array in `reader.html` - order determines navigation sequence.
 
 ## Technology Stack
 - HTML5 / CSS3 / Vanilla JavaScript
-- **markdown-it** — Markdown parsing
-- **highlight.js** — Code syntax highlighting
-- **IBM Plex fonts** — Typography
+- **markdown-it** - Markdown parsing
+- **highlight.js** - Code syntax highlighting
+- **IBM Plex fonts** - Typography
 - Dark theme with cyan accent (#5eead4)
 
 ## Notes

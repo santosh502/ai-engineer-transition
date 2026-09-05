@@ -216,21 +216,22 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13/dist/markdown-it.min.js"></script>
   <script>
     async function load() {
       try {
         const response = await fetch('README.md');
         const markdown = await response.text();
-        marked.setOptions({ breaks: true, gfm: true });
-        const renderer = new marked.Renderer();
-        const originalCode = renderer.code.bind(renderer);
-        renderer.code = function(code, language) {
-          const html = originalCode.call(this, code, language);
-          return html.replace('<pre>', '<pre><button class="copy-code-btn" onclick="copyCode(this)">Copy</button>');
-        };
-        marked.setOptions({ renderer });
-        document.getElementById('content').innerHTML = marked(markdown);
+        const md = window.markdownit({ html: true, breaks: true, linkify: true });
+        const html = md.render(markdown);
+        document.getElementById('content').innerHTML = html;
+        document.querySelectorAll('pre').forEach(pre => {
+          const btn = document.createElement('button');
+          btn.className = 'copy-code-btn';
+          btn.textContent = 'Copy';
+          btn.onclick = function() { copyCode(this); };
+          pre.appendChild(btn);
+        });
         document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
         buildTOC();
       } catch (e) {
