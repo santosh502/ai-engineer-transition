@@ -4,7 +4,7 @@
 
 Learn what embeddings are, why they matter, and how to build semantic search from first principles.
 
-> **Important:** Embeddings are the foundation for vector databases and RAG. After learning embeddings, see [Vector Databases module](../vector_databases/README.md) to scale to millions of documents, then [RAG module](../rag/README.md) to build a complete question-answering system. See [architecture overview](../rag/architecture-overview.md) to understand how all three connect.
+> **Important:** Embeddings are the foundation for vector databases and RAG. After learning embeddings, see [Vector Databases module](../vector_databases/README.md) to scale to millions of documents, then [RAG module](../rag/README.md) to build a complete question-answering system. See [architecture overview](../rag/00_architecture_overview.md) to understand how all three connect.
 
 ## Content
 

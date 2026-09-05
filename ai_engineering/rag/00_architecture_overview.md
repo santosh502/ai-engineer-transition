@@ -17,7 +17,7 @@ If you're learning embeddings, vector databases, and RAG separately, you might m
    ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │ CHUNKING: Split documents into manageable pieces                │
-│ Learn here: embeddings/Section 6 OR rag/chunking-strategies.md  │
+│ Learn here: embeddings/Section 6 OR rag/02_chunking_strategies.md  │
 │                                                                  │
 │ Common chunk sizes: 300-800 tokens                              │
 │ Common overlap: 10-20%                                          │
@@ -135,7 +135,7 @@ If you're learning embeddings, vector databases, and RAG separately, you might m
 |---------|--------|---------|---------|
 | **What are vectors?** | Embeddings | Sections 1-5 | Foundation: geometry of meaning |
 | **Cosine similarity** | Embeddings | Section 5 | How to compare vectors |
-| **Chunking strategies** | RAG | chunking-strategies.md | How to split documents |
+| **Chunking strategies** | RAG | 02_chunking_strategies.md | How to split documents |
 | **Embedding models** | Embeddings | Sections 8-9 | Practical model comparison |
 | **Building vector stores** | Embeddings | Sections 7-8 | From scratch, no framework |
 | **ANN algorithms** | Vector DBs | Section 12 | How to scale retrieval |
@@ -143,7 +143,7 @@ If you're learning embeddings, vector databases, and RAG separately, you might m
 | **Metadata filtering** | Vector DBs | Section 15 | Filter retrieved results |
 | **Hybrid search** | Vector DBs | Section 16 | Dense + sparse retrieval |
 | **RAG pipeline** | RAG | notes.md | Complete system |
-| **Troubleshooting** | RAG | troubleshooting.md | When things break |
+| **Troubleshooting** | RAG | 04_troubleshooting.md | When things break |
 
 ---
 
@@ -240,7 +240,7 @@ STEP 4: Generate answer
 
 ### What If Something Goes Wrong?
 
-Each step has failure modes. See troubleshooting.md:
+Each step has failure modes. See 04_troubleshooting.md:
 
 | If This Happens | Check These |
 |---|---|
@@ -363,13 +363,13 @@ Hybrid (dense + BM25):
 3. **RAG** (weeks 5-6)
    - This architecture overview
    - notes.md: full RAG pipeline
-   - implementation-examples.md: build it
-   - troubleshooting.md: fix it when broken
+   - 03_implementation_examples.md: build it
+   - 04_troubleshooting.md: fix it when broken
 
 ### Path B: Learn By Doing (Faster)
 1. **Read** this file (architecture-overview.md)
 2. **Skim** embeddings README + vector_databases README
-3. **Run** rag/implementation-examples.md "Simple RAG Pipeline"
+3. **Run** rag/03_implementation_examples.md "Simple RAG Pipeline"
 4. **Read** sections in-depth only when curious about "why"
 
 ---
@@ -400,7 +400,7 @@ Hybrid (dense + BM25):
          │
 ┌─────────────────────────────────────────┐
 │  Chunking Layer                         │ (document preparation)
-│  rag/chunking-strategies.md             │
+│  rag/02_chunking_strategies.md             │
 └─────────────────────────────────────────┘
          ▲
          │ raw documents
@@ -420,8 +420,8 @@ Each layer depends on the one below:
 
 1. **Understand the architecture** (you just did this) ✓
 2. **Pick a learning path** (A or B above)
-3. **Build locally** using rag/implementation-examples.md
-4. **When it breaks** → use rag/troubleshooting.md
+3. **Build locally** using rag/03_implementation_examples.md
+4. **When it breaks** → use rag/04_troubleshooting.md
 5. **When you're ready to scale** → reference quick guides in each module
 
 ---
@@ -431,12 +431,12 @@ Each layer depends on the one below:
 | Question | Read This |
 |----------|-----------|
 | "How do embeddings work?" | embeddings/00_embeddings_guide.md Sections 1-5 |
-| "How do I chunk documents?" | rag/chunking-strategies.md (pick 1-2 strategies) |
+| "How do I chunk documents?" | rag/02_chunking_strategies.md (pick 1-2 strategies) |
 | "How do I compare vectors?" | embeddings/00_embeddings_guide.md Section 5 |
 | "When do I need a vector DB?" | vector_databases/README.md |
 | "Which vector DB should I use?" | vector_databases/02_quick_reference.md |
 | "How does ANN work?" | vector_databases/00_vector_databases_guide.md Section 12 |
-| "How do I build a RAG system?" | rag/README.md → implementation-examples.md |
-| "My system is broken" | rag/troubleshooting.md |
+| "How do I build a RAG system?" | rag/README.md → 03_implementation_examples.md |
+| "My system is broken" | rag/04_troubleshooting.md |
 | "I want production setup" | vector_databases/01_practical_code_examples.md |
 | "I'm confused" | This file (you are here) |

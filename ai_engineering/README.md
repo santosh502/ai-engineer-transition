@@ -33,9 +33,12 @@ ai_engineering/
 │
 ├── rag/                                 # Retrieval-Augmented Generation
 │   ├── README.md                        # Navigation & overview
-│   ├── notes.md                         # Comprehensive study guide
-│   ├── implementation-examples.md       # Practical code examples
-│   └── quick-reference.md               # Quick lookup cheat sheet
+│   ├── 00_architecture_overview.md      # How embeddings → DB → RAG connect
+│   ├── 01_notes.md                      # Comprehensive study guide
+│   ├── 02_chunking_strategies.md        # Document splitting techniques
+│   ├── 03_implementation_examples.md    # Practical code examples
+│   ├── 04_troubleshooting.md            # Debugging & solutions
+│   └── 05_quick_reference.md            # Quick lookup cheat sheet
 │
 ├── agentic/                             # AI Agents & Multi-Agent Systems
 │   └── README.md                        # Coming soon
@@ -162,8 +165,8 @@ Complete learning materials for mastering RAG systems.
 |------|-------|----------|
 | [README.md](rag/README.md) | Overview | Getting oriented |
 | [notes.md](rag/notes.md) | Deep concepts | Understanding theory |
-| [implementation-examples.md](rag/implementation-examples.md) | 9 working examples | Building systems |
-| [quick-reference.md](rag/quick-reference.md) | Quick lookups | Development reference |
+| [03_implementation_examples.md](rag/03_implementation_examples.md) | 9 working examples | Building systems |
+| [05_quick_reference.md](rag/05_quick_reference.md) | Quick lookups | Development reference |
 
 **Topics covered**:
 - Vector embeddings and similarity search

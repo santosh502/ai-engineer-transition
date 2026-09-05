@@ -4,7 +4,7 @@
 
 Learn how to scale semantic search to millions of vectors using ANN algorithms and production vector databases.
 
-> **Where this fits:** You've learned embeddings from [Phase 2A](../embeddings/README.md). Now scale it to millions of vectors. After this, build a complete RAG system with [Phase 4: RAG](../rag/README.md). See [architecture overview](../rag/architecture-overview.md) to understand how embeddings → vector DB → RAG connect.
+> **Where this fits:** You've learned embeddings from [Phase 2A](../embeddings/README.md). Now scale it to millions of vectors. After this, build a complete RAG system with [Phase 4: RAG](../rag/README.md). See [architecture overview](../rag/00_architecture_overview.md) to understand how embeddings → vector DB → RAG connect.
 
 ## Content
 

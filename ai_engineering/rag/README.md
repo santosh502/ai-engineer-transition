@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation (RAG)
 
-**Materials**: [Overview](README.md) · [Architecture](architecture-overview.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md) · [Troubleshooting](troubleshooting.md)
+**Materials**: [Overview](README.md) · [Architecture](00_architecture_overview.md) · [Study Guide](01_notes.md) · [Chunking](02_chunking_strategies.md) · [Code Examples](03_implementation_examples.md) · [Troubleshooting](04_troubleshooting.md) · [Quick Reference](05_quick_reference.md)
 
 This directory contains comprehensive study materials for **Retrieval-Augmented Generation (RAG)**, a powerful technique that combines information retrieval with generative AI to build more accurate, grounded, and current LLM applications.
 
@@ -10,7 +10,7 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 
 ## What's Inside
 
-### [notes.md](notes.md) — Comprehensive Study Guide
+### [01_notes.md](01_notes.md) — Comprehensive Study Guide
 
 **Best for**: Understanding concepts and theory
 
@@ -25,7 +25,7 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Best practices checklist
 - Learning resources
 
-### [implementation-examples.md](implementation-examples.md) — Practical Code
+### [03_implementation_examples.md](03_implementation_examples.md) — Practical Code
 
 **Best for**: Building and implementing RAG systems
 
@@ -39,7 +39,7 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 - Evaluation with RAGAS framework
 - Configuration templates for different use cases
 
-### [quick-reference.md](quick-reference.md) — Quick Lookup
+### [05_quick_reference.md](05_quick_reference.md) — Quick Lookup
 
 **Best for**: Quick answers during development
 
@@ -63,11 +63,11 @@ This directory contains comprehensive study materials for **Retrieval-Augmented 
 
 | Step | What | Where | Time | What You'll Learn |
 |------|------|-------|------|-------------------|
-| 0️⃣ | See how it all connects | [architecture-overview.md](architecture-overview.md) | 15 min | How embeddings → DB → retrieval → generation work together |
-| 1️⃣ | Learn RAG concepts | [notes.md](notes.md) Section 1-2 | 20 min | What RAG is and why it matters |
-| 2️⃣ | Understand chunking | [chunking-strategies.md](chunking-strategies.md) Levels 1-3 only | 30 min | How to split documents (pick 1 strategy, not all 12) |
-| 3️⃣ | Build your first system | [implementation-examples.md](implementation-examples.md) "Simple RAG" | 45 min | Working code end-to-end |
-| 4️⃣ | When it breaks | [troubleshooting.md](troubleshooting.md) (your error) | varies | Debug and fix common issues |
+| 0️⃣ | See how it all connects | [00_architecture_overview.md](00_architecture_overview.md) | 15 min | How embeddings → DB → retrieval → generation work together |
+| 1️⃣ | Learn RAG concepts | [01_notes.md](01_notes.md) Section 1-2 | 20 min | What RAG is and why it matters |
+| 2️⃣ | Understand chunking | [02_chunking_strategies.md](02_chunking_strategies.md) Levels 1-3 only | 30 min | How to split documents (pick 1 strategy, not all 12) |
+| 3️⃣ | Build your first system | [03_implementation_examples.md](03_implementation_examples.md) "Simple RAG" | 45 min | Working code end-to-end |
+| 4️⃣ | When it breaks | [04_troubleshooting.md](04_troubleshooting.md) (your error) | varies | Debug and fix common issues |
 
 **Total time: 2 hours** to have a working RAG system.
 
@@ -142,7 +142,7 @@ RAG has gotchas that silently break production systems. Read these warnings **no
    Explicitly tell LLM to stay grounded
 ```
 
-**Full troubleshooting guide:** See [troubleshooting.md](troubleshooting.md) for 20+ specific failure modes and fixes.
+**Full troubleshooting guide:** See [04_troubleshooting.md](04_troubleshooting.md) for 20+ specific failure modes and fixes.
 
 ---
 
@@ -168,15 +168,15 @@ Query → Encode → Retrieve → Augment → Generate → Answer
 
 ### Build a RAG System
 
-1. Read [notes.md](notes.md) — "What is RAG?" section
-2. Check [quick-reference.md](quick-reference.md) — "Quick Setup" section
-3. Use code from [implementation-examples.md](implementation-examples.md) — "Simple RAG Pipeline"
+1. Read [01_notes.md](01_notes.md) — "What is RAG?" section
+2. Check [05_quick_reference.md](05_quick_reference.md) — "Quick Setup" section
+3. Use code from [03_implementation_examples.md](03_implementation_examples.md) — "Simple RAG Pipeline"
 
 ### Understand RAG Deeply
 
-1. Start with [notes.md](notes.md) — Read completely
-2. Study [implementation-examples.md](implementation-examples.md) — Understand each example
-3. Review [quick-reference.md](quick-reference.md) — Reinforce key points
+1. Start with [01_notes.md](01_notes.md) — Read completely
+2. Study [03_implementation_examples.md](03_implementation_examples.md) — Understand each example
+3. Review [05_quick_reference.md](05_quick_reference.md) — Reinforce key points
 
 ---
 
@@ -285,8 +285,8 @@ Query → Encode → Retrieve → Augment → Generate → Answer
 
 ## Getting Started
 
-1. **Learn the theory** — Read [notes.md](notes.md)
-2. **See code examples** — Study [implementation-examples.md](implementation-examples.md)
+1. **Learn the theory** — Read [01_notes.md](01_notes.md)
+2. **See code examples** — Study [03_implementation_examples.md](03_implementation_examples.md)
 3. **Build something** — Start with simple pipeline
 4. **Evaluate** — Use RAGAS framework
 5. **Iterate** — Monitor metrics and improve

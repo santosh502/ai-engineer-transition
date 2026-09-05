@@ -1,6 +1,6 @@
 # RAG Quick Reference
 
-**Navigation**: [Overview](README.md) · [Study Guide](notes.md) · [Code Examples](implementation-examples.md) · [Quick Reference](quick-reference.md)
+**Navigation**: [Overview](README.md) · [Architecture](00_architecture_overview.md) · [Study Guide](01_notes.md) · [Chunking](02_chunking_strategies.md) · [Code Examples](03_implementation_examples.md) · [Quick Reference](05_quick_reference.md)
 
 Quick lookup guide for RAG development and decision-making.
 
